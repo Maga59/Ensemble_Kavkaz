@@ -14,7 +14,7 @@
     :root {
       --white: #ffffff;
       --white-soft: #faf8f8;
-      --wine: #5e1a22; /* Твой цвет бургунди */
+      --wine: #5e1a22;
       --wine-dark: #421117;
       --wine-soft: #7a2530;
       --gold: #c9a227;
@@ -100,17 +100,14 @@
     /* ОГРОМНОЕ СЛОВО КАВКАЗ В БУРГУНДИ */
     .hero h1 {
       font-family: 'Cinzel', serif;
-      font-size: clamp(6rem, 20vw, 13rem); /* Сделал его просто гигантским */
+      font-size: clamp(6rem, 20vw, 13rem);
       font-weight: 900;
       line-height: 0.9;
       letter-spacing: 8px;
       text-transform: uppercase;
-      color: var(--wine); /* Цвет бургунди */
+      color: var(--wine);
       margin-bottom: 40px;
-      /* Добавляем золотую обводку и тень, чтобы выделялось на фоне */
-      text-shadow: 
-        3px 3px 0px var(--gold), 
-        6px 6px 20px rgba(0,0,0,0.2); 
+      text-shadow: 3px 3px 0px var(--gold), 6px 6px 20px rgba(0,0,0,0.2); 
     }
 
     .hero-buttons { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; }
@@ -277,7 +274,6 @@
       section { padding: 72px 20px; }
       .socials { flex-direction: column; align-items: center; }
       .action-buttons { flex-direction: column; align-items: center; }
-      /* На телефоне делаем чуть меньше, чтобы влезло */
       .hero h1 { font-size: 5rem; letter-spacing: 4px; text-shadow: 2px 2px 0px var(--gold); }
     }
   </style>
@@ -294,7 +290,8 @@
         <li><a href="#divisions">Направления</a></li>
         <li><a href="gallery.html">Галерея</a></li>
         <li><a href="#teachers">Педагоги</a></li>
-        <li><a href="#contacts">Контакты</a></li>
+        <!-- НОВАЯ КНОПКА "СВЯЗАТЬСЯ" -->
+        <li><a href="contact.html">Связаться</a></li>
       </ul>
       <button class="burger" id="burger" aria-label="Меню">
         <span></span><span></span><span></span>
@@ -306,12 +303,11 @@
     <div class="hero-content">
       <div class="hero-tag">Минск · Республика Беларусь</div>
       
-      <!-- ТУТ ТЕПЕРЬ ТОЛЬКО СЛОВО КАВКАЗ -->
       <h1>Кавказ</h1>
       
       <div class="hero-buttons">
         <a href="#divisions" class="btn btn-primary">Наши направления</a>
-        <a href="#contacts" class="btn btn-gold">Связаться с нами</a>
+        <a href="contact.html" class="btn btn-gold">Связаться с нами</a>
       </div>
     </div>
   </section>
@@ -328,6 +324,7 @@
             <p>Мы дарим любовь, эмоции и страсть. Это то шоу, когда вы не можете усидеть на месте. Мы гордимся тем, что представляем Конгресс азербайджанской общины, и с радостью делимся культурой Кавказа и Азербайджана со всем миром.</p>
           </div>
           <div class="about-image">
+            <!-- ФОТО 1 -->
             <img src="photo1.jpg" alt="Ансамбль Кавказ">
           </div>
         </div>
@@ -494,10 +491,7 @@
             <svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm4.4 6.9l-1.5 7.1c-.1.5-.4.6-.8.4l-2.3-1.7-1.1 1.1c-.1.1-.2.2-.4.2l.2-2.5 4.5-4.1c.2-.2 0-.3-.3-.1l-5.6 3.5-2.4-.8c-.5-.2-.5-.5.1-.7l9.4-3.6c.4-.1.8.1.7.8z"/></svg>
             Telegram
           </a>
-          <a href="mailto:kavkaz2026ensemble@gmail.com" class="social-link" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-            Написать нам
-          </a>
+          <!-- КНОПКА НАПИСАТЬ НАМ УДАЛЕНА, ТАК КАК ЕСТЬ ОТДЕЛЬНАЯ СТРАНИЦА -->
         </div>
 
         <div class="action-buttons">
