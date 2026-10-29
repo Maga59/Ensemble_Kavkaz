@@ -36,26 +36,27 @@
       position: relative;
     }
     
-    /* ФОН С УЗОРОМ БУТА */
+    /* ФОН С УЗОРОМ БУТА (Сделал его заметным!) */
     body::before {
       content: "";
       position: fixed;
       top: 0; left: 0; width: 100vw; height: 100vh;
       pointer-events: none;
       z-index: -2;
+      /* Твоя картинка */
       background-image: url('buta.png'), url('buta.jpg');
-      background-size: 300px;
+      background-size: 250px; /* Увеличил размер узора */
       background-repeat: repeat;
-      opacity: 0.1; /* Сделал еще более прозрачным, чтобы не мешало */
+      opacity: 0.35; /* Сделал его хорошо видимым (было 0.1) */
     }
-    /* Белая вуаль поверх узора */
+    /* Легкая вуаль поверх узора */
     body::after {
       content: "";
       position: fixed;
       top: 0; left: 0; width: 100vw; height: 100vh;
       pointer-events: none;
       z-index: -1;
-      background: rgba(255, 255, 255, 0.9); 
+      background: rgba(255, 255, 255, 0.6); /* Полупрозрачный белый, чтобы текст читался */
     }
 
     a { color: inherit; text-decoration: none; }
@@ -99,7 +100,6 @@
       box-shadow: 0 4px 15px rgba(201,162,39,0.2);
     }
     
-    /* Заголовок (без блеска) */
     .hero h1 {
       font-family: 'Cinzel', serif;
       font-size: clamp(4rem, 10vw, 7rem);
@@ -140,17 +140,17 @@
     .section-title span { color: var(--gold); }
     .section-sub { text-align: center; color: var(--wine-dark); max-width: 700px; margin: 0 auto 56px; font-size: 1.15rem; font-weight: 500; }
 
-    /* ===== Строгие рамки (без картинок) ===== */
+    /* ===== Строгие рамки ===== */
     .gold-frame {
       position: relative;
-      background: rgba(255,255,255,0.95);
+      background: rgba(255,255,255,0.85); /* Полупрозрачный белый, чтобы узор Бута просвечивал */
       backdrop-filter: blur(5px);
       border-radius: 4px;
       padding: 60px;
       box-shadow: 0 20px 50px rgba(94,26,34,0.1);
-      border: 2px solid var(--gold); /* Двойная золотая рамка через box-shadow */
+      border: 2px solid var(--gold);
       outline: 1px solid rgba(201,162,39,0.3);
-      outline-offset: -10px; /* Отступ внутренней линии */
+      outline-offset: -10px;
     }
 
     /* ===== About ===== */
@@ -175,7 +175,7 @@
     .achievements { background: transparent; }
     .achievements-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
     .achievement-card {
-      background: rgba(255,255,255,0.95); border-radius: var(--radius);
+      background: rgba(255,255,255,0.9); border-radius: var(--radius);
       border: 1px solid var(--border); box-shadow: 0 8px 25px rgba(94,26,34,0.08);
       display: flex; flex-direction: column; overflow: hidden;
       transition: transform 0.3s, box-shadow 0.3s;
@@ -192,7 +192,7 @@
     .divisions { background: transparent; }
     .divisions-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
     .division-card {
-      background: rgba(255,255,255,0.95); border-radius: var(--radius); padding: 0;
+      background: rgba(255,255,255,0.9); border-radius: var(--radius); padding: 0;
       border: 1px solid var(--border); transition: transform 0.3s, box-shadow 0.3s;
       position: relative; overflow: hidden; box-shadow: 0 8px 25px rgba(94,26,34,0.08);
       display: flex; flex-direction: column;
@@ -220,13 +220,12 @@
     .teachers { background: transparent; }
     .teachers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
     .teacher-card {
-      background: rgba(255,255,255,0.95); border-radius: var(--radius); overflow: hidden;
+      background: rgba(255,255,255,0.9); border-radius: var(--radius); overflow: hidden;
       border: 1px solid var(--border); box-shadow: 0 8px 25px rgba(94,26,34,0.08);
       transition: transform 0.3s; display: flex; flex-direction: column;
     }
     .teacher-card:hover { transform: translateY(-8px); }
     
-    /* Идеальная высота фото педагогов */
     .teacher-img { height: 380px; overflow: hidden; border-bottom: 2px solid var(--gold); position: relative;}
     .teacher-img img { width: 100%; height: 100%; object-fit: cover; }
     
@@ -267,7 +266,7 @@
     .action-card p { color: var(--muted); font-size: 1rem; margin-bottom: 24px; }
 
     /* ===== Footer ===== */
-    footer { background: var(--wine-dark); padding: 50px 24px; text-align: center; color: rgba(255,255,255,0.9); font-size: 0.95rem; border-top: 4px solid var(--gold); }
+    footer { background: var(--wine-dark); padding: 50px 24px; text-align: center; color: rgba(255,255,255,0.9); font-size: 0.95rem; border-top: 4px solid var(--gold); position: relative; z-index: 2;}
     footer .footer-logo { color: var(--gold-soft); font-weight: 700; font-size: 1.5rem; margin-bottom: 16px; letter-spacing: 3px; font-family: 'Cinzel', serif;}
 
     /* ===== Responsive ===== */
@@ -463,7 +462,6 @@
       <p class="section-sub">Профессионалы, которые влюблены в свое дело.</p>
       <div class="teachers-grid">
         
-        <!-- Давуд (Ровно по верху) -->
         <div class="teacher-card">
           <div class="teacher-img">
             <img src="davud.jpg" alt="Давуд" style="object-position: center top;">
@@ -475,7 +473,6 @@
           </div>
         </div>
 
-        <!-- Али (Ровно по верху) -->
         <div class="teacher-card">
           <div class="teacher-img">
             <img src="ali.jpg" alt="Али" style="object-position: center top;">
@@ -488,7 +485,6 @@
           </div>
         </div>
 
-        <!-- Ксения (Обрезана сверху ровно по линии) -->
         <div class="teacher-card">
           <div class="teacher-img">
             <img src="ksenia.jpg" alt="Ксения" style="object-position: center top;">
