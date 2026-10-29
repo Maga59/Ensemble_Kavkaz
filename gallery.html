@@ -89,13 +89,11 @@
 
     /* ===== ИДЕАЛЬНАЯ MASONRY-СЕТКА (БЕЗ ОБРЕЗКИ) ===== */
     .gallery-grid {
-      /* Разбиваем на колонки. Браузер сам распределит фото по высоте */
       column-count: 3;
       column-gap: 20px;
     }
     
     .gallery-item {
-      /* Запрещаем разрывать карточку между колонками */
       break-inside: avoid;
       margin-bottom: 20px;
       border-radius: var(--radius);
@@ -108,7 +106,7 @@
     
     .gallery-item img { 
       width: 100%; 
-      height: auto; /* ВОТ ГЛАВНЫЙ СЕКРЕТ! Высота подстраивается под картинку */
+      height: auto; 
       display: block; 
       transition: transform 0.5s; 
       cursor: zoom-in;
@@ -144,7 +142,7 @@
     <h2 class="section-title">Наша <span>Галерея</span></h2>
     
     <div class="gallery-grid">
-      <!-- 21 фотография. Они будут ровно такими, какими были сняты. -->
+      <!-- Старые 21 фотография -->
       <div class="gallery-item"><img src="gal1.jpg" alt="Фото 1"></div>
       <div class="gallery-item"><img src="gal2.jpg" alt="Фото 2"></div>
       <div class="gallery-item"><img src="gal3.jpg" alt="Фото 3"></div>
@@ -166,6 +164,14 @@
       <div class="gallery-item"><img src="gal19.jpg" alt="Фото 19"></div>
       <div class="gallery-item"><img src="gal20.jpg" alt="Фото 20"></div>
       <div class="gallery-item"><img src="gal21.jpg" alt="Фото 21"></div>
+
+      <!-- НОВЫЕ 6 фотографий -->
+      <div class="gallery-item"><img src="photo2.jpg" alt="Фото 22"></div>
+      <div class="gallery-item"><img src="photo3.jpg" alt="Фото 23"></div>
+      <div class="gallery-item"><img src="photo4.jpg" alt="Фото 24"></div>
+      <div class="gallery-item"><img src="photo5.jpg" alt="Фото 25"></div>
+      <div class="gallery-item"><img src="photo6.jpg" alt="Фото 26"></div>
+      <div class="gallery-item"><img src="photo7.jpg" alt="Фото 27"></div>
     </div>
   </section>
 
