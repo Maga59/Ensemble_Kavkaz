@@ -6,8 +6,10 @@
   <title>Ансамбль Кавказ — Минск, Беларусь</title>
   <meta name="description" content="Ансамбль Кавказ — школа, ансамбль и шоу-группа кавказского танца в Минске. Выступления на концертах, фестивалях, конкурсах, свадьбах, корпоративах и юбилеях." />
   
-  <!-- Шрифт для элегантного заголовка -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <!-- Шрифты -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
   
   <style>
     :root {
@@ -34,16 +36,16 @@
       position: relative;
     }
     
-    /* Фон с национальным узором Бута (по всему сайту) */
+    /* Фон с национальным узором Бута */
     body::before {
       content: "";
       position: fixed;
       top: 0; left: 0; width: 100vw; height: 100vh;
       pointer-events: none;
       z-index: -1;
-      /* Встроенный SVG узор Бута, очень бледный */
-      background-image: url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M60 10 C80 10 90 30 90 60 C90 90 80 110 60 110 C40 110 30 90 30 60 C30 30 40 10 60 10 Z' fill='none' stroke='%235e1a22' stroke-width='0.5' opacity='0.06'/%3E%3Cpath d='M60 25 C70 25 75 40 75 60 C75 80 70 95 60 95 C50 95 45 80 45 60 C45 40 50 25 60 25 Z' fill='none' stroke='%235e1a22' stroke-width='0.5' opacity='0.06'/%3E%3Ccircle cx='60' cy='60' r='5' fill='%235e1a22' opacity='0.06'/%3E%3C/svg%3E");
-      background-size: 150px 150px;
+      background-color: var(--white);
+      background-image: url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M60 10 C80 10 90 30 90 60 C90 90 80 110 60 110 C40 110 30 90 30 60 C30 30 40 10 60 10 Z' fill='none' stroke='%235e1a22' stroke-width='0.5' opacity='0.04'/%3E%3Cpath d='M60 25 C70 25 75 40 75 60 C75 80 70 95 60 95 C50 95 45 80 45 60 C45 40 50 25 60 25 Z' fill='none' stroke='%235e1a22' stroke-width='0.5' opacity='0.04'/%3E%3Ccircle cx='60' cy='60' r='5' fill='%235e1a22' opacity='0.04'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
     }
 
     a { color: inherit; text-decoration: none; }
@@ -59,7 +61,7 @@
       max-width: 1200px; margin: 0 auto; padding: 16px 24px;
       display: flex; align-items: center; justify-content: space-between;
     }
-    .logo { font-weight: 800; font-size: 1.3rem; letter-spacing: 1px; color: var(--wine); }
+    .logo { font-weight: 800; font-size: 1.3rem; letter-spacing: 1px; color: var(--wine); font-family: 'Cinzel', serif; }
     .logo span { color: var(--gold); }
     .nav-links { display: flex; gap: 20px; list-style: none; }
     .nav-links a { font-size: 0.95rem; color: var(--muted); transition: color 0.2s; position: relative; }
@@ -83,102 +85,80 @@
       display: inline-block; font-size: 0.9rem; letter-spacing: 3px; text-transform: uppercase;
       color: var(--wine); border: 1px solid rgba(94,26,34,0.35);
       padding: 8px 20px; border-radius: 50px; margin-bottom: 32px;
-      background: rgba(255,255,255,0.8); font-weight: 600;
+      background: rgba(255,255,255,0.8); font-weight: 600; font-family: 'Cinzel', serif;
     }
     
-    /* Чистый золотой заголовок (без блестяшек) */
+    /* Заголовок без блеска */
     .hero h1 {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cinzel', serif;
       font-size: clamp(3.5rem, 9vw, 6.5rem);
       font-weight: 700;
       line-height: 1.1;
-      letter-spacing: 4px;
+      letter-spacing: 6px;
       text-transform: uppercase;
       background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      margin-bottom: 40px; /* Убрали блестяшки и сделали отступ */
+      margin-bottom: 40px;
     }
     .hero h1 span { color: transparent; }
 
     .hero-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
     
-    /* Увеличенные кнопки */
     .btn {
       display: inline-block; padding: 18px 40px; border-radius: 50px;
-      font-weight: 700; font-size: 1.05rem; letter-spacing: 1px;
+      font-weight: 700; font-size: 1.05rem; letter-spacing: 1px; font-family: 'Cinzel', serif;
       transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
       cursor: pointer; border: none;
     }
-    .btn-primary { 
-      background: var(--wine); color: #fff; 
-      box-shadow: 0 10px 25px rgba(94,26,34,0.3); 
-      border: 2px solid var(--wine-dark);
-    }
+    .btn-primary { background: var(--wine); color: #fff; box-shadow: 0 10px 25px rgba(94,26,34,0.3); border: 2px solid var(--wine-dark); }
     .btn-primary:hover { transform: translateY(-4px); background: var(--wine-dark); box-shadow: 0 15px 35px rgba(94,26,34,0.5); }
     
-    /* Золотая кнопка "Связаться" */
-    .btn-gold { 
-      background: linear-gradient(135deg, var(--gold), var(--gold-soft)); 
-      color: var(--wine-dark); 
-      box-shadow: 0 10px 25px rgba(201,162,39,0.4);
-      border: 2px solid #b38f20;
-    }
+    .btn-gold { background: linear-gradient(135deg, var(--gold), var(--gold-soft)); color: var(--wine-dark); box-shadow: 0 10px 25px rgba(201,162,39,0.4); border: 2px solid #b38f20; }
     .btn-gold:hover { transform: translateY(-4px); box-shadow: 0 15px 35px rgba(201,162,39,0.6); }
 
     /* ===== Sections ===== */
     section { padding: 100px 24px; position: relative; }
     .container { max-width: 1200px; margin: 0 auto; position: relative; z-index: 2; }
+    
     .section-title {
-      text-align: center; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800;
-      margin-bottom: 16px; letter-spacing: 1px; color: var(--wine);
-      font-family: 'Playfair Display', serif;
+      text-align: center; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 700;
+      margin-bottom: 16px; letter-spacing: 2px; color: var(--wine); font-family: 'Cinzel', serif;
     }
     .section-title span { color: var(--gold); }
     .section-sub { text-align: center; color: var(--muted); max-width: 650px; margin: 0 auto 56px; font-size: 1.1rem; }
 
-    /* ===== Золотые рамки (Дорого-богато) ===== */
-    .gold-frame {
+    /* ===== Красивые рамки (Уголки) ===== */
+    .fancy-frame {
       position: relative;
-      background: rgba(255,255,255,0.85); /* Полупрозрачный белый, чтобы узор фона просвечивал */
-      backdrop-filter: blur(5px);
-      border-radius: var(--radius);
-      padding: 40px;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(8px);
+      border-radius: 4px;
+      padding: 50px;
       box-shadow: 0 15px 40px rgba(94,26,34,0.08);
-      border: 2px solid var(--gold);
+      border: 1px solid rgba(201,162,39,0.3);
     }
-    /* Двойная золотая рамка с отступом */
-    .gold-frame::before {
-      content: ''; position: absolute;
-      top: 8px; left: 8px; right: 8px; bottom: 8px;
-      border: 1px solid rgba(201,162,39,0.5);
-      border-radius: calc(var(--radius) - 4px);
-      pointer-events: none;
+    /* Верхний левый */
+    .fancy-frame::before {
+      content: ''; position: absolute; top: -5px; left: -5px; width: 60px; height: 60px;
+      border-top: 3px solid var(--gold); border-left: 3px solid var(--gold);
+      border-top-left-radius: 8px;
     }
-    /* Декоративные углы */
-    .gold-frame::after {
-      content: ''; position: absolute;
-      top: 0; left: 0; width: 40px; height: 40px;
-      border-top: 4px solid var(--gold);
-      border-left: 4px solid var(--gold);
-      border-top-left-radius: var(--radius);
-      pointer-events: none;
+    /* Нижний правый */
+    .fancy-frame::after {
+      content: ''; position: absolute; bottom: -5px; right: -5px; width: 60px; height: 60px;
+      border-bottom: 3px solid var(--gold); border-right: 3px solid var(--gold);
+      border-bottom-right-radius: 8px;
     }
-    .gold-frame-corner-tr {
-      position: absolute; top: 0; right: 0; width: 40px; height: 40px;
-      border-top: 4px solid var(--gold); border-right: 4px solid var(--gold);
-      border-top-right-radius: var(--radius); pointer-events: none;
+    /* Дополнительные углы */
+    .fancy-frame-tr {
+      position: absolute; top: -5px; right: -5px; width: 60px; height: 60px;
+      border-top: 3px solid var(--gold); border-right: 3px solid var(--gold); border-top-right-radius: 8px;
     }
-    .gold-frame-corner-bl {
-      position: absolute; bottom: 0; left: 0; width: 40px; height: 40px;
-      border-bottom: 4px solid var(--gold); border-left: 4px solid var(--gold);
-      border-bottom-left-radius: var(--radius); pointer-events: none;
-    }
-    .gold-frame-corner-br {
-      position: absolute; bottom: 0; right: 0; width: 40px; height: 40px;
-      border-bottom: 4px solid var(--gold); border-right: 4px solid var(--gold);
-      border-bottom-right-radius: var(--radius); pointer-events: none;
+    .fancy-frame-bl {
+      position: absolute; bottom: -5px; left: -5px; width: 60px; height: 60px;
+      border-bottom: 3px solid var(--gold); border-left: 3px solid var(--gold); border-bottom-left-radius: 8px;
     }
 
     /* ===== About ===== */
@@ -187,42 +167,32 @@
     .about-text p { color: var(--muted); margin-bottom: 16px; font-size: 1.05rem; }
     .about-text .highlight { color: var(--wine); font-weight: 700; }
     .about-image {
-      aspect-ratio: 4/5; border-radius: var(--radius);
-      background: linear-gradient(135deg, #f0e6e6, #f9f7f7);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--muted); border: 2px solid var(--gold); /* Золотая рамка для фото */
-      padding: 8px; overflow: hidden; box-shadow: 0 10px 30px rgba(94,26,34,0.15);
+      aspect-ratio: 4/5; border-radius: 4px;
+      background: #f0e6e6; display: flex; align-items: center; justify-content: center;
+      border: 4px solid var(--gold); padding: 6px; overflow: hidden; box-shadow: 0 10px 30px rgba(94,26,34,0.15);
     }
-    .about-image img { width: 100%; height: 100%; object-fit: cover; border-radius: calc(var(--radius) - 8px); }
+    .about-image img { width: 100%; height: 100%; object-fit: cover; }
 
     /* ===== History ===== */
     .history { background: transparent; }
-    .history-content {
-      max-width: 800px; margin: 0 auto; padding: 50px;
-    }
-    .history-content p { color: var(--muted); font-size: 1.05rem; margin-bottom: 16px; }
-    .history-content .highlight { color: var(--wine); font-weight: 700; font-size: 1.2rem; }
-
+    .history-content { max-width: 900px; margin: 0 auto; padding: 50px; position: relative;}
+    .history-content p { color: var(--muted); font-size: 1.05rem; margin-bottom: 16px; text-align: center; }
+    .history-content .highlight { color: var(--wine); font-weight: 700; font-size: 1.3rem; font-family: 'Playfair Display', serif;}
+    
     /* ===== Achievements (Cards) ===== */
     .achievements { background: transparent; }
     .achievements-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
     .achievement-card {
-      background: rgba(255,255,255,0.95); border-radius: var(--radius);
-      border: 1px solid var(--gold); box-shadow: 0 4px 16px rgba(94,26,34,0.08);
+      background: rgba(255,255,255,0.95); border-radius: 4px;
+      border: 1px solid rgba(201,162,39,0.5); box-shadow: 0 4px 16px rgba(94,26,34,0.08);
       display: flex; flex-direction: column; overflow: hidden;
       transition: transform 0.3s, box-shadow 0.3s;
     }
     .achievement-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(94,26,34,0.15); }
-    
-    .achievement-img {
-      height: 200px; background: #eaeaea; border-bottom: 2px solid var(--gold);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.9rem; color: var(--muted); overflow: hidden;
-    }
+    .achievement-img { height: 200px; border-bottom: 2px solid var(--gold); overflow: hidden; }
     .achievement-img img { width: 100%; height: 100%; object-fit: cover; }
-
     .achievement-content { padding: 28px; flex-grow: 1; }
-    .achievement-content h3 { font-size: 1.3rem; margin-bottom: 16px; color: var(--wine); font-family: 'Playfair Display', serif; }
+    .achievement-content h3 { font-size: 1.4rem; margin-bottom: 16px; color: var(--wine); font-family: 'Playfair Display', serif; }
     .achievement-content p { color: var(--muted); font-size: 0.95rem; margin-bottom: 12px; }
     .gold-title { color: var(--gold) !important; }
 
@@ -230,40 +200,25 @@
     .divisions { background: transparent; }
     .divisions-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
     .division-card {
-      background: rgba(255,255,255,0.95); border-radius: var(--radius); padding: 0;
-      border: 1px solid var(--gold); transition: transform 0.3s, box-shadow 0.3s;
+      background: rgba(255,255,255,0.95); border-radius: 4px; padding: 0;
+      border: 1px solid rgba(201,162,39,0.5); transition: transform 0.3s, box-shadow 0.3s;
       position: relative; overflow: hidden; box-shadow: 0 4px 16px rgba(94,26,34,0.08);
       display: flex; flex-direction: column;
     }
     .division-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(94,26,34,0.15); }
-    
-    .division-img {
-      height: 220px; background: #eaeaea; overflow: hidden; border-bottom: 2px solid var(--gold);
-    }
+    .division-img { height: 220px; overflow: hidden; border-bottom: 2px solid var(--gold); }
     .division-img img { width: 100%; height: 100%; object-fit: cover; }
-
     .division-text { padding: 32px 28px; flex-grow: 1; }
-    .division-card h3 { font-size: 1.3rem; margin-bottom: 12px; color: var(--wine); font-family: 'Playfair Display', serif; }
+    .division-card h3 { font-size: 1.4rem; margin-bottom: 12px; color: var(--wine); font-family: 'Playfair Display', serif; }
     .division-card p { color: var(--muted); font-size: 0.95rem; }
 
-    /* ===== Gallery (с горами на фоне) ===== */
-    .gallery { 
-      background: transparent; position: relative; overflow: hidden;
-    }
-    /* Горы на фоне галереи */
-    .gallery::before {
-      content: ""; position: absolute; bottom: 0; left: 0; width: 100%; height: 100%;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 300' preserveAspectRatio='none'%3E%3Cpath d='M0 300 L0 200 L150 100 L300 250 L450 150 L600 280 L750 120 L900 220 L1050 80 L1200 200 L1200 300 Z' fill='%235e1a22' opacity='0.05'/%3E%3Cpath d='M0 300 L0 250 L200 180 L400 280 L600 200 L800 290 L1000 180 L1200 260 L1200 300 Z' fill='%235e1a22' opacity='0.08'/%3E%3C/svg%3E");
-      background-size: cover; background-position: bottom; pointer-events: none; z-index: 0;
-    }
-    
-    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; position: relative; z-index: 1; }
+    /* ===== Gallery ===== */
+    .gallery { background: transparent; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .gallery-item {
-      aspect-ratio: 4/3; border-radius: var(--radius);
-      background: #eaeaea; border: 2px solid transparent;
-      display: flex; align-items: center; justify-content: center;
-      transition: transform 0.3s, border-color 0.3s; overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      aspect-ratio: 4/3; border-radius: 4px;
+      border: 1px solid var(--border); overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: transform 0.3s, border-color 0.3s;
     }
     .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
     .gallery-item:hover { border-color: var(--gold); transform: translateY(-5px); }
@@ -273,17 +228,13 @@
     .teachers { background: transparent; }
     .teachers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
     .teacher-card {
-      background: rgba(255,255,255,0.95); border-radius: var(--radius); overflow: hidden;
-      border: 1px solid var(--gold); box-shadow: 0 4px 16px rgba(94,26,34,0.08);
+      background: rgba(255,255,255,0.95); border-radius: 4px; overflow: hidden;
+      border: 1px solid rgba(201,162,39,0.5); box-shadow: 0 4px 16px rgba(94,26,34,0.08);
       transition: transform 0.3s; display: flex; flex-direction: column;
     }
     .teacher-card:hover { transform: translateY(-8px); }
-    
-    .teacher-img {
-      height: 350px; background: #eaeaea; overflow: hidden; border-bottom: 2px solid var(--gold);
-    }
-    .teacher-img img { width: 100%; height: 100%; object-fit: cover; object-position: top; /* Центрируем по верху (лицо) */ }
-    
+    .teacher-img { height: 350px; overflow: hidden; border-bottom: 2px solid var(--gold); }
+    .teacher-img img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
     .teacher-content { padding: 24px; flex-grow: 1; display: flex; flex-direction: column; }
     .teacher-role { font-size: 1.1rem; font-weight: 700; color: var(--wine); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 1px;}
     .teacher-name { font-size: 1.4rem; color: var(--text); margin-bottom: 12px; font-family: 'Playfair Display', serif; font-weight: 700;}
@@ -295,9 +246,8 @@
     }
     .teacher-desc { color: var(--muted); font-size: 0.95rem; line-height: 1.6; }
 
-    /* ===== Contacts (Большая золотая рамка) ===== */
+    /* ===== Contacts ===== */
     .contacts { background: transparent; text-align: center; }
-    
     .socials { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 16px; margin-bottom: 40px; }
     .social-link {
       display: flex; align-items: center; gap: 12px; padding: 16px 32px;
@@ -312,7 +262,7 @@
     .action-buttons { display: flex; gap: 24px; justify-content: center; margin-top: 48px; flex-wrap: wrap; }
     .action-card {
       flex: 1; min-width: 300px; max-width: 450px; padding: 36px;
-      border-radius: var(--radius); text-align: center;
+      border-radius: 4px; text-align: center;
       background: rgba(255,255,255,0.9); border: 1px solid var(--border);
       box-shadow: 0 8px 24px rgba(0,0,0,0.05); transition: transform 0.3s;
       display: flex; flex-direction: column; justify-content: space-between;
@@ -326,7 +276,7 @@
 
     /* ===== Footer ===== */
     footer { background: var(--wine-dark); padding: 40px 24px; text-align: center; color: rgba(255,255,255,0.8); font-size: 0.9rem; border-top: 4px solid var(--gold); }
-    footer .footer-logo { color: var(--gold-soft); font-weight: 700; font-size: 1.2rem; margin-bottom: 12px; letter-spacing: 2px; font-family: 'Playfair Display', serif;}
+    footer .footer-logo { color: var(--gold-soft); font-weight: 700; font-size: 1.2rem; margin-bottom: 12px; letter-spacing: 2px; font-family: 'Cinzel', serif;}
 
     /* ===== Responsive ===== */
     @media (max-width: 900px) {
@@ -336,7 +286,7 @@
       .achievements-grid { grid-template-columns: 1fr; }
       .gallery-grid { grid-template-columns: repeat(2, 1fr); }
       .teachers-grid { grid-template-columns: 1fr; }
-      .gold-frame { padding: 24px; }
+      .fancy-frame { padding: 30px; }
     }
     @media (max-width: 640px) {
       .nav-links {
@@ -357,7 +307,6 @@
 </head>
 <body>
 
-  <!-- ===== HEADER ===== -->
   <header>
     <nav class="nav">
       <div class="logo">АНСАМБЛЬ <span>КАВКАЗ</span></div>
@@ -376,7 +325,6 @@
     </nav>
   </header>
 
-  <!-- ===== HERO ===== -->
   <section class="hero">
     <div class="hero-content">
       <div class="hero-tag">Минск · Республика Беларусь</div>
@@ -388,13 +336,11 @@
     </div>
   </section>
 
-  <!-- ===== ABOUT (В золотой рамке) ===== -->
   <section class="about" id="about">
     <div class="container">
-      <div class="gold-frame">
-        <div class="gold-frame-corner-tr"></div>
-        <div class="gold-frame-corner-bl"></div>
-        <div class="gold-frame-corner-br"></div>
+      <div class="fancy-frame">
+        <div class="fancy-frame-tr"></div>
+        <div class="fancy-frame-bl"></div>
         
         <h2 class="section-title">О <span>нас</span></h2>
         <div class="about-grid" style="margin-top: 40px;">
@@ -412,14 +358,12 @@
     </div>
   </section>
 
-  <!-- ===== HISTORY ===== -->
   <section class="history" id="history">
     <div class="container">
       <h2 class="section-title">История <span>школы</span></h2>
-      <div class="history-content gold-frame" style="padding: 50px; text-align: center;">
-        <div class="gold-frame-corner-tr"></div>
-        <div class="gold-frame-corner-bl"></div>
-        <div class="gold-frame-corner-br"></div>
+      <div class="history-content fancy-frame">
+        <div class="fancy-frame-tr"></div>
+        <div class="fancy-frame-bl"></div>
         <p><span class="highlight">Школа танцев «Кавказ» была основана в 2019 году.</span></p>
         <p>С самого первого дня мы поставили перед собой амбициозную цель — не просто обучать хореографии, а прививать любовь к богатейшей культуре Кавказа и Азербайджана, передавать традиции через танец и движение.</p>
         <p>За это время из небольшой студии мы выросли в сплоченный коллектив, который громко заявил о себе на крупнейших сценах Беларуси. Мы гордимся каждым нашим учеником, каждым выступлением и каждой победой. Наша история только начинается, и мы рады, что вы с нами!</p>
@@ -427,7 +371,6 @@
     </div>
   </section>
 
-  <!-- ===== ACHIEVEMENTS ===== -->
   <section class="achievements" id="achievements">
     <div class="container">
       <h2 class="section-title" style="color: var(--gold); font-size: clamp(2.5rem, 6vw, 4rem);">Достижения</h2>
@@ -471,7 +414,6 @@
     </div>
   </section>
 
-  <!-- ===== DIVISIONS ===== -->
   <section class="divisions" id="divisions">
     <div class="container">
       <h2 class="section-title">Наши <span>направления</span></h2>
@@ -512,7 +454,6 @@
     </div>
   </section>
 
-  <!-- ===== GALLERY ===== -->
   <section class="gallery" id="gallery">
     <div class="container">
       <h2 class="section-title">Галерея</h2>
@@ -528,14 +469,12 @@
     </div>
   </section>
 
-  <!-- ===== TEACHERS ===== -->
   <section class="teachers" id="teachers">
     <div class="container">
       <h2 class="section-title">Наши <span>педагоги</span></h2>
       <p class="section-sub">Профессионалы, которые влюблены в свое дело.</p>
       <div class="teachers-grid">
         
-        <!-- Давуд -->
         <div class="teacher-card">
           <div class="teacher-img">
             <img src="davud.jpg" alt="Давуд">
@@ -547,7 +486,6 @@
           </div>
         </div>
 
-        <!-- Али -->
         <div class="teacher-card">
           <div class="teacher-img">
             <img src="ali.jpg" alt="Али" style="object-position: center 20%;">
@@ -577,26 +515,21 @@
     </div>
   </section>
 
-  <!-- ===== CONTACTS ===== -->
   <section class="contacts" id="contacts">
     <div class="container">
       
-      <!-- Огромная золотая рамка для контактов -->
-      <div class="gold-frame" style="padding: 60px 40px;">
-        <div class="gold-frame-corner-tr"></div>
-        <div class="gold-frame-corner-bl"></div>
-        <div class="gold-frame-corner-br"></div>
+      <div class="fancy-frame" style="padding: 60px 40px;">
+        <div class="fancy-frame-tr"></div>
+        <div class="fancy-frame-bl"></div>
 
         <h2 class="section-title">Свяжитесь <span>с нами</span></h2>
         <p class="section-sub">Мы всегда рады новым артистам, ученикам и заказчикам.</p>
         
-        <!-- Соцсети -->
         <div class="socials">
           <a href="https://www.instagram.com/ensemble_kavkaz.by" class="social-link" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.3 2.2.4.6.2 1 .4 1.4.9.5.4.7.8.9 1.4.1.4.3 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.8-.4 2.2-.2.6-.4 1-.9 1.4-.4.5-.8.7-1.4.9-.4.1-1 .3-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.3-2.2-.4-.6-.2-1-.4-1.4-.9-.5-.4-.7-.8-.9-1.4-.1-.4-.3-1-.4-2.2-.1-1.3-.1-1.7-.1-4.9s0-3.6.1-4.9c.1-1.2.3-1.8.4-2.2.2-.6.4-1 .9-1.4.4-.5.8-.7 1.4-.9.4-.1 1-.3 2.2-.4 1.3-.1 1.7-.1 4.9-.1zm0 1.8c-3.1 0-3.5 0-4.8.1-1.1.1-1.7.2-2 .3-.5.2-.8.4-1.1.7-.3.3-.5.6-.7 1.1-.1.3-.2.9-.3 2-.1 1.3-.1 1.7-.1 4.8s0 3.5.1 4.8c.1 1.1.2 1.7.3 2 .2.5.4.8.7 1.1.3.3.6.5 1.1.7.3.1.9.2 2 .3 1.3.1 1.7.1 4.8.1s3.5 0 4.8-.1c1.1-.1 1.7-.2 2-.3.5-.2.8-.4 1.1-.7.3-.3.5-.6.7-1.1.1-.3.2-.9.3-2 .1-1.3.1-1.7.1-4.8s0-3.5-.1-4.8c-.1-1.1-.2-1.7-.3-2-.2-.5-.4-.8-.7-1.1-.3-.3-.6-.5-1.1-.7-.3-.1-.9-.2-2-.3-1.3-.1-1.7-.1-4.8-.1zm0 3.1a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4zm5.3-2.9a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4z"/></svg>
             Instagram
           </a>
-          <!-- Нормальная иконка TikTok -->
           <a href="https://www.tiktok.com/@ensemble_caucasus" class="social-link" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
             TikTok
@@ -611,7 +544,6 @@
           </a>
         </div>
 
-        <!-- Кнопки призыва к действию (увеличенные) -->
         <div class="action-buttons">
           <div class="action-card">
             <h4>Записаться в школу танцев «Кавказ»</h4>
@@ -632,7 +564,6 @@
     </div>
   </section>
 
-  <!-- ===== FOOTER ===== -->
   <footer>
     <div class="footer-logo">АНСАМБЛЬ КАВКАЗ</div>
     <p>© <span id="year"></span> Ансамбль Кавказ · Минск, Беларусь</p>
