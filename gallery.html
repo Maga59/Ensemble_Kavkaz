@@ -17,7 +17,6 @@
       --wine-dark: #421117;
       --gold: #c9a227;
       --text: #2b1a1c;
-      --muted: #6b5a5c;
       --radius: 12px;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -31,7 +30,7 @@
       min-height: 100vh;
     }
     
-    /* ФОН С УЗОРОМ БУТА (Такой же, как на главной) */
+    /* ФОН С УЗОРОМ БУТА */
     body::before {
       content: "";
       position: fixed;
@@ -54,7 +53,7 @@
 
     a { color: inherit; text-decoration: none; }
 
-    /* ===== Header (Упрощенный) ===== */
+    /* ===== Header ===== */
     header {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
@@ -88,15 +87,17 @@
     }
     .section-title span { color: var(--gold); }
 
-    /* Сетка для 21 фотографии */
+    /* ===== ИДЕАЛЬНАЯ MASONRY-СЕТКА (БЕЗ ОБРЕЗКИ) ===== */
     .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 20px;
+      /* Разбиваем на колонки. Браузер сам распределит фото по высоте */
+      column-count: 3;
+      column-gap: 20px;
     }
     
     .gallery-item {
-      aspect-ratio: 4/3;
+      /* Запрещаем разрывать карточку между колонками */
+      break-inside: avoid;
+      margin-bottom: 20px;
       border-radius: var(--radius);
       border: 2px solid transparent;
       overflow: hidden;
@@ -106,8 +107,9 @@
     }
     
     .gallery-item img { 
-      width: 100%; height: 100%; 
-      object-fit: cover; 
+      width: 100%; 
+      height: auto; /* ВОТ ГЛАВНЫЙ СЕКРЕТ! Высота подстраивается под картинку */
+      display: block; 
       transition: transform 0.5s; 
       cursor: zoom-in;
     }
@@ -116,11 +118,16 @@
       border-color: var(--gold); 
       transform: translateY(-5px);
       box-shadow: 0 15px 30px rgba(201,162,39,0.2);
+      z-index: 10;
     }
-    .gallery-item:hover img { transform: scale(1.05); }
+    .gallery-item:hover img { transform: scale(1.03); }
 
+    /* Адаптивность */
+    @media (max-width: 992px) {
+      .gallery-grid { column-count: 2; }
+    }
     @media (max-width: 640px) {
-      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-grid { column-count: 1; }
       header { flex-direction: column; gap: 12px; text-align: center; }
       .gallery-section { padding-top: 140px; }
     }
@@ -137,7 +144,7 @@
     <h2 class="section-title">Наша <span>Галерея</span></h2>
     
     <div class="gallery-grid">
-      <!-- Тут твои 21 фотография -->
+      <!-- 21 фотография. Они будут ровно такими, какими были сняты. -->
       <div class="gallery-item"><img src="gal1.jpg" alt="Фото 1"></div>
       <div class="gallery-item"><img src="gal2.jpg" alt="Фото 2"></div>
       <div class="gallery-item"><img src="gal3.jpg" alt="Фото 3"></div>
@@ -160,10 +167,6 @@
       <div class="gallery-item"><img src="gal20.jpg" alt="Фото 20"></div>
       <div class="gallery-item"><img src="gal21.jpg" alt="Фото 21"></div>
     </div>
-  </section>
-
-</body>
-</html>
   </section>
 
 </body>
