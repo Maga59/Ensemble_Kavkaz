@@ -6,10 +6,10 @@
   <title>Ансамбль Кавказ — Минск, Беларусь</title>
   <meta name="description" content="Ансамбль Кавказ — школа, ансамбль и шоу-группа кавказского танца в Минске. Выступления на концертах, фестивалях, конкурсах, свадьбах, корпоративах и юбилеях." />
   
-  <!-- Шрифты -->
+  <!-- Шрифты: Cinzel для заголовков (стиль гравировки), Playfair для текста -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
   
   <style>
     :root {
@@ -22,30 +22,41 @@
       --gold-soft: #e0c05a;
       --text: #2b1a1c;
       --muted: #6b5a5c;
-      --border: #eadede;
-      --radius: 16px;
+      --border: rgba(201, 162, 39, 0.4); /* Золотистая рамка */
+      --radius: 12px;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--white);
+      background-color: var(--white-soft);
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.7;
       overflow-x: hidden;
       position: relative;
     }
     
-    /* Фон с национальным узором Бута */
+    /* ФОН С УЗОРОМ БУТА */
     body::before {
       content: "";
       position: fixed;
       top: 0; left: 0; width: 100vw; height: 100vh;
       pointer-events: none;
+      z-index: -2;
+      /* Используем картинку buta.jpg или buta.png. Если не загрузится - будет просто белый фон */
+      background-image: url('buta.png'), url('buta.jpg');
+      background-size: 300px; /* Размер узора */
+      background-repeat: repeat;
+      opacity: 0.15; /* Делаем узор деликатным */
+    }
+    /* Белая вуаль поверх узора, чтобы текст читался */
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      pointer-events: none;
       z-index: -1;
-      background-color: var(--white);
-      background-image: url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M60 10 C80 10 90 30 90 60 C90 90 80 110 60 110 C40 110 30 90 30 60 C30 30 40 10 60 10 Z' fill='none' stroke='%235e1a22' stroke-width='0.5' opacity='0.04'/%3E%3Cpath d='M60 25 C70 25 75 40 75 60 C75 80 70 95 60 95 C50 95 45 80 45 60 C45 40 50 25 60 25 Z' fill='none' stroke='%235e1a22' stroke-width='0.5' opacity='0.04'/%3E%3Ccircle cx='60' cy='60' r='5' fill='%235e1a22' opacity='0.04'/%3E%3C/svg%3E");
-      background-size: 200px 200px;
+      background: rgba(255, 255, 255, 0.85); 
     }
 
     a { color: inherit; text-decoration: none; }
@@ -55,17 +66,18 @@
     header {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid var(--gold);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
     }
     .nav {
       max-width: 1200px; margin: 0 auto; padding: 16px 24px;
       display: flex; align-items: center; justify-content: space-between;
     }
-    .logo { font-weight: 800; font-size: 1.3rem; letter-spacing: 1px; color: var(--wine); font-family: 'Cinzel', serif; }
+    .logo { font-weight: 700; font-size: 1.5rem; letter-spacing: 2px; color: var(--wine); font-family: 'Cinzel', serif; }
     .logo span { color: var(--gold); }
-    .nav-links { display: flex; gap: 20px; list-style: none; }
-    .nav-links a { font-size: 0.95rem; color: var(--muted); transition: color 0.2s; position: relative; }
-    .nav-links a:hover { color: var(--wine); }
+    .nav-links { display: flex; gap: 24px; list-style: none; }
+    .nav-links a { font-size: 0.95rem; color: var(--wine-dark); font-weight: 600; transition: color 0.2s; position: relative; }
+    .nav-links a:hover { color: var(--gold); }
     .nav-links a::after {
       content: ''; position: absolute; bottom: -6px; left: 0;
       width: 0; height: 2px; background: var(--gold); transition: width 0.3s;
@@ -78,25 +90,25 @@
     .hero {
       min-height: 100vh; display: flex; align-items: center; justify-content: center;
       text-align: center; position: relative; padding: 120px 24px 80px;
-      background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.6) 0%, rgba(250,248,248,0.9) 100%);
     }
     .hero-content { position: relative; z-index: 2; max-width: 900px; }
     .hero-tag {
-      display: inline-block; font-size: 0.9rem; letter-spacing: 3px; text-transform: uppercase;
-      color: var(--wine); border: 1px solid rgba(94,26,34,0.35);
-      padding: 8px 20px; border-radius: 50px; margin-bottom: 32px;
-      background: rgba(255,255,255,0.8); font-weight: 600; font-family: 'Cinzel', serif;
+      display: inline-block; font-size: 0.9rem; letter-spacing: 4px; text-transform: uppercase;
+      color: var(--wine); border: 1px solid var(--gold);
+      padding: 10px 24px; border-radius: 50px; margin-bottom: 32px;
+      background: rgba(255,255,255,0.9); font-weight: 700; font-family: 'Cinzel', serif;
+      box-shadow: 0 4px 15px rgba(201,162,39,0.2);
     }
     
-    /* Заголовок без блеска */
+    /* Чистый золотой заголовок (без блеска) */
     .hero h1 {
       font-family: 'Cinzel', serif;
-      font-size: clamp(3.5rem, 9vw, 6.5rem);
-      font-weight: 700;
+      font-size: clamp(4rem, 10vw, 7rem);
+      font-weight: 900;
       line-height: 1.1;
       letter-spacing: 6px;
       text-transform: uppercase;
-      background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+      background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 30%, #b38728 70%, #aa771c 100%);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
@@ -104,10 +116,10 @@
     }
     .hero h1 span { color: transparent; }
 
-    .hero-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+    .hero-buttons { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; }
     
     .btn {
-      display: inline-block; padding: 18px 40px; border-radius: 50px;
+      display: inline-block; padding: 18px 42px; border-radius: 50px;
       font-weight: 700; font-size: 1.05rem; letter-spacing: 1px; font-family: 'Cinzel', serif;
       transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
       cursor: pointer; border: none;
@@ -123,160 +135,153 @@
     .container { max-width: 1200px; margin: 0 auto; position: relative; z-index: 2; }
     
     .section-title {
-      text-align: center; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 700;
+      text-align: center; font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 700;
       margin-bottom: 16px; letter-spacing: 2px; color: var(--wine); font-family: 'Cinzel', serif;
     }
     .section-title span { color: var(--gold); }
-    .section-sub { text-align: center; color: var(--muted); max-width: 650px; margin: 0 auto 56px; font-size: 1.1rem; }
+    .section-sub { text-align: center; color: var(--wine-dark); max-width: 700px; margin: 0 auto 56px; font-size: 1.15rem; font-weight: 500; }
 
-    /* ===== Красивые рамки (Уголки) ===== */
-    .fancy-frame {
+    /* ===== ИДЕАЛЬНЫЕ ЗОЛОТЫЕ РАМКИ ===== */
+    .gold-frame {
       position: relative;
-      background: rgba(255,255,255,0.85);
-      backdrop-filter: blur(8px);
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(5px);
       border-radius: 4px;
-      padding: 50px;
-      box-shadow: 0 15px 40px rgba(94,26,34,0.08);
-      border: 1px solid rgba(201,162,39,0.3);
+      padding: 60px;
+      box-shadow: 0 20px 50px rgba(94,26,34,0.1);
+      border: 1px solid var(--gold);
     }
-    /* Верхний левый */
-    .fancy-frame::before {
-      content: ''; position: absolute; top: -5px; left: -5px; width: 60px; height: 60px;
-      border-top: 3px solid var(--gold); border-left: 3px solid var(--gold);
-      border-top-left-radius: 8px;
-    }
-    /* Нижний правый */
-    .fancy-frame::after {
-      content: ''; position: absolute; bottom: -5px; right: -5px; width: 60px; height: 60px;
-      border-bottom: 3px solid var(--gold); border-right: 3px solid var(--gold);
-      border-bottom-right-radius: 8px;
-    }
-    /* Дополнительные углы */
-    .fancy-frame-tr {
-      position: absolute; top: -5px; right: -5px; width: 60px; height: 60px;
-      border-top: 3px solid var(--gold); border-right: 3px solid var(--gold); border-top-right-radius: 8px;
-    }
-    .fancy-frame-bl {
-      position: absolute; bottom: -5px; left: -5px; width: 60px; height: 60px;
-      border-bottom: 3px solid var(--gold); border-left: 3px solid var(--gold); border-bottom-left-radius: 8px;
+    
+    /* Накладываем картинку рамки. Если frame.png загружена, она появится */
+    .frame-bg {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      pointer-events: none;
+      background-image: url('frame.png'), url('frame.jpg');
+      background-size: 100% 100%; /* Растягиваем рамку по краям */
+      background-repeat: no-repeat;
+      opacity: 0.8;
+      z-index: 0;
     }
 
     /* ===== About ===== */
     .about { background: transparent; }
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
-    .about-text p { color: var(--muted); margin-bottom: 16px; font-size: 1.05rem; }
-    .about-text .highlight { color: var(--wine); font-weight: 700; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; position: relative; z-index: 1;}
+    .about-text p { color: var(--text); margin-bottom: 20px; font-size: 1.1rem; }
+    .about-text .highlight { color: var(--wine); font-weight: 700; font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.2rem;}
     .about-image {
-      aspect-ratio: 4/5; border-radius: 4px;
+      aspect-ratio: 4/5; border-radius: 8px;
       background: #f0e6e6; display: flex; align-items: center; justify-content: center;
-      border: 4px solid var(--gold); padding: 6px; overflow: hidden; box-shadow: 0 10px 30px rgba(94,26,34,0.15);
+      border: 4px solid var(--gold); padding: 6px; overflow: hidden; box-shadow: 0 15px 40px rgba(94,26,34,0.2);
     }
-    .about-image img { width: 100%; height: 100%; object-fit: cover; }
+    .about-image img { width: 100%; height: 100%; object-fit: cover; border-radius: 4px; }
 
     /* ===== History ===== */
     .history { background: transparent; }
-    .history-content { max-width: 900px; margin: 0 auto; padding: 50px; position: relative;}
-    .history-content p { color: var(--muted); font-size: 1.05rem; margin-bottom: 16px; text-align: center; }
-    .history-content .highlight { color: var(--wine); font-weight: 700; font-size: 1.3rem; font-family: 'Playfair Display', serif;}
+    .history-content { max-width: 900px; margin: 0 auto; padding: 60px; position: relative;}
+    .history-content p { color: var(--text); font-size: 1.1rem; margin-bottom: 20px; text-align: center; position: relative; z-index: 1;}
+    .history-content .highlight { color: var(--wine); font-weight: 700; font-size: 1.4rem; font-family: 'Playfair Display', serif; display: block; margin-bottom: 20px;}
     
-    /* ===== Achievements (Cards) ===== */
+    /* ===== Achievements ===== */
     .achievements { background: transparent; }
     .achievements-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
     .achievement-card {
-      background: rgba(255,255,255,0.95); border-radius: 4px;
-      border: 1px solid rgba(201,162,39,0.5); box-shadow: 0 4px 16px rgba(94,26,34,0.08);
+      background: rgba(255,255,255,0.95); border-radius: var(--radius);
+      border: 1px solid var(--border); box-shadow: 0 8px 25px rgba(94,26,34,0.08);
       display: flex; flex-direction: column; overflow: hidden;
       transition: transform 0.3s, box-shadow 0.3s;
     }
     .achievement-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(94,26,34,0.15); }
-    .achievement-img { height: 200px; border-bottom: 2px solid var(--gold); overflow: hidden; }
+    .achievement-img { height: 220px; border-bottom: 2px solid var(--gold); overflow: hidden; }
     .achievement-img img { width: 100%; height: 100%; object-fit: cover; }
-    .achievement-content { padding: 28px; flex-grow: 1; }
-    .achievement-content h3 { font-size: 1.4rem; margin-bottom: 16px; color: var(--wine); font-family: 'Playfair Display', serif; }
-    .achievement-content p { color: var(--muted); font-size: 0.95rem; margin-bottom: 12px; }
+    .achievement-content { padding: 32px; flex-grow: 1; }
+    .achievement-content h3 { font-size: 1.5rem; margin-bottom: 16px; color: var(--wine); font-family: 'Playfair Display', serif; }
+    .achievement-content p { color: var(--muted); font-size: 1rem; margin-bottom: 12px; }
     .gold-title { color: var(--gold) !important; }
 
     /* ===== Divisions ===== */
     .divisions { background: transparent; }
     .divisions-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
     .division-card {
-      background: rgba(255,255,255,0.95); border-radius: 4px; padding: 0;
-      border: 1px solid rgba(201,162,39,0.5); transition: transform 0.3s, box-shadow 0.3s;
-      position: relative; overflow: hidden; box-shadow: 0 4px 16px rgba(94,26,34,0.08);
+      background: rgba(255,255,255,0.95); border-radius: var(--radius); padding: 0;
+      border: 1px solid var(--border); transition: transform 0.3s, box-shadow 0.3s;
+      position: relative; overflow: hidden; box-shadow: 0 8px 25px rgba(94,26,34,0.08);
       display: flex; flex-direction: column;
     }
     .division-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(94,26,34,0.15); }
-    .division-img { height: 220px; overflow: hidden; border-bottom: 2px solid var(--gold); }
+    .division-img { height: 240px; overflow: hidden; border-bottom: 2px solid var(--gold); }
     .division-img img { width: 100%; height: 100%; object-fit: cover; }
-    .division-text { padding: 32px 28px; flex-grow: 1; }
-    .division-card h3 { font-size: 1.4rem; margin-bottom: 12px; color: var(--wine); font-family: 'Playfair Display', serif; }
-    .division-card p { color: var(--muted); font-size: 0.95rem; }
+    .division-text { padding: 32px; flex-grow: 1; }
+    .division-card h3 { font-size: 1.5rem; margin-bottom: 12px; color: var(--wine); font-family: 'Playfair Display', serif; }
+    .division-card p { color: var(--muted); font-size: 1rem; }
 
     /* ===== Gallery ===== */
     .gallery { background: transparent; }
     .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .gallery-item {
-      aspect-ratio: 4/3; border-radius: 4px;
+      aspect-ratio: 4/3; border-radius: var(--radius);
       border: 1px solid var(--border); overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: transform 0.3s, border-color 0.3s;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08); transition: transform 0.3s, border-color 0.3s;
     }
     .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
     .gallery-item:hover { border-color: var(--gold); transform: translateY(-5px); }
-    .gallery-item:hover img { transform: scale(1.1); }
+    .gallery-item:hover img { transform: scale(1.08); }
 
     /* ===== Teachers ===== */
     .teachers { background: transparent; }
     .teachers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
     .teacher-card {
-      background: rgba(255,255,255,0.95); border-radius: 4px; overflow: hidden;
-      border: 1px solid rgba(201,162,39,0.5); box-shadow: 0 4px 16px rgba(94,26,34,0.08);
+      background: rgba(255,255,255,0.95); border-radius: var(--radius); overflow: hidden;
+      border: 1px solid var(--border); box-shadow: 0 8px 25px rgba(94,26,34,0.08);
       transition: transform 0.3s; display: flex; flex-direction: column;
     }
     .teacher-card:hover { transform: translateY(-8px); }
-    .teacher-img { height: 350px; overflow: hidden; border-bottom: 2px solid var(--gold); }
-    .teacher-img img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
-    .teacher-content { padding: 24px; flex-grow: 1; display: flex; flex-direction: column; }
-    .teacher-role { font-size: 1.1rem; font-weight: 700; color: var(--wine); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 1px;}
-    .teacher-name { font-size: 1.4rem; color: var(--text); margin-bottom: 12px; font-family: 'Playfair Display', serif; font-weight: 700;}
+    /* Идеальная высота фото педагогов */
+    .teacher-img { height: 380px; overflow: hidden; border-bottom: 2px solid var(--gold); position: relative;}
+    .teacher-img img { width: 100%; height: 100%; object-fit: cover; }
+    
+    .teacher-content { padding: 28px; flex-grow: 1; display: flex; flex-direction: column; }
+    .teacher-role { font-size: 1.1rem; font-weight: 700; color: var(--wine); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 1px; font-family: 'Cinzel', serif;}
+    .teacher-name { font-size: 1.5rem; color: var(--text); margin-bottom: 12px; font-family: 'Playfair Display', serif; font-weight: 700;}
     .gold-badge {
       display: inline-block; align-self: flex-start; background: linear-gradient(135deg, var(--gold), var(--gold-soft)); color: var(--wine-dark);
-      padding: 4px 14px; border-radius: 20px; font-size: 0.8rem;
+      padding: 4px 14px; border-radius: 20px; font-size: 0.85rem;
       font-weight: 800; text-transform: uppercase; margin-bottom: 16px;
       letter-spacing: 1px; box-shadow: 0 2px 8px rgba(201,162,39,0.4);
     }
-    .teacher-desc { color: var(--muted); font-size: 0.95rem; line-height: 1.6; }
+    .teacher-desc { color: var(--muted); font-size: 1rem; line-height: 1.6; }
 
     /* ===== Contacts ===== */
     .contacts { background: transparent; text-align: center; }
-    .socials { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 16px; margin-bottom: 40px; }
+    .socials { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 16px; margin-bottom: 50px; position: relative; z-index: 1;}
     .social-link {
       display: flex; align-items: center; gap: 12px; padding: 16px 32px;
       background: #fff; border: 2px solid var(--gold); border-radius: 50px;
-      color: var(--wine-dark); font-weight: 700; font-size: 1rem;
+      color: var(--wine-dark); font-weight: 700; font-size: 1rem; font-family: 'Cinzel', serif;
       transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
       box-shadow: 0 4px 15px rgba(201,162,39,0.15);
     }
     .social-link:hover { transform: translateY(-4px); box-shadow: 0 8px 25px rgba(201,162,39,0.3); background: #fdfaf3; }
     .social-link svg { width: 24px; height: 24px; fill: var(--wine); }
     
-    .action-buttons { display: flex; gap: 24px; justify-content: center; margin-top: 48px; flex-wrap: wrap; }
+    .action-buttons { display: flex; gap: 24px; justify-content: center; margin-top: 48px; flex-wrap: wrap; position: relative; z-index: 1;}
     .action-card {
-      flex: 1; min-width: 300px; max-width: 450px; padding: 36px;
-      border-radius: 4px; text-align: center;
-      background: rgba(255,255,255,0.9); border: 1px solid var(--border);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.05); transition: transform 0.3s;
+      flex: 1; min-width: 300px; max-width: 450px; padding: 40px;
+      border-radius: var(--radius); text-align: center;
+      background: rgba(255,255,255,0.95); border: 1px solid var(--border);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: transform 0.3s;
       display: flex; flex-direction: column; justify-content: space-between;
     }
-    .action-card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,0.1); }
-    .action-card h4 { color: var(--wine); font-size: 1.3rem; margin-bottom: 12px; font-family: 'Playfair Display', serif; }
-    .action-card p { color: var(--muted); font-size: 0.95rem; margin-bottom: 24px; }
+    .action-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
+    .action-card h4 { color: var(--wine); font-size: 1.4rem; margin-bottom: 16px; font-family: 'Playfair Display', serif; }
+    .action-card p { color: var(--muted); font-size: 1rem; margin-bottom: 24px; }
 
-    .contact-city { margin-top: 40px; color: var(--muted); font-size: 1.1rem; font-weight: 500;}
+    .contact-city { margin-top: 40px; color: var(--wine-dark); font-size: 1.1rem; font-weight: 600; position: relative; z-index: 1;}
     .contact-city strong { color: var(--wine); }
 
     /* ===== Footer ===== */
-    footer { background: var(--wine-dark); padding: 40px 24px; text-align: center; color: rgba(255,255,255,0.8); font-size: 0.9rem; border-top: 4px solid var(--gold); }
-    footer .footer-logo { color: var(--gold-soft); font-weight: 700; font-size: 1.2rem; margin-bottom: 12px; letter-spacing: 2px; font-family: 'Cinzel', serif;}
+    footer { background: var(--wine-dark); padding: 50px 24px; text-align: center; color: rgba(255,255,255,0.9); font-size: 0.95rem; border-top: 4px solid var(--gold); }
+    footer .footer-logo { color: var(--gold-soft); font-weight: 700; font-size: 1.5rem; margin-bottom: 16px; letter-spacing: 3px; font-family: 'Cinzel', serif;}
 
     /* ===== Responsive ===== */
     @media (max-width: 900px) {
@@ -286,15 +291,15 @@
       .achievements-grid { grid-template-columns: 1fr; }
       .gallery-grid { grid-template-columns: repeat(2, 1fr); }
       .teachers-grid { grid-template-columns: 1fr; }
-      .fancy-frame { padding: 30px; }
+      .gold-frame { padding: 30px; }
     }
     @media (max-width: 640px) {
       .nav-links {
-        position: fixed; top: 64px; left: 0; right: 0;
+        position: fixed; top: 70px; left: 0; right: 0;
         background: rgba(255,255,255,0.98); flex-direction: column;
         align-items: center; padding: 32px 0; gap: 20px;
         transform: translateY(-150%); transition: transform 0.3s;
-        border-bottom: 1px solid var(--border);
+        border-bottom: 2px solid var(--gold);
       }
       .nav-links.open { transform: translateY(0); }
       .burger { display: flex; }
@@ -302,6 +307,7 @@
       section { padding: 72px 20px; }
       .socials { flex-direction: column; align-items: center; }
       .action-buttons { flex-direction: column; align-items: center; }
+      .hero h1 { font-size: 3rem; }
     }
   </style>
 </head>
@@ -338,10 +344,8 @@
 
   <section class="about" id="about">
     <div class="container">
-      <div class="fancy-frame">
-        <div class="fancy-frame-tr"></div>
-        <div class="fancy-frame-bl"></div>
-        
+      <div class="gold-frame">
+        <div class="frame-bg"></div> <!-- Твоя золотая рамка -->
         <h2 class="section-title">О <span>нас</span></h2>
         <div class="about-grid" style="margin-top: 40px;">
           <div class="about-text">
@@ -361,9 +365,8 @@
   <section class="history" id="history">
     <div class="container">
       <h2 class="section-title">История <span>школы</span></h2>
-      <div class="history-content fancy-frame">
-        <div class="fancy-frame-tr"></div>
-        <div class="fancy-frame-bl"></div>
+      <div class="gold-frame history-content">
+        <div class="frame-bg"></div> <!-- Твоя золотая рамка -->
         <p><span class="highlight">Школа танцев «Кавказ» была основана в 2019 году.</span></p>
         <p>С самого первого дня мы поставили перед собой амбициозную цель — не просто обучать хореографии, а прививать любовь к богатейшей культуре Кавказа и Азербайджана, передавать традиции через танец и движение.</p>
         <p>За это время из небольшой студии мы выросли в сплоченный коллектив, который громко заявил о себе на крупнейших сценах Беларуси. Мы гордимся каждым нашим учеником, каждым выступлением и каждой победой. Наша история только начинается, и мы рады, что вы с нами!</p>
@@ -475,9 +478,10 @@
       <p class="section-sub">Профессионалы, которые влюблены в свое дело.</p>
       <div class="teachers-grid">
         
+        <!-- Давуд (Ровно по верху) -->
         <div class="teacher-card">
           <div class="teacher-img">
-            <img src="davud.jpg" alt="Давуд">
+            <img src="davud.jpg" alt="Давуд" style="object-position: center top;">
           </div>
           <div class="teacher-content">
             <div class="teacher-role">Руководитель</div>
@@ -486,9 +490,10 @@
           </div>
         </div>
 
+        <!-- Али (Ровно по верху) -->
         <div class="teacher-card">
           <div class="teacher-img">
-            <img src="ali.jpg" alt="Али" style="object-position: center 20%;">
+            <img src="ali.jpg" alt="Али" style="object-position: center top;">
           </div>
           <div class="teacher-content">
             <div class="teacher-role">Педагог</div>
@@ -498,10 +503,10 @@
           </div>
         </div>
 
-        <!-- Ксения -->
+        <!-- Ксения (Обрезана сверху ровно по линии) -->
         <div class="teacher-card">
           <div class="teacher-img">
-            <img src="ksenia.jpg" alt="Ксения">
+            <img src="ksenia.jpg" alt="Ксения" style="object-position: center top;">
           </div>
           <div class="teacher-content">
             <div class="teacher-role">Педагог</div>
@@ -518,9 +523,8 @@
   <section class="contacts" id="contacts">
     <div class="container">
       
-      <div class="fancy-frame" style="padding: 60px 40px;">
-        <div class="fancy-frame-tr"></div>
-        <div class="fancy-frame-bl"></div>
+      <div class="gold-frame" style="padding: 60px 40px;">
+        <div class="frame-bg"></div> <!-- Твоя золотая рамка -->
 
         <h2 class="section-title">Свяжитесь <span>с нами</span></h2>
         <p class="section-sub">Мы всегда рады новым артистам, ученикам и заказчикам.</p>
