@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Галерея — Ансамбль Кавказ</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --white: #ffffff;
+      --white-soft: #faf8f8;
+      --wine: #5e1a22;
+      --wine-dark: #421117;
+      --gold: #c9a227;
+      --text: #2b1a1c;
+      --muted: #6b5a5c;
+      --radius: 12px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--white-soft);
+      color: var(--text);
+      line-height: 1.7;
+      position: relative;
+      min-height: 100vh;
+    }
+    
+    /* ФОН С УЗОРОМ БУТА (Такой же, как на главной) */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      pointer-events: none;
+      z-index: -2;
+      background-image: url('buta.png'), url('buta.jpg');
+      background-size: 250px;
+      background-repeat: repeat;
+      opacity: 0.35; 
+    }
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      pointer-events: none;
+      z-index: -1;
+      background: rgba(255, 255, 255, 0.6);
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ===== Header (Упрощенный) ===== */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--gold);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      padding: 16px 24px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .logo { font-weight: 700; font-size: 1.3rem; letter-spacing: 1px; color: var(--wine); font-family: 'Cinzel', serif; }
+    .logo span { color: var(--gold); }
+    
+    .back-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 24px; border-radius: 50px;
+      background: var(--wine); color: #fff;
+      font-family: 'Cinzel', serif; font-weight: 700; font-size: 0.9rem;
+      transition: background 0.3s;
+    }
+    .back-btn:hover { background: var(--wine-dark); }
+
+    /* ===== Gallery Section ===== */
+    .gallery-section {
+      padding: 120px 24px 80px;
+      max-width: 1400px; margin: 0 auto;
+      position: relative; z-index: 2;
+    }
+    
+    .section-title {
+      text-align: center; font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 700;
+      margin-bottom: 40px; letter-spacing: 2px; color: var(--wine); font-family: 'Cinzel', serif;
+    }
+    .section-title span { color: var(--gold); }
+
+    /* Сетка для 21 фотографии */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    
+    .gallery-item {
+      aspect-ratio: 4/3;
+      border-radius: var(--radius);
+      border: 2px solid transparent;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+      background: #eaeaea;
+    }
+    
+    .gallery-item img { 
+      width: 100%; height: 100%; 
+      object-fit: cover; 
+      transition: transform 0.5s; 
+      cursor: zoom-in;
+    }
+    
+    .gallery-item:hover { 
+      border-color: var(--gold); 
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(201,162,39,0.2);
+    }
+    .gallery-item:hover img { transform: scale(1.05); }
+
+    @media (max-width: 640px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+      header { flex-direction: column; gap: 12px; text-align: center; }
+      .gallery-section { padding-top: 140px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">АНСАМБЛЬ <span>КАВКАЗ</span></div>
+    <a href="index.html" class="back-btn">← На главную</a>
+  </header>
+
+  <section class="gallery-section">
+    <h2 class="section-title">Наша <span>Галерея</span></h2>
+    
+    <div class="gallery-grid">
+      <!-- Тут твои 21 фотография -->
+      <div class="gallery-item"><img src="gal1.jpg" alt="Фото 1"></div>
+      <div class="gallery-item"><img src="gal2.jpg" alt="Фото 2"></div>
+      <div class="gallery-item"><img src="gal3.jpg" alt="Фото 3"></div>
+      <div class="gallery-item"><img src="gal4.jpg" alt="Фото 4"></div>
+      <div class="gallery-item"><img src="gal5.jpg" alt="Фото 5"></div>
+      <div class="gallery-item"><img src="gal6.jpg" alt="Фото 6"></div>
+      <div class="gallery-item"><img src="gal7.jpg" alt="Фото 7"></div>
+      <div class="gallery-item"><img src="gal8.jpg" alt="Фото 8"></div>
+      <div class="gallery-item"><img src="gal9.jpg" alt="Фото 9"></div>
+      <div class="gallery-item"><img src="gal10.jpg" alt="Фото 10"></div>
+      <div class="gallery-item"><img src="gal11.jpg" alt="Фото 11"></div>
+      <div class="gallery-item"><img src="gal12.jpg" alt="Фото 12"></div>
+      <div class="gallery-item"><img src="gal13.jpg" alt="Фото 13"></div>
+      <div class="gallery-item"><img src="gal14.jpg" alt="Фото 14"></div>
+      <div class="gallery-item"><img src="gal15.jpg" alt="Фото 15"></div>
+      <div class="gallery-item"><img src="gal16.jpg" alt="Фото 16"></div>
+      <div class="gallery-item"><img src="gal17.jpg" alt="Фото 17"></div>
+      <div class="gallery-item"><img src="gal18.jpg" alt="Фото 18"></div>
+      <div class="gallery-item"><img src="gal19.jpg" alt="Фото 19"></div>
+      <div class="gallery-item"><img src="gal20.jpg" alt="Фото 20"></div>
+      <div class="gallery-item"><img src="gal21.jpg" alt="Фото 21"></div>
+    </div>
+  </section>
+
+</body>
+</html>
