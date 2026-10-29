@@ -14,7 +14,7 @@
     :root {
       --white: #ffffff;
       --white-soft: #faf8f8;
-      --wine: #5e1a22;
+      --wine: #5e1a22; /* Твой цвет бургунди */
       --wine-dark: #421117;
       --wine-soft: #7a2530;
       --gold: #c9a227;
@@ -97,20 +97,21 @@
       box-shadow: 0 4px 15px rgba(201,162,39,0.2);
     }
     
+    /* ОГРОМНОЕ СЛОВО КАВКАЗ В БУРГУНДИ */
     .hero h1 {
       font-family: 'Cinzel', serif;
-      font-size: clamp(4rem, 10vw, 7rem);
+      font-size: clamp(6rem, 20vw, 13rem); /* Сделал его просто гигантским */
       font-weight: 900;
-      line-height: 1.1;
-      letter-spacing: 6px;
+      line-height: 0.9;
+      letter-spacing: 8px;
       text-transform: uppercase;
-      background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 30%, #b38728 70%, #aa771c 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+      color: var(--wine); /* Цвет бургунди */
       margin-bottom: 40px;
+      /* Добавляем золотую обводку и тень, чтобы выделялось на фоне */
+      text-shadow: 
+        3px 3px 0px var(--gold), 
+        6px 6px 20px rgba(0,0,0,0.2); 
     }
-    .hero h1 span { color: transparent; }
 
     .hero-buttons { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; }
     
@@ -201,18 +202,6 @@
     .division-card h3 { font-size: 1.5rem; margin-bottom: 12px; color: var(--wine); font-family: 'Playfair Display', serif; }
     .division-card p { color: var(--muted); font-size: 1rem; }
 
-    /* ===== Gallery ===== */
-    .gallery { background: transparent; }
-    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .gallery-item {
-      aspect-ratio: 4/3; border-radius: var(--radius);
-      border: 1px solid var(--border); overflow: hidden;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.08); transition: transform 0.3s, border-color 0.3s;
-    }
-    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
-    .gallery-item:hover { border-color: var(--gold); transform: translateY(-5px); }
-    .gallery-item:hover img { transform: scale(1.08); }
-
     /* ===== Teachers ===== */
     .teachers { background: transparent; }
     .teachers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
@@ -272,7 +261,6 @@
       .about-image { order: -1; aspect-ratio: 16/10; }
       .divisions-grid { grid-template-columns: 1fr; }
       .achievements-grid { grid-template-columns: 1fr; }
-      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
       .teachers-grid { grid-template-columns: 1fr; }
       .gold-frame { padding: 30px; }
     }
@@ -286,11 +274,11 @@
       }
       .nav-links.open { transform: translateY(0); }
       .burger { display: flex; }
-      .gallery-grid { grid-template-columns: 1fr; }
       section { padding: 72px 20px; }
       .socials { flex-direction: column; align-items: center; }
       .action-buttons { flex-direction: column; align-items: center; }
-      .hero h1 { font-size: 3rem; }
+      /* На телефоне делаем чуть меньше, чтобы влезло */
+      .hero h1 { font-size: 5rem; letter-spacing: 4px; text-shadow: 2px 2px 0px var(--gold); }
     }
   </style>
 </head>
@@ -304,7 +292,6 @@
         <li><a href="#history">История</a></li>
         <li><a href="#achievements">Достижения</a></li>
         <li><a href="#divisions">Направления</a></li>
-        <!-- ССЫЛКА НА НОВУЮ СТРАНИЦУ ГАЛЕРЕИ -->
         <li><a href="gallery.html">Галерея</a></li>
         <li><a href="#teachers">Педагоги</a></li>
         <li><a href="#contacts">Контакты</a></li>
@@ -318,7 +305,10 @@
   <section class="hero">
     <div class="hero-content">
       <div class="hero-tag">Минск · Республика Беларусь</div>
-      <h1>Ансамбль<br><span>Кавказ</span></h1>
+      
+      <!-- ТУТ ТЕПЕРЬ ТОЛЬКО СЛОВО КАВКАЗ -->
+      <h1>Кавказ</h1>
+      
       <div class="hero-buttons">
         <a href="#divisions" class="btn btn-primary">Наши направления</a>
         <a href="#contacts" class="btn btn-gold">Связаться с нами</a>
