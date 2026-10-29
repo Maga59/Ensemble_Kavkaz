@@ -36,18 +36,17 @@
       position: relative;
     }
     
-    /* ФОН С УЗОРОМ БУТА (Сделал его заметным!) */
+    /* ФОН С УЗОРОМ БУТА (Заметный) */
     body::before {
       content: "";
       position: fixed;
       top: 0; left: 0; width: 100vw; height: 100vh;
       pointer-events: none;
       z-index: -2;
-      /* Твоя картинка */
       background-image: url('buta.png'), url('buta.jpg');
-      background-size: 250px; /* Увеличил размер узора */
+      background-size: 250px;
       background-repeat: repeat;
-      opacity: 0.35; /* Сделал его хорошо видимым (было 0.1) */
+      opacity: 0.35; 
     }
     /* Легкая вуаль поверх узора */
     body::after {
@@ -56,7 +55,7 @@
       top: 0; left: 0; width: 100vw; height: 100vh;
       pointer-events: none;
       z-index: -1;
-      background: rgba(255, 255, 255, 0.6); /* Полупрозрачный белый, чтобы текст читался */
+      background: rgba(255, 255, 255, 0.6);
     }
 
     a { color: inherit; text-decoration: none; }
@@ -143,7 +142,7 @@
     /* ===== Строгие рамки ===== */
     .gold-frame {
       position: relative;
-      background: rgba(255,255,255,0.85); /* Полупрозрачный белый, чтобы узор Бута просвечивал */
+      background: rgba(255,255,255,0.85);
       backdrop-filter: blur(5px);
       border-radius: 4px;
       padding: 60px;
@@ -340,7 +339,8 @@
             <p>Мы дарим любовь, эмоции и страсть. Это то шоу, когда вы не можете усидеть на месте. Мы гордимся тем, что представляем Конгресс азербайджанской общины, и с радостью делимся культурой Кавказа и Азербайджана со всем миром.</p>
           </div>
           <div class="about-image">
-            <img src="photo1.jpg" alt="Ансамбль Кавказ">
+            <!-- ТУТ ТЕПЕРЬ ФОТО 4 -->
+            <img src="photo4.jpg" alt="Ансамбль Кавказ">
           </div>
         </div>
       </div>
@@ -448,7 +448,10 @@
       <div class="gallery-grid">
         <div class="gallery-item"><img src="photo2.jpg" alt="Фото 2"></div>
         <div class="gallery-item"><img src="photo3.jpg" alt="Фото 3"></div>
-        <div class="gallery-item"><img src="photo4.jpg" alt="Фото 4"></div>
+        
+        <!-- ТУТ ТЕПЕРЬ ФОТО 1 -->
+        <div class="gallery-item"><img src="photo1.jpg" alt="Фото 1"></div>
+        
         <div class="gallery-item"><img src="photo5.jpg" alt="Фото 5"></div>
         <div class="gallery-item"><img src="photo6.jpg" alt="Фото 6"></div>
         <div class="gallery-item"><img src="photo7.jpg" alt="Фото 7"></div>
