@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>История школы — Ансамбль Кавказ</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --black: #0a0a0c;
+      --dark-surface: #141218;
+      --purple: #4a1e5c;
+      --purple-light: #6d3383;
+      --gold: #d4af37;
+      --text-main: #e0dce4;
+      --text-muted: #9e95a3;
+      --radius: 12px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--black);
+      color: var(--text-main);
+      line-height: 1.8;
+      min-height: 100vh;
+      position: relative;
+    }
+    
+    /* ФОН С ГРАНАТАМИ */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      pointer-events: none;
+      z-index: -2;
+      background-image: url('granat.png'); 
+      background-size: cover;
+      background-position: center;
+      opacity: 0.2;
+    }
+    /* Затемнение фона */
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      pointer-events: none;
+      z-index: -1;
+      background: rgba(10, 10, 12, 0.9); 
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; border-radius: var(--radius); }
+
+    /* ===== Header ===== */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(10, 10, 12, 0.95); backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+      padding: 16px 24px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .logo { font-weight: 700; font-size: 1.3rem; letter-spacing: 2px; color: var(--gold); font-family: 'Playfair Display', serif; }
+    
+    .back-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 24px; border-radius: 8px;
+      background: var(--purple); color: var(--gold);
+      font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.9rem;
+      transition: background 0.3s;
+    }
+    .back-btn:hover { background: var(--purple-light); }
+
+    /* ===== History Section ===== */
+    .history-section {
+      padding: 140px 24px 100px;
+      max-width: 900px; margin: 0 auto;
+      position: relative; z-index: 2;
+    }
+    
+    .section-title {
+      text-align: center; font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 700;
+      margin-bottom: 50px; letter-spacing: 2px; color: var(--gold); font-family: 'Cinzel', serif;
+    }
+
+    .history-content {
+      background: var(--dark-surface);
+      padding: 50px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+    }
+
+    /* ТЕКСТ СТРОГО ПО ШИРИНЕ */
+    .history-content p {
+      font-size: 1.15rem;
+      color: var(--text-main);
+      margin-bottom: 30px;
+      text-align: justify; 
+    }
+
+    .history-content .highlight {
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    /* Фотографии внутри текста */
+    .history-image {
+      margin: 40px 0;
+      text-align: center;
+    }
+    
+    .history-image img {
+      width: 100%;
+      max-height: 500px;
+      object-fit: cover;
+      border: 2px solid var(--purple);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    
+    .image-caption {
+      margin-top: 10px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* Адаптивность */
+    @media (max-width: 768px) {
+      .history-content { padding: 30px 20px; }
+      .history-section { padding-top: 120px; }
+      header { flex-direction: column; gap: 12px; text-align: center; }
+      .history-content p { font-size: 1.05rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">КАВКАЗ</div>
+    <a href="index.html" class="back-btn">← На главную</a>
+  </header>
+
+  <section class="history-section">
+    <h2 class="section-title">История школы</h2>
+    
+    <div class="history-content">
+      
+      <!-- Абзац 1 -->
+      <p>Школа танцев <span class="highlight">«Кавказ»</span> была основана в 2019 году, <span class="highlight">Давудом Закирзаде</span>. И уже с самого начала были поставлены цели стать лучшими в Республике Беларусь. Также наша школа прививает любовь и интерес к богатой культуре Кавказа и Азербайджанской Республике, передавая ее традиции и историю через танец.</p>
+      
+      <!-- Фото 1 -->
+      <div class="history-image">
+        <img src="shkola1.jpg" alt="Школа танцев Кавказ - Фото 1">
+      </div>
+
+      <!-- Абзац 2 -->
+      <p>За это время из небольшой школы мы выросли в сплоченный коллектив, который громко заявляет о себе на крупнейших сценах Беларуси. Праздники мы украшаем своей харизмой, мастерством танца, красивыми костюмами и живой музыкой.</p>
+      
+      <!-- Фото 2 -->
+      <div class="history-image">
+        <img src="shkola2.jpg" alt="Школа танцев Кавказ - Фото 2">
+      </div>
+
+      <!-- Абзац 3 -->
+      <p>Мы гордимся каждым нашим учеником. Их достижения – это наши победы. И мы рады, что вы с нами!</p>
+
+    </div>
+  </section>
+
+</body>
+</html>
