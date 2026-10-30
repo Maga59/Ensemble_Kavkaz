@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Галерея — Ансамбль Кавказ</title>
+  <title>Связаться с нами — Ансамбль Кавказ</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
   
   <style>
     :root {
@@ -17,152 +17,174 @@
       --purple-light: #6d3383;
       --gold: #d4af37;
       --text-main: #e0dce4;
-      --radius: 12px;
+      --radius: 8px;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
     body {
       font-family: 'Inter', sans-serif;
       background-color: var(--black);
       color: var(--text-main);
-      line-height: 1.7;
       min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
       position: relative;
     }
-    
-    /* ФОН БУТА (черный) */
+
+    /* Твой узор с гранатами на фоне */
     body::before {
       content: "";
-      position: fixed;
-      top: 0; left: 0; width: 100vw; height: 100vh;
-      pointer-events: none;
-      z-index: -2;
-      background-image: url('buta.png'), url('buta.jpg');
-      background-size: 400px;
-      background-repeat: repeat;
-      opacity: 0.05;
-      filter: blur(2px) invert(1);
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    /* ===== Header ===== */
-    header {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(10, 10, 12, 0.95); backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-      padding: 16px 24px;
-      display: flex; justify-content: space-between; align-items: center;
-    }
-    .logo { font-weight: 700; font-size: 1.3rem; letter-spacing: 1px; color: var(--gold); font-family: 'Cinzel', serif; }
-    
-    .back-btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 10px 24px; border-radius: 8px;
-      background: var(--purple); color: var(--gold);
-      font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.9rem;
-      transition: background 0.3s;
-    }
-    .back-btn:hover { background: var(--purple-light); }
-
-    /* ===== Gallery Section ===== */
-    .gallery-section {
-      padding: 120px 24px 80px;
-      max-width: 1400px; margin: 0 auto;
-      position: relative; z-index: 2;
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      /* Замени 'granat.png' на точное название файла, которое ты загрузил в GitHub */
+      background-image: url('granat.png'); 
+      background-size: cover; background-position: center;
+      opacity: 0.3; z-index: -2;
     }
     
-    .section-title {
-      text-align: center; font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 700;
-      margin-bottom: 40px; letter-spacing: 2px; color: var(--gold); font-family: 'Cinzel', serif;
+    /* Затемнение поверх узора, чтобы форма читалась */
+    body::after {
+      content: "";
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(10, 10, 12, 0.85); /* Черная вуаль */
+      z-index: -1;
     }
 
-    /* ИДЕАЛЬНАЯ MASONRY-СЕТКА */
-    .gallery-grid {
-      column-count: 3;
-      column-gap: 20px;
-    }
-    
-    .gallery-item {
-      break-inside: avoid;
-      margin-bottom: 20px;
-      border-radius: var(--radius);
-      border: 1px solid rgba(74, 30, 92, 0.3);
-      overflow: hidden;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    .contact-container {
+      width: 100%; max-width: 600px;
       background: var(--dark-surface);
+      border-radius: var(--radius);
+      padding: 40px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+      border: 1px solid rgba(74, 30, 92, 0.5);
+      position: relative;
+      margin: 20px;
     }
-    
-    .gallery-item img { 
-      width: 100%; 
-      height: auto; 
-      display: block; 
-      transition: transform 0.5s; 
-      cursor: zoom-in;
-    }
-    
-    .gallery-item:hover { 
-      border-color: var(--gold); 
-      transform: translateY(-5px);
-      box-shadow: 0 15px 30px rgba(212, 175, 55, 0.2);
-      z-index: 10;
-    }
-    .gallery-item:hover img { transform: scale(1.03); }
 
-    /* Адаптивность */
-    @media (max-width: 992px) {
-      .gallery-grid { column-count: 2; }
+    /* Кнопка закрытия (крестик) - фиолетовый */
+    .close-btn {
+      position: absolute; top: 20px; right: 20px;
+      font-size: 2rem; color: var(--purple-light); line-height: 1;
+      text-decoration: none; font-weight: bold;
+      transition: transform 0.2s, color 0.2s;
     }
-    @media (max-width: 640px) {
-      .gallery-grid { column-count: 1; }
-      header { flex-direction: column; gap: 12px; text-align: center; }
-      .gallery-section { padding-top: 140px; }
+    .close-btn:hover { transform: scale(1.1); color: var(--gold); }
+
+    .form-header {
+      text-align: center;
+      margin-bottom: 30px;
     }
+    .form-header h2 {
+      font-family: 'Cinzel', serif;
+      color: var(--gold);
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+    }
+    .form-header p {
+      color: var(--text-main); font-size: 0.9rem;
+    }
+
+    /* Поля ввода */
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 16px;
+      border: 1px solid rgba(74, 30, 92, 0.5);
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 1rem;
+      background: var(--black);
+      color: var(--text-main);
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+    }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+    
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: #7a6b7d;
+    }
+
+    /* Кнопка отправки - фиолетовая */
+    .submit-btn {
+      display: block; width: 100%;
+      padding: 16px;
+      background: var(--purple);
+      color: var(--gold);
+      border: 2px solid var(--purple);
+      border-radius: 50px;
+      font-size: 1rem; font-weight: 600;
+      font-family: 'Cinzel', serif;
+      text-transform: uppercase; letter-spacing: 1px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .submit-btn:hover {
+      background: var(--purple-light);
+      transform: translateY(-2px);
+    }
+
   </style>
 </head>
 <body>
 
-  <header>
-    <div class="logo">АНСАМБЛЬ КАВКАЗ</div>
-    <a href="index.html" class="back-btn">← На главную</a>
-  </header>
+  <div class="contact-container">
+    <a href="index.html" class="close-btn">×</a>
 
-  <section class="gallery-section">
-    <h2 class="section-title">Наша Галерея</h2>
-    
-    <div class="gallery-grid">
-      <div class="gallery-item"><img src="gal1.jpg" alt="Фото 1"></div>
-      <div class="gallery-item"><img src="gal2.jpg" alt="Фото 2"></div>
-      <div class="gallery-item"><img src="gal3.jpg" alt="Фото 3"></div>
-      <div class="gallery-item"><img src="gal4.jpg" alt="Фото 4"></div>
-      <div class="gallery-item"><img src="gal5.jpg" alt="Фото 5"></div>
-      <div class="gallery-item"><img src="gal6.jpg" alt="Фото 6"></div>
-      <div class="gallery-item"><img src="gal7.jpg" alt="Фото 7"></div>
-      <div class="gallery-item"><img src="gal8.jpg" alt="Фото 8"></div>
-      <div class="gallery-item"><img src="gal9.jpg" alt="Фото 9"></div>
-      <div class="gallery-item"><img src="gal10.jpg" alt="Фото 10"></div>
-      <div class="gallery-item"><img src="gal11.jpg" alt="Фото 11"></div>
-      <div class="gallery-item"><img src="gal12.jpg" alt="Фото 12"></div>
-      <div class="gallery-item"><img src="gal13.jpg" alt="Фото 13"></div>
-      <div class="gallery-item"><img src="gal14.jpg" alt="Фото 14"></div>
-      <div class="gallery-item"><img src="gal15.jpg" alt="Фото 15"></div>
-      <div class="gallery-item"><img src="gal16.jpg" alt="Фото 16"></div>
-      <div class="gallery-item"><img src="gal17.jpg" alt="Фото 17"></div>
-      <div class="gallery-item"><img src="gal18.jpg" alt="Фото 18"></div>
-      <div class="gallery-item"><img src="gal19.jpg" alt="Фото 19"></div>
-      <div class="gallery-item"><img src="gal20.jpg" alt="Фото 20"></div>
-      <div class="gallery-item"><img src="gal21.jpg" alt="Фото 21"></div>
-      
-      <!-- Новые фото -->
-      <div class="gallery-item"><img src="photo2.jpg" alt="Фото 22"></div>
-      <div class="gallery-item"><img src="photo3.jpg" alt="Фото 23"></div>
-      <div class="gallery-item"><img src="photo4.jpg" alt="Фото 24"></div>
-      <div class="gallery-item"><img src="photo5.jpg" alt="Фото 25"></div>
-      <div class="gallery-item"><img src="photo6.jpg" alt="Фото 26"></div>
-      <div class="gallery-item"><img src="photo7.jpg" alt="Фото 27"></div>
+    <div class="form-header">
+      <h2>Связаться с нами</h2>
+      <p>Заполните форму, и мы ответим вам на почту!</p>
     </div>
-  </section>
+
+    <!-- Форма, которая открывает почтовую программу -->
+    <form action="mailto:kavkaz2026ensemble@gmail.com" method="post" enctype="text/plain" onsubmit="return sendEmail(this);">
+      
+      <div class="form-group">
+        <input type="text" id="name" name="Имя" placeholder="Имя" required>
+      </div>
+      <div class="form-group">
+        <input type="tel" id="phone" name="Телефон" placeholder="Телефон" required>
+      </div>
+      <div class="form-group">
+        <input type="email" id="email" name="Email" placeholder="E-mail" required>
+      </div>
+      <div class="form-group">
+        <textarea id="message" name="Сообщение" placeholder="Сообщение"></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn">Отправить</button>
+    </form>
+  </div>
+
+  <script>
+    function sendEmail(form) {
+      const name = document.getElementById('name').value;
+      const phone = document.getElementById('phone').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+
+      const subject = encodeURIComponent("Заявка с сайта Ансамбль Кавказ");
+      const body = encodeURIComponent(
+        "Имя: " + name + "\n" +
+        "Телефон: " + phone + "\n" +
+        "Email: " + email + "\n\n" +
+        "Сообщение:\n" + message
+      );
+
+      window.location.href = "mailto:kavkaz2026ensemble@gmail.com?subject=" + subject + "&body=" + body;
+      return false;
+    }
+  </script>
+
+</body>
+</html>
 
 </body>
 </html>
