@@ -54,7 +54,9 @@
       max-width: 1200px; margin: 0 auto; padding: 16px 24px;
       display: flex; align-items: center; justify-content: space-between;
     }
-    .logo { font-weight: 700; font-size: 1.5rem; letter-spacing: 2px; color: var(--gold); font-family: 'Cinzel', serif; }
+    
+    .logo { font-weight: 700; font-size: 1.5rem; letter-spacing: 2px; color: var(--gold); font-family: 'Playfair Display', serif; }
+    
     .nav-links { display: flex; gap: 24px; list-style: none; }
     .nav-links a { font-size: 0.95rem; color: var(--gold); font-weight: 500; transition: color 0.2s; }
     .nav-links a:hover { color: var(--purple-light); }
@@ -68,11 +70,11 @@
     .hero-content { position: relative; z-index: 2; max-width: 900px; }
     
     .hero h1 {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(6rem, 20vw, 13rem);
-      font-weight: 900;
+      font-family: 'Playfair Display', serif; 
+      font-size: clamp(5rem, 18vw, 12rem);
+      font-weight: 700;
       line-height: 0.9;
-      letter-spacing: 8px;
+      letter-spacing: 10px;
       text-transform: uppercase;
       color: var(--gold); 
       margin-bottom: 40px;
@@ -108,7 +110,8 @@
       box-shadow: 0 10px 40px rgba(0,0,0,0.5);
       border: 1px solid rgba(74, 30, 92, 0.3);
     }
-.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
     .about-text p { color: var(--text-main); margin-bottom: 20px; font-size: 1.05rem; text-align: justify; }
     .about-text .highlight { color: var(--gold); font-weight: 600; }
     .about-image {
@@ -169,6 +172,34 @@
     }
     .teacher-desc { color: var(--text-main); font-size: 0.95rem; line-height: 1.6; text-align: justify; }
 
+    /* ===== Reviews Slider ===== */
+    .reviews-section { background: var(--black); position: relative; z-index: 2; overflow: hidden; }
+    .slider-container {
+      max-width: 800px; margin: 0 auto; position: relative; text-align: center;
+      background: var(--dark-surface); padding: 50px 40px; border-radius: var(--radius);
+      border: 1px solid rgba(212, 175, 55, 0.2); box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    }
+    .review-slide { display: none; }
+    .review-slide.active { display: block; animation: fadeIn 0.5s; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    
+    .review-img { width: 100px; height: 100px; border-radius: 50%; margin: 0 auto 20px; object-fit: cover; border: 2px solid var(--gold); }
+    .review-name { font-family: 'Cinzel', serif; font-size: 1.4rem; color: var(--gold); margin-bottom: 5px; }
+    .review-role { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px; }
+    .review-text { font-style: italic; color: var(--text-main); font-size: 1.1rem; line-height: 1.8; }
+    
+    .slider-nav { display: flex; justify-content: center; gap: 15px; margin-top: 30px; }
+    .slider-btn {
+      background: transparent; border: 1px solid var(--gold); color: var(--gold);
+      width: 40px; height: 40px; border-radius: 50%; cursor: pointer;
+      font-size: 1.2rem; transition: all 0.3s; display: flex; align-items: center; justify-content: center;
+    }
+    .slider-btn:hover { background: var(--purple); border-color: var(--purple); }
+    .slider-dots { display: flex; justify-content: center; gap: 10px; margin-top: 20px; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--text-muted); cursor: pointer; transition: background 0.3s; }
+    .dot.active { background: var(--gold); }
+
+    /* ===== Contacts ===== */
     .socials { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 30px; margin-bottom: 40px; }
     .social-link {
       display: flex; align-items: center; gap: 10px; padding: 12px 24px;
@@ -197,6 +228,7 @@
       .achievements-grid { grid-template-columns: 1fr; }
       .teachers-grid { grid-template-columns: 1fr; }
       .clean-block { padding: 30px; }
+      .slider-container { padding: 30px 20px; }
     }
     @media (max-width: 640px) {
       .nav-links {
@@ -218,8 +250,10 @@
 <body>
 <header>
     <nav class="nav">
-      <div class="logo">АНСАМБЛЬ КАВКАЗ</div>
+      <div class="logo">КАВКАЗ</div>
       <ul class="nav-links" id="navLinks">
+        <!-- ДОБАВЛЕНА КНОПКА ОТЗЫВЫ -->
+        <li><a href="reviews.html">Отзывы</a></li>
         <li><a href="gallery.html">Галерея</a></li>
         <li><a href="contact.html">Связаться</a></li>
       </ul>
@@ -231,7 +265,7 @@
 
   <section class="hero">
     <div class="hero-content">
-      <h1>Кавказ</h1>
+      <h1>KAVKAZ</h1>
       <div class="hero-buttons">
         <a href="contact.html" class="btn btn-primary">Связаться с нами</a>
         <a href="gallery.html" class="btn btn-outline">Смотреть галерею</a>
@@ -245,7 +279,8 @@
         <h2 class="section-title">О нас</h2>
         <div class="about-grid" style="margin-top: 40px;">
           <div class="about-text">
-            <p><span class="highlight">Ансамбль «Кавказ»</span> — это коллектив, в котором живёт дух Кавказа: темперамент, грация и многовековые традиции танца.</p>
+            <!-- УБРАНО СЛОВО АНСАМБЛЬ В НАЧАЛЕ -->
+            <p><span class="highlight">«Кавказ»</span> — это коллектив, в котором живёт дух Кавказа: темперамент, грация и многовековые традиции танца.</p>
             <p>Мы базируемся в Минске, Республика Беларусь. Мы участвуем в концертах, фестивалях и конкурсах, а также выступаем на свадьбах, корпоративах и юбилеях.</p>
             <p>Наш коллектив — это <span class="highlight">школа</span>, где обучают кавказским танцам, <span class="highlight">ансамбль</span>, который выступает на большой сцене, и <span class="highlight">шоу-группа</span> для самых ярких и незабываемых мероприятий.</p>
             <p>Мы дарим любовь, эмоции и страсть. Это то шоу, когда вы не можете усидеть на месте. Мы гордимся тем, что представляем Конгресс азербайджанской общины, и с радостью делимся культурой Кавказа и Азербайджана со всем миром.</p>
@@ -334,7 +369,9 @@
           </div>
           <div class="division-text">
             <h3>Ансамбль</h3>
+            <!-- ДОБАВЛЕН ТЕКСТ ПРО ОТБОР -->
             <p>Самые сильные танцоры нашей школы. Выступления на самых больших концертах Беларуси и фестивалях. Наши ребята готовы достойно доказать и рассказать всему миру про богатую культуру Кавказа и Азербайджана. Мы гордимся тем, что представляем Конгресс азербайджанской общины.</p>
+            <p style="margin-top: 15px; color: var(--gold); font-style: italic;">Отбор в ансамбль очень сложный: преподаватели обращают внимание на харизматичность, дисциплину, ответственность и мастерство в танце.</p>
           </div>
         </div>
 
@@ -398,6 +435,57 @@
     </div>
   </section>
 
+  <!-- ===== СЕКЦИЯ ОТЗЫВОВ (СЛАЙДЕР) ===== -->
+  <section class="reviews-section" id="reviews">
+    <div class="container">
+      <h2 class="section-title">Отзывы о нас</h2>
+      <p class="section-sub">Что говорят о нашем коллективе.</p>
+
+      <div class="slider-container">
+        
+        <!-- ОТЗЫВ 1 -->
+        <div class="review-slide active">
+          <div class="review-img" style="background: #333; display: flex; align-items: center; justify-content: center; color: #888;">Фото</div>
+          <div class="review-name">Иван Иванов</div>
+          <div class="review-role">Организатор мероприятий</div>
+          <p class="review-text">«Невероятная энергетика! Заказывали выступление на корпоратив — гости были в восторге. Такого драйва и красоты мы еще не видели. Спасибо огромное!»</p>
+        </div>
+
+        <!-- ОТЗЫВ 2 -->
+        <div class="review-slide">
+          <div class="review-img" style="background: #333; display: flex; align-items: center; justify-content: center; color: #888;">Фото</div>
+          <div class="review-name">Елена Смирнова</div>
+          <div class="review-role">Мама ученицы школы</div>
+          <p class="review-text">«Отдала дочку в школу танцев "Кавказ" и не нарадуюсь. Дисциплина, красивая осанка и море позитива. Педагоги — настоящие профессионалы своего дела!»</p>
+        </div>
+
+        <!-- ОТЗЫВ 3 -->
+        <div class="review-slide">
+          <div class="review-img" style="background: #333; display: flex; align-items: center; justify-content: center; color: #888;">Фото</div>
+          <div class="review-name">Тенгиз Думбадзе</div>
+          <div class="review-role">Руководитель компании</div>
+          <p class="review-text">«Испытываешь гордость, потому что наши юные танцоры продемонстрировали, насколько можно за такой короткий срок подготовить программу, с которой не стыдно ездить по стране. Талантливые ребята!»</p>
+        </div>
+
+        <!-- Навигация -->
+        <div class="slider-nav">
+          <button class="slider-btn" onclick="moveSlide(-1)">←</button>
+          <button class="slider-btn" onclick="moveSlide(1)">→</button>
+        </div>
+        <div class="slider-dots">
+          <span class="dot active" onclick="currentSlide(1)"></span>
+          <span class="dot" onclick="currentSlide(2)"></span>
+          <span class="dot" onclick="currentSlide(3)"></span>
+        </div>
+      </div>
+      
+      <!-- Ссылка на страницу со всеми отзывами -->
+      <div style="text-align: center; margin-top: 30px;">
+        <a href="reviews.html" class="btn btn-primary">Оставить свой отзыв</a>
+      </div>
+    </div>
+  </section>
+
   <section class="contacts" id="contacts">
     <div class="container">
       <div class="clean-block">
@@ -437,7 +525,7 @@
   </section>
 
   <footer>
-    <div class="footer-logo">АНСАМБЛЬ КАВКАЗ</div>
+    <div class="footer-logo">КАВКАЗ</div>
     <p>© <span id="year"></span> Ансамбль Кавказ · Минск, Беларусь</p>
     <p style="margin-top:6px; opacity:0.7;">Танец — это любовь. Движение — это жизнь.</p>
   </footer>
@@ -445,6 +533,7 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
+    // Мобильное меню
     const burger = document.getElementById('burger');
     const navLinks = document.getElementById('navLinks');
     burger.addEventListener('click', () => { navLinks.classList.toggle('open'); });
@@ -452,6 +541,7 @@
       link.addEventListener('click', () => navLinks.classList.remove('open'));
     });
 
+    // Анимация появления секций
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -467,6 +557,39 @@
       sec.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
       observer.observe(sec);
     });
+
+    // ЛОГИКА СЛАЙДЕРА ОТЗЫВОВ
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    function moveSlide(n) {
+      showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+      let i;
+      let slides = document.getElementsByClassName("review-slide");
+      let dots = document.getElementsByClassName("dot");
+      
+      if (n > slides.length) {slideIndex = 1}    
+      if (n < 1) {slideIndex = slides.length}
+      
+      for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";  
+          slides[i].classList.remove("active");  
+      }
+      for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+      }
+      
+      slides[slideIndex-1].style.display = "block";  
+      slides[slideIndex-1].classList.add("active");  
+      dots[slideIndex-1].className += " active";
+    }
   </script>
 </body>
 </html>
