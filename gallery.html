@@ -7,30 +7,30 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   
   <style>
     :root {
-      --white: #ffffff;
-      --white-soft: #faf8f8;
-      --wine: #5e1a22;
-      --wine-dark: #421117;
-      --gold: #c9a227;
-      --text: #2b1a1c;
+      --black: #0a0a0c;
+      --dark-surface: #141218;
+      --purple: #4a1e5c;
+      --purple-light: #6d3383;
+      --gold: #d4af37;
+      --text-main: #e0dce4;
       --radius: 12px;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--white-soft);
-      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      background-color: var(--black);
+      color: var(--text-main);
       line-height: 1.7;
-      position: relative;
       min-height: 100vh;
+      position: relative;
     }
     
-    /* ФОН С УЗОРОМ БУТА */
+    /* ФОН БУТА (черный) */
     body::before {
       content: "";
       position: fixed;
@@ -38,17 +38,10 @@
       pointer-events: none;
       z-index: -2;
       background-image: url('buta.png'), url('buta.jpg');
-      background-size: 250px;
+      background-size: 400px;
       background-repeat: repeat;
-      opacity: 0.35; 
-    }
-    body::after {
-      content: "";
-      position: fixed;
-      top: 0; left: 0; width: 100vw; height: 100vh;
-      pointer-events: none;
-      z-index: -1;
-      background: rgba(255, 255, 255, 0.6);
+      opacity: 0.05;
+      filter: blur(2px) invert(1);
     }
 
     a { color: inherit; text-decoration: none; }
@@ -56,23 +49,21 @@
     /* ===== Header ===== */
     header {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--gold);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      background: rgba(10, 10, 12, 0.95); backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
       padding: 16px 24px;
       display: flex; justify-content: space-between; align-items: center;
     }
-    .logo { font-weight: 700; font-size: 1.3rem; letter-spacing: 1px; color: var(--wine); font-family: 'Cinzel', serif; }
-    .logo span { color: var(--gold); }
+    .logo { font-weight: 700; font-size: 1.3rem; letter-spacing: 1px; color: var(--gold); font-family: 'Cinzel', serif; }
     
     .back-btn {
       display: inline-flex; align-items: center; gap: 8px;
-      padding: 10px 24px; border-radius: 50px;
-      background: var(--wine); color: #fff;
-      font-family: 'Cinzel', serif; font-weight: 700; font-size: 0.9rem;
+      padding: 10px 24px; border-radius: 8px;
+      background: var(--purple); color: var(--gold);
+      font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.9rem;
       transition: background 0.3s;
     }
-    .back-btn:hover { background: var(--wine-dark); }
+    .back-btn:hover { background: var(--purple-light); }
 
     /* ===== Gallery Section ===== */
     .gallery-section {
@@ -83,11 +74,10 @@
     
     .section-title {
       text-align: center; font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 700;
-      margin-bottom: 40px; letter-spacing: 2px; color: var(--wine); font-family: 'Cinzel', serif;
+      margin-bottom: 40px; letter-spacing: 2px; color: var(--gold); font-family: 'Cinzel', serif;
     }
-    .section-title span { color: var(--gold); }
 
-    /* ===== ИДЕАЛЬНАЯ MASONRY-СЕТКА (БЕЗ ОБРЕЗКИ) ===== */
+    /* ИДЕАЛЬНАЯ MASONRY-СЕТКА */
     .gallery-grid {
       column-count: 3;
       column-gap: 20px;
@@ -97,11 +87,11 @@
       break-inside: avoid;
       margin-bottom: 20px;
       border-radius: var(--radius);
-      border: 2px solid transparent;
+      border: 1px solid rgba(74, 30, 92, 0.3);
       overflow: hidden;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
       transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
-      background: #eaeaea;
+      background: var(--dark-surface);
     }
     
     .gallery-item img { 
@@ -115,7 +105,7 @@
     .gallery-item:hover { 
       border-color: var(--gold); 
       transform: translateY(-5px);
-      box-shadow: 0 15px 30px rgba(201,162,39,0.2);
+      box-shadow: 0 15px 30px rgba(212, 175, 55, 0.2);
       z-index: 10;
     }
     .gallery-item:hover img { transform: scale(1.03); }
@@ -134,15 +124,14 @@
 <body>
 
   <header>
-    <div class="logo">АНСАМБЛЬ <span>КАВКАЗ</span></div>
+    <div class="logo">АНСАМБЛЬ КАВКАЗ</div>
     <a href="index.html" class="back-btn">← На главную</a>
   </header>
 
   <section class="gallery-section">
-    <h2 class="section-title">Наша <span>Галерея</span></h2>
+    <h2 class="section-title">Наша Галерея</h2>
     
     <div class="gallery-grid">
-      <!-- Старые 21 фотография -->
       <div class="gallery-item"><img src="gal1.jpg" alt="Фото 1"></div>
       <div class="gallery-item"><img src="gal2.jpg" alt="Фото 2"></div>
       <div class="gallery-item"><img src="gal3.jpg" alt="Фото 3"></div>
@@ -164,8 +153,8 @@
       <div class="gallery-item"><img src="gal19.jpg" alt="Фото 19"></div>
       <div class="gallery-item"><img src="gal20.jpg" alt="Фото 20"></div>
       <div class="gallery-item"><img src="gal21.jpg" alt="Фото 21"></div>
-
-      <!-- НОВЫЕ 6 фотографий -->
+      
+      <!-- Новые фото -->
       <div class="gallery-item"><img src="photo2.jpg" alt="Фото 22"></div>
       <div class="gallery-item"><img src="photo3.jpg" alt="Фото 23"></div>
       <div class="gallery-item"><img src="photo4.jpg" alt="Фото 24"></div>
