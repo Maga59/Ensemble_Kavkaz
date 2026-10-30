@@ -4,35 +4,31 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ансамбль Кавказ — Минск, Беларусь</title>
-  <meta name="description" content="Ансамбль Кавказ — школа, ансамбль и шоу-группа кавказского танца в Минске. Выступления на концертах, фестивалях, конкурсах, свадьбах, корпоративах и юбилеях." />
-  
-  <!-- Шрифты -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
   
   <style>
     :root {
-      --white: #ffffff;
-      --bg-light: #fbfafc; /* Легкий фиолетовый оттенок для фона */
-      --purple: #4a1e5c; /* Глубокий фиолетовый (как у iPhone) */
-      --purple-dark: #2c0e38;
-      --gold: #c9a227; /* Акцентный золотой */
-      --text: #2b1a2e; /* Темно-фиолетовый для текста */
-      --muted: #7a6b7d;
+      --black: #0a0a0c; 
+      --dark-surface: #141218; 
+      --purple: #4a1e5c; 
+      --purple-light: #6d3383;
+      --gold: #d4af37; 
+      --text-main: #e0dce4; 
+      --text-muted: #9e95a3; 
       --radius: 12px;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
       font-family: 'Inter', sans-serif;
-      background-color: var(--bg-light);
-      color: var(--text);
+      background-color: var(--black);
+      color: var(--text-main);
       line-height: 1.7;
       overflow-x: hidden;
     }
     
-    /* ФОН С РАЗМЫТЫМ УЗОРОМ БУТА */
     body::before {
       content: "";
       position: fixed;
@@ -42,33 +38,29 @@
       background-image: url('buta.png'), url('buta.jpg');
       background-size: 400px;
       background-repeat: repeat;
-      opacity: 0.08;
-      filter: blur(2px);
+      opacity: 0.05;
+      filter: blur(2px) invert(1);
     }
 
     a { color: inherit; text-decoration: none; }
     img { max-width: 100%; display: block; }
 
-    /* ===== Header ===== */
     header {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(74, 30, 92, 0.1);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      background: rgba(10, 10, 12, 0.95); backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
     }
     .nav {
       max-width: 1200px; margin: 0 auto; padding: 16px 24px;
       display: flex; align-items: center; justify-content: space-between;
     }
-    .logo { font-weight: 700; font-size: 1.5rem; letter-spacing: 2px; color: var(--purple); font-family: 'Cinzel', serif; }
-    .logo span { color: var(--gold); }
+    .logo { font-weight: 700; font-size: 1.5rem; letter-spacing: 2px; color: var(--gold); font-family: 'Cinzel', serif; }
     .nav-links { display: flex; gap: 24px; list-style: none; }
-    .nav-links a { font-size: 0.95rem; color: var(--purple); font-weight: 500; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--gold); }
+    .nav-links a { font-size: 0.95rem; color: var(--gold); font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--purple-light); }
     .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
-    .burger span { width: 26px; height: 2px; background: var(--purple); transition: 0.3s; }
+    .burger span { width: 26px; height: 2px; background: var(--gold); transition: 0.3s; }
 
-    /* ===== Hero ===== */
     .hero {
       min-height: 100vh; display: flex; align-items: center; justify-content: center;
       text-align: center; position: relative; padding: 120px 24px 80px;
@@ -84,7 +76,7 @@
       text-transform: uppercase;
       color: var(--gold); 
       margin-bottom: 40px;
-      text-shadow: 4px 4px 15px rgba(74, 30, 92, 0.2); 
+      text-shadow: 4px 4px 25px rgba(74, 30, 92, 0.6); 
     }
 
     .hero-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
@@ -94,123 +86,110 @@
       font-weight: 600; font-size: 1rem; font-family: 'Inter', sans-serif;
       transition: all 0.3s; cursor: pointer; border: 2px solid transparent;
     }
-    .btn-primary { background: var(--purple); color: #fff; }
-    .btn-primary:hover { background: var(--purple-dark); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(74,30,92,0.2); }
+    .btn-primary { background: var(--purple); color: var(--gold); border-color: var(--purple); }
+    .btn-primary:hover { background: var(--purple-light); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(74,30,92,0.4); }
     
-    .btn-outline { background: transparent; color: var(--purple); border-color: var(--purple); }
-    .btn-outline:hover { background: var(--purple); color: #fff; transform: translateY(-3px); }
+    .btn-outline { background: transparent; color: var(--gold); border-color: var(--gold); }
+    .btn-outline:hover { background: var(--gold); color: var(--black); transform: translateY(-3px); }
 
-    /* ===== Sections ===== */
     section { padding: 100px 24px; position: relative; }
     .container { max-width: 1200px; margin: 0 auto; }
     
     .section-title {
       text-align: center; font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 700;
-      margin-bottom: 16px; letter-spacing: 1px; color: var(--purple); font-family: 'Cinzel', serif;
+      margin-bottom: 16px; letter-spacing: 1px; color: var(--gold); font-family: 'Cinzel', serif;
     }
-    .section-title span { color: var(--gold); }
-    .section-sub { text-align: center; color: var(--muted); max-width: 700px; margin: 0 auto 56px; font-size: 1.1rem; }
+    .section-sub { text-align: center; color: var(--gold); max-width: 700px; margin: 0 auto 56px; font-size: 1.1rem; font-weight: 500; }
 
     .clean-block {
-      background: var(--white);
+      background: var(--dark-surface);
       border-radius: var(--radius);
       padding: 50px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+      border: 1px solid rgba(74, 30, 92, 0.3);
     }
-
-    /* ===== About ===== */
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
-    .about-text p { color: var(--muted); margin-bottom: 20px; font-size: 1.05rem; }
-    .about-text .highlight { color: var(--purple); font-weight: 600; }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    .about-text p { color: var(--text-main); margin-bottom: 20px; font-size: 1.05rem; text-align: justify; }
+    .about-text .highlight { color: var(--gold); font-weight: 600; }
     .about-image {
       aspect-ratio: 4/5; border-radius: var(--radius);
-      background: #f0e6f0; display: flex; align-items: center; justify-content: center;
-      overflow: hidden; box-shadow: 0 15px 30px rgba(74,30,92,0.1);
+      background: var(--black); display: flex; align-items: center; justify-content: center;
+      overflow: hidden; box-shadow: 0 15px 30px rgba(0,0,0,0.5); border: 2px solid var(--purple);
     }
-    .about-image img { width: 100%; height: 100%; object-fit: cover; }
+    .about-image img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
 
-    /* ===== History ===== */
     .history-content { max-width: 900px; margin: 0 auto; padding: 50px; }
-    .history-content p { color: var(--muted); font-size: 1.05rem; margin-bottom: 20px; text-align: center; }
-    .history-content .highlight { color: var(--purple); font-weight: 700; font-size: 1.3rem; font-family: 'Playfair Display', serif; display: block; margin-bottom: 20px;}
+    .history-content p { color: var(--text-main); font-size: 1.05rem; margin-bottom: 20px; text-align: justify; }
+    .history-content .highlight { color: var(--gold); font-weight: 700; font-size: 1.3rem; font-family: 'Playfair Display', serif; display: block; margin-bottom: 20px; text-align: center;}
     
-    /* ===== Achievements ===== */
     .achievements-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
     .achievement-card {
-      background: var(--white); border-radius: var(--radius);
-      box-shadow: 0 8px 30px rgba(0,0,0,0.04);
-      display: flex; flex-direction: column; overflow: hidden;
-      transition: transform 0.3s;
+      background: var(--dark-surface); border-radius: var(--radius);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.4); border: 1px solid rgba(74, 30, 92, 0.3);
+      display: flex; flex-direction: column; overflow: hidden; transition: transform 0.3s;
     }
-    .achievement-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(74,30,92,0.08); }
+    .achievement-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(74,30,92,0.2); border-color: var(--purple); }
     .achievement-img { height: 220px; overflow: hidden; }
-    .achievement-img img { width: 100%; height: 100%; object-fit: cover; }
+    .achievement-img img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
     .achievement-content { padding: 30px; flex-grow: 1; }
-    .achievement-content h3 { font-size: 1.4rem; margin-bottom: 16px; color: var(--purple); font-family: 'Cinzel', serif; }
-    .achievement-content p { color: var(--muted); font-size: 0.95rem; margin-bottom: 12px; }
+    .achievement-content h3 { font-size: 1.4rem; margin-bottom: 16px; color: var(--gold); font-family: 'Cinzel', serif; }
+    .achievement-content p { color: var(--text-main); font-size: 0.95rem; margin-bottom: 12px; text-align: justify; }
 
-    /* ===== Divisions ===== */
     .divisions-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
     .division-card {
-      background: var(--white); border-radius: var(--radius); padding: 0;
+      background: var(--dark-surface); border-radius: var(--radius); padding: 0;
       transition: transform 0.3s, box-shadow 0.3s;
-      overflow: hidden; box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+      overflow: hidden; box-shadow: 0 8px 30px rgba(0,0,0,0.4); border: 1px solid rgba(74, 30, 92, 0.3);
       display: flex; flex-direction: column;
     }
-    .division-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(74,30,92,0.08); }
+    .division-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(74,30,92,0.2); border-color: var(--purple); }
     .division-img { height: 240px; overflow: hidden; }
-    .division-img img { width: 100%; height: 100%; object-fit: cover; }
+    .division-img img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
     .division-text { padding: 30px; flex-grow: 1; }
-    .division-card h3 { font-size: 1.4rem; margin-bottom: 12px; color: var(--purple); font-family: 'Cinzel', serif; }
-    .division-card p { color: var(--muted); font-size: 0.95rem; }
+    .division-card h3 { font-size: 1.4rem; margin-bottom: 12px; color: var(--gold); font-family: 'Cinzel', serif; }
+    .division-card p { color: var(--text-main); font-size: 0.95rem; text-align: justify; }
 
-    /* ===== Teachers ===== */
     .teachers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
     .teacher-card {
-      background: var(--white); border-radius: var(--radius); overflow: hidden;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+      background: var(--dark-surface); border-radius: var(--radius); overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.4); border: 1px solid rgba(74, 30, 92, 0.3);
       transition: transform 0.3s; display: flex; flex-direction: column;
     }
-    .teacher-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(74,30,92,0.08); }
-    
+    .teacher-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(74,30,92,0.2); border-color: var(--purple); }
     .teacher-img { height: 380px; overflow: hidden; position: relative;}
-    .teacher-img img { width: 100%; height: 100%; object-fit: cover; }
-    
+    .teacher-img img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
     .teacher-content { padding: 28px; flex-grow: 1; display: flex; flex-direction: column; }
-    .teacher-role { font-size: 0.9rem; font-weight: 700; color: var(--muted); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 1px;}
-    .teacher-name { font-size: 1.4rem; color: var(--purple); margin-bottom: 12px; font-family: 'Cinzel', serif; font-weight: 700;}
+    .teacher-role { font-size: 0.9rem; font-weight: 700; color: var(--gold); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 1px;}
+    .teacher-name { font-size: 1.4rem; color: var(--gold); margin-bottom: 12px; font-family: 'Cinzel', serif; font-weight: 700;}
     .gold-badge {
-      display: inline-block; align-self: flex-start; background: var(--purple); color: #fff;
+      display: inline-block; align-self: flex-start; background: var(--purple); color: var(--gold);
       padding: 4px 14px; border-radius: 4px; font-size: 0.8rem;
       font-weight: 600; text-transform: uppercase; margin-bottom: 16px;
+      border: 1px solid var(--gold);
     }
-    .teacher-desc { color: var(--muted); font-size: 0.95rem; line-height: 1.6; }
+    .teacher-desc { color: var(--text-main); font-size: 0.95rem; line-height: 1.6; text-align: justify; }
 
-    /* ===== Contacts ===== */
     .socials { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 30px; margin-bottom: 40px; }
     .social-link {
       display: flex; align-items: center; gap: 10px; padding: 12px 24px;
-      background: transparent; border: 1px solid var(--purple); border-radius: 8px;
-      color: var(--purple); font-weight: 600; font-size: 0.95rem;
-      transition: all 0.2s;
+      background: transparent; border: 1px solid var(--gold); border-radius: 8px;
+      color: var(--gold); font-weight: 600; font-size: 0.95rem; transition: all 0.2s;
     }
-    .social-link:hover { background: var(--purple); color: #fff; }
+    .social-link:hover { background: var(--purple); color: #fff; border-color: var(--purple); }
     .social-link svg { width: 20px; height: 20px; fill: currentColor; }
     
     .action-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 40px; }
     .action-card {
       flex: 1; min-width: 280px; max-width: 400px; padding: 30px;
       border-radius: var(--radius); text-align: center;
-      background: var(--bg-light); border: 1px solid rgba(74,30,92,0.1);
+      background: var(--black); border: 1px solid rgba(74, 30, 92, 0.5);
     }
-    .action-card h4 { color: var(--purple); font-size: 1.2rem; margin-bottom: 12px; font-family: 'Playfair Display', serif; }
-    .action-card p { color: var(--muted); font-size: 0.95rem; margin-bottom: 24px; }
+    .action-card h4 { color: var(--gold); font-size: 1.2rem; margin-bottom: 12px; font-family: 'Playfair Display', serif; }
+    .action-card p { color: var(--text-main); font-size: 0.95rem; margin-bottom: 24px; }
 
-    /* ===== Footer ===== */
-    footer { background: var(--purple-dark); padding: 40px 24px; text-align: center; color: rgba(255,255,255,0.8); font-size: 0.9rem; }
+    footer { background: #050505; padding: 40px 24px; text-align: center; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid rgba(212, 175, 55, 0.2);}
     footer .footer-logo { color: var(--gold); font-weight: 700; font-size: 1.4rem; margin-bottom: 12px; letter-spacing: 2px; font-family: 'Cinzel', serif;}
 
-    /* ===== Responsive ===== */
     @media (max-width: 900px) {
       .about-grid { grid-template-columns: 1fr; }
       .about-image { order: -1; aspect-ratio: 16/10; }
@@ -222,10 +201,10 @@
     @media (max-width: 640px) {
       .nav-links {
         position: fixed; top: 70px; left: 0; right: 0;
-        background: rgba(255,255,255,0.98); flex-direction: column;
+        background: rgba(10, 10, 12, 0.98); flex-direction: column;
         align-items: center; padding: 32px 0; gap: 20px;
         transform: translateY(-150%); transition: transform 0.3s;
-        border-bottom: 2px solid var(--purple);
+        border-bottom: 1px solid var(--gold);
       }
       .nav-links.open { transform: translateY(0); }
       .burger { display: flex; }
@@ -237,17 +216,11 @@
   </style>
 </head>
 <body>
-
-  <header>
+<header>
     <nav class="nav">
-      <div class="logo">АНСАМБЛЬ <span>КАВКАЗ</span></div>
+      <div class="logo">АНСАМБЛЬ КАВКАЗ</div>
       <ul class="nav-links" id="navLinks">
-        <li><a href="#about">О нас</a></li>
-        <li><a href="#history">История</a></li>
-        <li><a href="#achievements">Достижения</a></li>
-        <li><a href="#divisions">Направления</a></li>
         <li><a href="gallery.html">Галерея</a></li>
-        <li><a href="#teachers">Педагоги</a></li>
         <li><a href="contact.html">Связаться</a></li>
       </ul>
       <button class="burger" id="burger" aria-label="Меню">
@@ -260,8 +233,8 @@
     <div class="hero-content">
       <h1>Кавказ</h1>
       <div class="hero-buttons">
-        <a href="#divisions" class="btn btn-primary">Наши направления</a>
-        <a href="contact.html" class="btn btn-outline">Связаться с нами</a>
+        <a href="contact.html" class="btn btn-primary">Связаться с нами</a>
+        <a href="gallery.html" class="btn btn-outline">Смотреть галерею</a>
       </div>
     </div>
   </section>
@@ -269,7 +242,7 @@
   <section class="about" id="about">
     <div class="container">
       <div class="clean-block">
-        <h2 class="section-title">О <span>нас</span></h2>
+        <h2 class="section-title">О нас</h2>
         <div class="about-grid" style="margin-top: 40px;">
           <div class="about-text">
             <p><span class="highlight">Ансамбль «Кавказ»</span> — это коллектив, в котором живёт дух Кавказа: темперамент, грация и многовековые традиции танца.</p>
@@ -287,7 +260,7 @@
 
   <section class="history" id="history">
     <div class="container">
-      <h2 class="section-title">История <span>школы</span></h2>
+      <h2 class="section-title">История школы</h2>
       <div class="clean-block history-content">
         <p><span class="highlight">Школа танцев «Кавказ» была основана в 2019 году.</span></p>
         <p>С самого первого дня мы поставили перед собой амбициозную цель — не просто обучать хореографии, а прививать любовь к богатейшей культуре Кавказа и Азербайджана, передавать традиции через танец и движение.</p>
@@ -332,7 +305,7 @@
           <div class="achievement-content">
             <h3>Конкурсы</h3>
             <p>Приняли участие в «Чемпионате России по Народным танцам имени М.М. Кольцовой» (г. Минск).</p>
-            <p><span style="color:var(--purple); font-weight:bold;">Лауреат I степени</span></p>
+            <p><span style="color:var(--gold); font-weight:bold;">Лауреат I степени</span></p>
           </div>
         </div>
       </div>
@@ -341,7 +314,7 @@
 
   <section class="divisions" id="divisions">
     <div class="container">
-      <h2 class="section-title">Наши <span>направления</span></h2>
+      <h2 class="section-title">Наши направления</h2>
       <p class="section-sub">Три формата — одна душа. Выбери то, что ближе тебе.</p>
       <div class="divisions-grid">
         
@@ -381,24 +354,25 @@
 
   <section class="teachers" id="teachers">
     <div class="container">
-      <h2 class="section-title">Наши <span>педагоги</span></h2>
+      <h2 class="section-title">Наши педагоги</h2>
       <p class="section-sub">Профессионалы, которые влюблены в свое дело.</p>
       <div class="teachers-grid">
         
         <div class="teacher-card">
           <div class="teacher-img">
-            <img src="davud.jpg" alt="Давуд" style="object-position: center top;">
+            <img src="davud.jpg" alt="Давуд">
           </div>
           <div class="teacher-content">
             <div class="teacher-role">Руководитель</div>
             <div class="teacher-name">Давуд Закирзаде</div>
+            <span class="gold-badge">Солист</span>
             <p class="teacher-desc">Основатель студии танцев «Кавказ» и шоу-группы «Горцы». Руководитель мужских групп школы танцев «Кавказ».</p>
           </div>
         </div>
 
         <div class="teacher-card">
           <div class="teacher-img">
-            <img src="ali.jpg" alt="Али" style="object-position: center top;">
+            <img src="ali.jpg" alt="Али">
           </div>
           <div class="teacher-content">
             <div class="teacher-role">Педагог</div>
@@ -410,7 +384,7 @@
 
         <div class="teacher-card">
           <div class="teacher-img">
-            <img src="ksenia.jpg" alt="Ксения" style="object-position: center top;">
+            <img src="ksenia.jpg" alt="Ксения">
           </div>
           <div class="teacher-content">
             <div class="teacher-role">Педагог</div>
@@ -427,7 +401,7 @@
   <section class="contacts" id="contacts">
     <div class="container">
       <div class="clean-block">
-        <h2 class="section-title">Свяжитесь <span>с нами</span></h2>
+        <h2 class="section-title">Свяжитесь с нами</h2>
         <p class="section-sub">Мы всегда рады новым артистам, ученикам и заказчикам.</p>
         
         <div class="socials">
