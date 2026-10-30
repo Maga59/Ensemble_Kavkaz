@@ -121,10 +121,6 @@
     }
     .about-image img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
 
-    .history-content { max-width: 900px; margin: 0 auto; padding: 50px; }
-    .history-content p { color: var(--text-main); font-size: 1.05rem; margin-bottom: 20px; text-align: justify; }
-    .history-content .highlight { color: var(--gold); font-weight: 700; font-size: 1.3rem; font-family: 'Playfair Display', serif; display: block; margin-bottom: 20px; text-align: center;}
-    
     .achievements-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
     .achievement-card {
       background: var(--dark-surface); border-radius: var(--radius);
@@ -252,7 +248,7 @@
     <nav class="nav">
       <div class="logo">КАВКАЗ</div>
       <ul class="nav-links" id="navLinks">
-        <!-- ДОБАВЛЕНА КНОПКА ОТЗЫВЫ -->
+        <li><a href="history.html">История</a></li>
         <li><a href="reviews.html">Отзывы</a></li>
         <li><a href="gallery.html">Галерея</a></li>
         <li><a href="contact.html">Связаться</a></li>
@@ -279,7 +275,6 @@
         <h2 class="section-title">О нас</h2>
         <div class="about-grid" style="margin-top: 40px;">
           <div class="about-text">
-            <!-- УБРАНО СЛОВО АНСАМБЛЬ В НАЧАЛЕ -->
             <p><span class="highlight">«Кавказ»</span> — это коллектив, в котором живёт дух Кавказа: темперамент, грация и многовековые традиции танца.</p>
             <p>Мы базируемся в Минске, Республика Беларусь. Мы участвуем в концертах, фестивалях и конкурсах, а также выступаем на свадьбах, корпоративах и юбилеях.</p>
             <p>Наш коллектив — это <span class="highlight">школа</span>, где обучают кавказским танцам, <span class="highlight">ансамбль</span>, который выступает на большой сцене, и <span class="highlight">шоу-группа</span> для самых ярких и незабываемых мероприятий.</p>
@@ -289,17 +284,6 @@
             <img src="photo1.jpg" alt="Ансамбль Кавказ">
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="history" id="history">
-    <div class="container">
-      <h2 class="section-title">История школы</h2>
-      <div class="clean-block history-content">
-        <p><span class="highlight">Школа танцев «Кавказ» была основана в 2019 году.</span></p>
-        <p>С самого первого дня мы поставили перед собой амбициозную цель — не просто обучать хореографии, а прививать любовь к богатейшей культуре Кавказа и Азербайджана, передавать традиции через танец и движение.</p>
-        <p>За это время из небольшой студии мы выросли в сплоченный коллектив, который громко заявил о себе на крупнейших сценах Беларуси. Мы гордимся каждым нашим учеником, каждым выступлением и каждой победой. Наша история только начинается, и мы рады, что вы с нами!</p>
       </div>
     </div>
   </section>
@@ -369,7 +353,6 @@
           </div>
           <div class="division-text">
             <h3>Ансамбль</h3>
-            <!-- ДОБАВЛЕН ТЕКСТ ПРО ОТБОР -->
             <p>Самые сильные танцоры нашей школы. Выступления на самых больших концертах Беларуси и фестивалях. Наши ребята готовы достойно доказать и рассказать всему миру про богатую культуру Кавказа и Азербайджана. Мы гордимся тем, что представляем Конгресс азербайджанской общины.</p>
             <p style="margin-top: 15px; color: var(--gold); font-style: italic;">Отбор в ансамбль очень сложный: преподаватели обращают внимание на харизматичность, дисциплину, ответственность и мастерство в танце.</p>
           </div>
@@ -435,15 +418,12 @@
     </div>
   </section>
 
-  <!-- ===== СЕКЦИЯ ОТЗЫВОВ (СЛАЙДЕР) ===== -->
   <section class="reviews-section" id="reviews">
     <div class="container">
       <h2 class="section-title">Отзывы о нас</h2>
       <p class="section-sub">Что говорят о нашем коллективе.</p>
 
       <div class="slider-container">
-        
-        <!-- ОТЗЫВ 1 -->
         <div class="review-slide active">
           <div class="review-img" style="background: #333; display: flex; align-items: center; justify-content: center; color: #888;">Фото</div>
           <div class="review-name">Иван Иванов</div>
@@ -451,7 +431,6 @@
           <p class="review-text">«Невероятная энергетика! Заказывали выступление на корпоратив — гости были в восторге. Такого драйва и красоты мы еще не видели. Спасибо огромное!»</p>
         </div>
 
-        <!-- ОТЗЫВ 2 -->
         <div class="review-slide">
           <div class="review-img" style="background: #333; display: flex; align-items: center; justify-content: center; color: #888;">Фото</div>
           <div class="review-name">Елена Смирнова</div>
@@ -459,7 +438,6 @@
           <p class="review-text">«Отдала дочку в школу танцев "Кавказ" и не нарадуюсь. Дисциплина, красивая осанка и море позитива. Педагоги — настоящие профессионалы своего дела!»</p>
         </div>
 
-        <!-- ОТЗЫВ 3 -->
         <div class="review-slide">
           <div class="review-img" style="background: #333; display: flex; align-items: center; justify-content: center; color: #888;">Фото</div>
           <div class="review-name">Тенгиз Думбадзе</div>
@@ -467,7 +445,6 @@
           <p class="review-text">«Испытываешь гордость, потому что наши юные танцоры продемонстрировали, насколько можно за такой короткий срок подготовить программу, с которой не стыдно ездить по стране. Талантливые ребята!»</p>
         </div>
 
-        <!-- Навигация -->
         <div class="slider-nav">
           <button class="slider-btn" onclick="moveSlide(-1)">←</button>
           <button class="slider-btn" onclick="moveSlide(1)">→</button>
@@ -479,7 +456,6 @@
         </div>
       </div>
       
-      <!-- Ссылка на страницу со всеми отзывами -->
       <div style="text-align: center; margin-top: 30px;">
         <a href="reviews.html" class="btn btn-primary">Оставить свой отзыв</a>
       </div>
@@ -533,7 +509,6 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Мобильное меню
     const burger = document.getElementById('burger');
     const navLinks = document.getElementById('navLinks');
     burger.addEventListener('click', () => { navLinks.classList.toggle('open'); });
@@ -541,7 +516,6 @@
       link.addEventListener('click', () => navLinks.classList.remove('open'));
     });
 
-    // Анимация появления секций
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -558,17 +532,11 @@
       observer.observe(sec);
     });
 
-    // ЛОГИКА СЛАЙДЕРА ОТЗЫВОВ
     let slideIndex = 1;
     showSlides(slideIndex);
 
-    function moveSlide(n) {
-      showSlides(slideIndex += n);
-    }
-
-    function currentSlide(n) {
-      showSlides(slideIndex = n);
-    }
+    function moveSlide(n) { showSlides(slideIndex += n); }
+    function currentSlide(n) { showSlides(slideIndex = n); }
 
     function showSlides(n) {
       let i;
