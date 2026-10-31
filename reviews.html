@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Оставить отзыв — Ансамбль Кавказ</title>
+  <title>Отзывы — Ансамбль Кавказ</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,12 +21,12 @@
       --radius: 8px;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       font-family: 'Inter', sans-serif;
       background-color: var(--black);
       color: var(--text-main);
       min-height: 100vh;
-      display: flex; align-items: center; justify-content: center;
       position: relative;
       overflow-x: hidden;
     }
@@ -35,12 +35,12 @@
     body::before {
       content: "";
       position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background-image: url('granat.png'); /* Название файла с гранатами */
+      background-image: url('granat.png'); 
       background-size: cover; background-position: center;
-      opacity: 0.25; z-index: -2;
+      opacity: 0.15; z-index: -2;
     }
     
-    /* Темная вуаль, чтобы форма читалась */
+    /* Затемнение */
     body::after {
       content: "";
       position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -48,125 +48,178 @@
       z-index: -1;
     }
 
-    .review-container {
-      width: 100%; max-width: 650px;
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ===== Header ===== */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(10, 10, 12, 0.95); backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+      padding: 16px 24px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .logo { font-weight: 700; font-size: 1.3rem; letter-spacing: 2px; color: var(--gold); font-family: 'Playfair Display', serif; }
+    
+    .back-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 24px; border-radius: 8px;
+      background: var(--purple); color: var(--gold);
+      font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.9rem;
+      transition: background 0.3s;
+    }
+    .back-btn:hover { background: var(--purple-light); }
+
+    /* ===== Reviews Section (Форма + Слайдер) ===== */
+    .reviews-page-container {
+      padding: 140px 24px 80px;
+      max-width: 1200px; margin: 0 auto;
+      position: relative; z-index: 2;
+    }
+    
+    .section-title {
+      text-align: center; font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 700;
+      margin-bottom: 50px; letter-spacing: 2px; color: var(--gold); font-family: 'Cinzel', serif;
+    }
+
+    /* Форма */
+    .form-container {
+      max-width: 650px; margin: 0 auto 80px;
       background: var(--dark-surface);
       border-radius: var(--radius);
       padding: 50px 40px;
       box-shadow: 0 20px 50px rgba(0,0,0,0.8);
       border: 1px solid rgba(212, 175, 55, 0.3);
       position: relative;
-      margin: 20px;
     }
+    .form-header { text-align: center; margin-bottom: 30px; }
+    .form-header h2 { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 2rem; margin-bottom: 10px; }
+    .form-header p { color: var(--text-muted); font-size: 1rem; }
 
-    /* Крестик закрытия */
-    .close-btn {
-      position: absolute; top: 20px; right: 25px;
-      font-size: 2rem; color: var(--purple-light); line-height: 1;
-      text-decoration: none; font-weight: bold;
-      transition: transform 0.2s, color 0.2s;
+    .form-group { margin-bottom: 20px; }
+    .form-group input, .form-group textarea {
+      width: 100%; padding: 16px;
+      border: 1px solid rgba(74, 30, 92, 0.6); border-radius: 4px;
+      font-family: inherit; font-size: 1rem;
+      background: var(--black); color: var(--text-main);
+      outline: none; transition: border-color 0.3s;
     }
-    .close-btn:hover { transform: scale(1.1); color: var(--gold); }
+    .form-group input:focus, .form-group textarea:focus { border-color: var(--gold); }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: #7a6b7d; }
 
-    .form-header {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-    .form-header h2 {
-      font-family: 'Playfair Display', serif;
-      color: var(--gold);
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-      letter-spacing: 1px;
-    }
-    .form-header p {
-      color: var(--text-muted); font-size: 1rem;
-    }
-
-    /* Поля ввода */
-    .form-group {
-      margin-bottom: 25px;
-    }
-    .form-group input,
-    .form-group textarea {
-      width: 100%;
-      padding: 16px;
-      border: 1px solid rgba(74, 30, 92, 0.6);
-      border-radius: 4px;
-      font-family: inherit;
-      font-size: 1rem;
-      background: var(--black);
-      color: var(--text-main);
-      outline: none;
-      transition: border-color 0.3s;
-    }
-    .form-group input:focus,
-    .form-group textarea:focus {
-      border-color: var(--gold);
-    }
-    .form-group textarea {
-      resize: vertical;
-      min-height: 150px;
-    }
-    
-    .form-group input::placeholder,
-    .form-group textarea::placeholder {
-      color: #7a6b7d;
-    }
-
-    /* Кнопка отправки */
     .submit-btn {
-      display: block; width: 100%;
-      padding: 18px;
-      background: var(--purple);
-      color: var(--gold);
-      border: 2px solid var(--purple);
-      border-radius: 50px;
-      font-size: 1.1rem; font-weight: 600;
-      font-family: 'Inter', sans-serif;
+      display: block; width: 100%; padding: 16px;
+      background: var(--purple); color: var(--gold);
+      border: 2px solid var(--purple); border-radius: 50px;
+      font-size: 1rem; font-weight: 600; font-family: 'Cinzel', serif;
       text-transform: uppercase; letter-spacing: 1px;
-      cursor: pointer;
-      transition: background 0.3s, transform 0.2s;
+      cursor: pointer; transition: background 0.3s, transform 0.2s;
     }
-    .submit-btn:hover {
-      background: var(--purple-light);
-      transform: translateY(-2px);
-      box-shadow: 0 10px 20px rgba(74,30,92,0.4);
-    }
+    .submit-btn:hover { background: var(--purple-light); transform: translateY(-2px); }
 
+    /* Слайдер отзывов (как на главной) */
+    .slider-container {
+      max-width: 800px; margin: 0 auto; position: relative; text-align: center;
+      background: var(--dark-surface); padding: 50px 40px; border-radius: var(--radius);
+      border: 1px solid rgba(212, 175, 55, 0.2); box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    }
+    .review-slide { display: none; }
+    .review-slide.active { display: block; animation: fadeIn 0.5s; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .review-img { width: 100px; height: 100px; border-radius: 50%; margin: 0 auto 20px; object-fit: cover; border: 2px solid var(--gold); }
+    .review-name { font-family: 'Inter', sans-serif; font-size: 1.4rem; color: var(--gold); margin-bottom: 5px; font-weight: 600;}
+    .review-role { font-family: 'Inter', sans-serif; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px; }
+    .review-text { font-family: 'Inter', sans-serif; font-style: italic; color: var(--text-main); font-size: 1.1rem; line-height: 1.8; }
+    
+    .slider-nav { display: flex; justify-content: center; gap: 15px; margin-top: 30px; }
+    .slider-btn {
+      background: transparent; border: 1px solid var(--gold); color: var(--gold);
+      width: 40px; height: 40px; border-radius: 50%; cursor: pointer;
+      font-size: 1.2rem; transition: all 0.3s; display: flex; align-items: center; justify-content: center;
+    }
+    .slider-btn:hover { background: var(--purple); border-color: var(--purple); }
+    .slider-dots { display: flex; justify-content: center; gap: 10px; margin-top: 20px; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--text-muted); cursor: pointer; transition: background 0.3s; }
+    .dot.active { background: var(--gold); }
+
+    @media (max-width: 768px) {
+      .reviews-page-container { padding-top: 120px; }
+      header { flex-direction: column; gap: 12px; text-align: center; }
+      .form-container { padding: 30px 20px; }
+      .slider-container { padding: 30px 20px; }
+    }
   </style>
 </head>
 <body>
 
-  <div class="review-container">
-    <a href="index.html" class="close-btn">×</a>
+  <header>
+    <div class="logo">KAVKAZ</div>
+    <a href="index.html" class="back-btn">← На главную</a>
+  </header>
 
-    <div class="form-header">
-      <h2>Оставьте ваш отзыв</h2>
-      <p>Нам очень важно ваше мнение о нашем коллективе!</p>
+  <section class="reviews-page-container">
+    <h2 class="section-title">Отзывы</h2>
+
+    <!-- Форма отправки отзыва -->
+    <div class="form-container">
+      <div class="form-header">
+        <h2>Оставьте ваш отзыв</h2>
+        <p>Нам очень важно ваше мнение о нашем коллективе!</p>
+      </div>
+      
+      <form action="mailto:kavkaz2026ensemble@gmail.com" method="post" enctype="text/plain" onsubmit="return sendReview(this);">
+        <div class="form-group">
+          <input type="text" id="review-name" name="Имя" placeholder="Имя" required>
+        </div>
+        <div class="form-group">
+          <input type="email" id="review-email" name="E-mail" placeholder="E-mail" required>
+        </div>
+        <div class="form-group">
+          <textarea id="review-text" name="Отзыв" placeholder="Отзыв" required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Отправить</button>
+      </form>
     </div>
 
-    <!-- Форма отправки на почту -->
-    <form action="mailto:kavkaz2026ensemble@gmail.com" method="post" enctype="text/plain" onsubmit="return sendReview(this);">
-      
-      <div class="form-group">
-        <input type="text" id="review-name" name="Имя" placeholder="Имя" required>
-      </div>
-      
-      <div class="form-group">
-        <input type="email" id="review-email" name="E-mail" placeholder="E-mail" required>
-      </div>
-      
-      <div class="form-group">
-        <textarea id="review-text" name="Отзыв" placeholder="Отзыв" required></textarea>
+    <!-- Слайдер с готовыми отзывами -->
+    <div class="slider-container">
+      <div class="review-slide active">
+        <div class="review-img" style="background: #333; display: flex; align-items: center; justify-content: center; color: #888;">Фото</div>
+        <div class="review-name">Иван Иванов</div>
+        <div class="review-role">Организатор мероприятий</div>
+        <p class="review-text">Невероятная энергетика! Заказывали выступление на корпоратив — гости были в восторге. Такого драйва и красоты мы еще не видели. Спасибо огромное!</p>
       </div>
 
-      <button type="submit" class="submit-btn">Отправить</button>
-    </form>
-  </div>
+      <div class="review-slide">
+        <div class="review-img" style="background: #333; display: flex; align-items: center; justify-content: center; color: #888;">Фото</div>
+        <div class="review-name">Елена Смирнова</div>
+        <div class="review-role">Мама ученицы школы</div>
+        <p class="review-text">Отдала дочку в школу танцев "Кавказ" и не нарадуюсь. Дисциплина, красивая осанка и море позитива. Педагоги — настоящие профессионалы своего дела!</p>
+      </div>
+
+      <div class="review-slide">
+        <div class="review-img" style="background: #333; display: flex; align-items: center; justify-content: center; color: #888;">Фото</div>
+        <div class="review-name">Тенгиз Думбадзе</div>
+        <div class="review-role">Руководитель компании</div>
+        <p class="review-text">Испытываешь гордость, потому что наши юные танцоры продемонстрировали, насколько можно за такой короткий срок подготовить программу, с которой не стыдно ездить по стране. Талантливые ребята!</p>
+      </div>
+
+      <div class="slider-nav">
+        <button class="slider-btn" onclick="moveSlide(-1)">←</button>
+        <button class="slider-btn" onclick="moveSlide(1)">→</button>
+      </div>
+      <div class="slider-dots">
+        <span class="dot active" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+      </div>
+    </div>
+
+  </section>
 
   <script>
-    // Скрипт для красивого формирования письма
+    // Скрипт для формы
     function sendReview(form) {
       const name = document.getElementById('review-name').value;
       const email = document.getElementById('review-email').value;
@@ -181,6 +234,34 @@
 
       window.location.href = "mailto:kavkaz2026ensemble@gmail.com?subject=" + subject + "&body=" + body;
       return false;
+    }
+
+    // Скрипт для слайдера отзывов
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    function moveSlide(n) { showSlides(slideIndex += n); }
+    function currentSlide(n) { showSlides(slideIndex = n); }
+
+    function showSlides(n) {
+      let i;
+      let slides = document.getElementsByClassName("review-slide");
+      let dots = document.getElementsByClassName("dot");
+      
+      if (n > slides.length) {slideIndex = 1}    
+      if (n < 1) {slideIndex = slides.length}
+      
+      for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";  
+          slides[i].classList.remove("active");  
+      }
+      for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+      }
+      
+      slides[slideIndex-1].style.display = "block";  
+      slides[slideIndex-1].classList.add("active");  
+      dots[slideIndex-1].className += " active";
     }
   </script>
 
