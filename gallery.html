@@ -7,7 +7,7 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
   
   <style>
     :root {
@@ -30,7 +30,7 @@
       position: relative;
     }
     
-    /* ФОН БУТА (черный) */
+    /* ФОН БУТА */
     body::before {
       content: "";
       position: fixed;
@@ -54,7 +54,7 @@
       padding: 16px 24px;
       display: flex; justify-content: space-between; align-items: center;
     }
-    .logo { font-weight: 700; font-size: 1.3rem; letter-spacing: 1px; color: var(--gold); font-family: 'Cinzel', serif; }
+    .logo { font-weight: 700; font-size: 1.3rem; letter-spacing: 2px; color: var(--gold); font-family: 'Playfair Display', serif; }
     
     .back-btn {
       display: inline-flex; align-items: center; gap: 8px;
@@ -87,11 +87,12 @@
       break-inside: avoid;
       margin-bottom: 20px;
       border-radius: var(--radius);
-      border: 1px solid rgba(74, 30, 92, 0.3);
+      border: 2px solid transparent;
       overflow: hidden;
       box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+      transition: transform 0.3s, border-color 0.3s;
       background: var(--dark-surface);
+      cursor: pointer;
     }
     
     .gallery-item img { 
@@ -99,16 +100,89 @@
       height: auto; 
       display: block; 
       transition: transform 0.5s; 
-      cursor: zoom-in;
     }
     
     .gallery-item:hover { 
       border-color: var(--gold); 
       transform: translateY(-5px);
-      box-shadow: 0 15px 30px rgba(212, 175, 55, 0.2);
-      z-index: 10;
     }
     .gallery-item:hover img { transform: scale(1.03); }
+
+    /* ===== ЛАЙТБОКС (ПОЛНОЭКРАННЫЙ ПРОСМОТР) ===== */
+    .lightbox {
+      display: none; 
+      position: fixed; 
+      z-index: 1000; 
+      left: 0; top: 0; 
+      width: 100%; height: 100%; 
+      background-color: rgba(10, 10, 12, 0.95); 
+      backdrop-filter: blur(10px);
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox-img {
+      max-width: 90%;
+      max-height: 85vh;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 0 50px rgba(0,0,0,0.8);
+      animation: zoomIn 0.3s ease;
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    /* Крестик */
+    .close-lightbox {
+      position: absolute;
+      top: 30px;
+      right: 40px;
+      color: var(--gold);
+      font-size: 3rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.3s, transform 0.3s;
+      z-index: 1010;
+      line-height: 1;
+    }
+    .close-lightbox:hover {
+      color: #fff;
+      transform: scale(1.1);
+    }
+
+    /* Стрелочки */
+    .lightbox-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gold);
+      font-size: 3rem;
+      cursor: pointer;
+      padding: 20px;
+      background: rgba(74, 30, 92, 0.4);
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s, color 0.3s;
+      z-index: 1010;
+    }
+    .lightbox-arrow:hover {
+      background: var(--purple);
+      color: #fff;
+    }
+    .lightbox-prev { left: 30px; }
+    .lightbox-next { right: 30px; }
 
     /* Адаптивность */
     @media (max-width: 992px) {
@@ -118,20 +192,25 @@
       .gallery-grid { column-count: 1; }
       header { flex-direction: column; gap: 12px; text-align: center; }
       .gallery-section { padding-top: 140px; }
+      
+      .lightbox-arrow { width: 40px; height: 40px; font-size: 1.5rem; }
+      .lightbox-prev { left: 10px; }
+      .lightbox-next { right: 10px; }
+      .close-lightbox { top: 15px; right: 20px; font-size: 2.5rem; }
     }
   </style>
 </head>
 <body>
 
   <header>
-    <div class="logo">АНСАМБЛЬ КАВКАЗ</div>
+    <div class="logo">KAVKAZ</div>
     <a href="index.html" class="back-btn">← На главную</a>
   </header>
 
   <section class="gallery-section">
     <h2 class="section-title">Наша Галерея</h2>
     
-    <div class="gallery-grid">
+    <div class="gallery-grid" id="galleryGrid">
       <div class="gallery-item"><img src="gal1.jpg" alt="Фото 1"></div>
       <div class="gallery-item"><img src="gal2.jpg" alt="Фото 2"></div>
       <div class="gallery-item"><img src="gal3.jpg" alt="Фото 3"></div>
@@ -153,8 +232,6 @@
       <div class="gallery-item"><img src="gal19.jpg" alt="Фото 19"></div>
       <div class="gallery-item"><img src="gal20.jpg" alt="Фото 20"></div>
       <div class="gallery-item"><img src="gal21.jpg" alt="Фото 21"></div>
-      
-      <!-- Новые фото -->
       <div class="gallery-item"><img src="photo2.jpg" alt="Фото 22"></div>
       <div class="gallery-item"><img src="photo3.jpg" alt="Фото 23"></div>
       <div class="gallery-item"><img src="photo4.jpg" alt="Фото 24"></div>
@@ -163,6 +240,73 @@
       <div class="gallery-item"><img src="photo7.jpg" alt="Фото 27"></div>
     </div>
   </section>
+
+  <!-- ЛАЙТБОКС (Скрыт по умолчанию) -->
+  <div class="lightbox" id="lightbox">
+    <span class="close-lightbox" onclick="closeLightbox()">×</span>
+    <button class="lightbox-arrow lightbox-prev" onclick="changeImage(-1)">❮</button>
+    <img class="lightbox-img" id="lightboxImg" src="" alt="Просмотр">
+    <button class="lightbox-arrow lightbox-next" onclick="changeImage(1)">❯</button>
+  </div>
+
+  <script>
+    // Получаем все картинки из галереи
+    const galleryImages = document.querySelectorAll('.gallery-item img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    let currentIndex = 0;
+
+    // Вешаем клик на каждую картинку
+    galleryImages.forEach((img, index) => {
+      img.addEventListener('click', () => {
+        currentIndex = index;
+        openLightbox(img.src);
+      });
+    });
+
+    // Открыть лайтбокс
+    function openLightbox(src) {
+      lightboxImg.src = src;
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden'; // Блокируем прокрутку страницы
+    }
+
+    // Закрыть лайтбокс
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = 'auto'; // Возвращаем прокрутку
+    }
+
+    // Переключение картинок (стрелочки)
+    function changeImage(direction) {
+      currentIndex += direction;
+      
+      // Если ушли за границы, переключаемся по кругу
+      if (currentIndex < 0) {
+        currentIndex = galleryImages.length - 1;
+      } else if (currentIndex >= galleryImages.length) {
+        currentIndex = 0;
+      }
+      
+      lightboxImg.src = galleryImages[currentIndex].src;
+    }
+
+    // Закрытие по клику вне картинки
+    lightbox.addEventListener('click', function(e) {
+      if (e.target === lightbox) {
+        closeLightbox();
+      }
+    });
+
+    // Управление стрелочками клавиатуры (по желанию)
+    document.addEventListener('keydown', function(e) {
+      if (lightbox.classList.contains('active')) {
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') changeImage(-1);
+        if (e.key === 'ArrowRight') changeImage(1);
+      }
+    });
+  </script>
 
 </body>
 </html>
