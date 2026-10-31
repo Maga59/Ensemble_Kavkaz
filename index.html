@@ -201,7 +201,7 @@
     }
     .teacher-desc { font-family: 'Inter', sans-serif; color: var(--text-main); font-size: 0.95rem; line-height: 1.6; text-align: justify; }
 
-    /* ===== Reviews Section (ФОН ИСПРАВЛЕН) ===== */
+    /* ===== Reviews Section (ИСПРАВЛЕННЫЙ ФОН) ===== */
     .reviews-section { 
       background: var(--black); 
       position: relative; 
@@ -209,22 +209,21 @@
       overflow: hidden; 
     }
     
-    /* ОГРОМНЫЙ ГОРИЗОНТАЛЬНЫЙ ФОН БЕЗ ЧЕРНЫХ ПОЛОС */
+    /* Узор теперь гармонично вписывается без обрезки краев */
     .reviews-section::before {
       content: "";
       position: absolute;
       top: 50%; left: 50%;
-      width: 100%; height: 100%;
+      width: 100vw; height: 100vh; /* Берем размеры экрана */
       
-      /* Узор с гранатами */
       background-image: url('granat.png'); 
-      background-size: cover; /* Заполняет всё пространство, убирая черные полосы */
+      background-size: contain; /* Узор вписывается целиком по краям */
       background-position: center;
       background-repeat: no-repeat;
       
-      /* Разворачиваем на 90 градусов и центрируем */
-      transform: translate(-50%, -50%) rotate(90deg) scale(1.3); 
-      opacity: 0.15;
+      /* Разворачиваем горизонтально и центрируем */
+      transform: translate(-50%, -50%) rotate(90deg); 
+      opacity: 0.2; /* Чуть светлее */
       z-index: -1;
     }
 
@@ -315,7 +314,6 @@
       .hero { align-items: center; padding: 120px 20px 60px; }
       .hero-slide { background-position: center center; }
 
-      /* СДВИГ ДЛЯ GAL5 НА ТЕЛЕФОНЕ */
       .hero-slide.gal5-slide {
         background-position: 75% 20% !important; 
       }
