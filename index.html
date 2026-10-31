@@ -57,9 +57,9 @@
     }
     
     .logo-container { display: flex; align-items: center; gap: 15px; }
-    .logo-img { height: 65px; width: auto; object-fit: contain; /* Увеличен логотип для ПК */ }
+    /* Увеличен логотип на 10% */
+    .logo-img { height: 72px; width: auto; object-fit: contain; } 
     .logo-text { display: flex; flex-direction: column; }
-    /* Логотип на английском, как на главной */
     .logo-title { font-weight: 700; font-size: 1.8rem; letter-spacing: 2px; color: var(--gold); font-family: 'Playfair Display', serif; line-height: 1.1;}
     .logo-subtitle { font-size: 0.75rem; color: #ccc; letter-spacing: 1px; text-transform: uppercase;}
     
@@ -81,7 +81,6 @@
     
     .hero-content { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; width: 100%; text-align: left; }
     
-    /* Сдвиг слова KAVKAZ левее */
     .hero-title span { 
       color: var(--gold); 
       display: block; 
@@ -89,7 +88,7 @@
       font-family: 'Playfair Display', serif;
       font-weight: 700;
       margin-top: 10px;
-      margin-left: -5px; /* Сдвиг левее */
+      margin-left: -5px; 
       text-shadow: 0 4px 15px rgba(0,0,0,0.5);
     }
 
@@ -109,6 +108,7 @@
     section { padding: 100px 24px; position: relative; }
     .container { max-width: 1200px; margin: 0 auto; }
     
+    /* Единый шрифт для всех заголовков */
     .section-title {
       text-align: center; font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 700;
       margin-bottom: 16px; letter-spacing: 1px; color: var(--gold); font-family: 'Cinzel', serif;
@@ -124,7 +124,8 @@
     }
 
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
-    .about-text p { color: var(--text-main); margin-bottom: 20px; font-size: 1.05rem; text-align: justify; }
+    /* Единый шрифт для текста (уже задан в body, но продублируем для надежности) */
+    .about-text p { font-family: 'Inter', sans-serif; color: var(--text-main); margin-bottom: 20px; font-size: 1.05rem; text-align: justify; }
     .about-text .highlight { color: var(--gold); font-weight: 600; }
     .about-image {
       aspect-ratio: 4/5; border-radius: var(--radius);
@@ -141,11 +142,10 @@
     }
     .achievement-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(74,30,92,0.2); border-color: var(--purple); }
     .achievement-img { height: 220px; overflow: hidden; }
-    /* Центровка фото в концертах */
     .achievement-img img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
     .achievement-content { padding: 30px; flex-grow: 1; }
-    .achievement-content h3 { font-size: 1.4rem; margin-bottom: 16px; color: var(--gold); font-family: 'Cinzel', serif; }
-    .achievement-content p { color: var(--text-main); font-size: 0.95rem; margin-bottom: 12px; text-align: justify; }
+    .achievement-content h3 { font-family: 'Inter', sans-serif; font-size: 1.4rem; margin-bottom: 16px; color: var(--gold); }
+    .achievement-content p { font-family: 'Inter', sans-serif; color: var(--text-main); font-size: 0.95rem; margin-bottom: 12px; text-align: justify; }
 
     .divisions-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
     .division-card {
@@ -158,8 +158,8 @@
     .division-img { height: 240px; overflow: hidden; }
     .division-img img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
     .division-text { padding: 30px; flex-grow: 1; }
-    .division-card h3 { font-size: 1.4rem; margin-bottom: 12px; color: var(--gold); font-family: 'Cinzel', serif; }
-    .division-card p { color: var(--text-main); font-size: 0.95rem; text-align: justify; }
+    .division-card h3 { font-family: 'Inter', sans-serif; font-size: 1.4rem; margin-bottom: 12px; color: var(--gold); }
+    .division-card p { font-family: 'Inter', sans-serif; color: var(--text-main); font-size: 0.95rem; text-align: justify; }
 
     .teachers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
     .teacher-card {
@@ -171,15 +171,15 @@
     .teacher-img { height: 380px; overflow: hidden; position: relative;}
     .teacher-img img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
     .teacher-content { padding: 28px; flex-grow: 1; display: flex; flex-direction: column; }
-    .teacher-role { font-size: 0.9rem; font-weight: 700; color: var(--gold); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 1px;}
-    .teacher-name { font-size: 1.4rem; color: var(--gold); margin-bottom: 12px; font-family: 'Cinzel', serif; font-weight: 700;}
+    .teacher-role { font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 700; color: var(--gold); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 1px;}
+    .teacher-name { font-family: 'Inter', sans-serif; font-size: 1.4rem; color: var(--gold); margin-bottom: 12px; font-weight: 700;}
     .gold-badge {
       display: inline-block; align-self: flex-start; background: var(--purple); color: var(--gold);
       padding: 4px 14px; border-radius: 4px; font-size: 0.8rem;
       font-weight: 600; text-transform: uppercase; margin-bottom: 16px;
-      border: 1px solid var(--gold);
+      border: 1px solid var(--gold); font-family: 'Inter', sans-serif;
     }
-    .teacher-desc { color: var(--text-main); font-size: 0.95rem; line-height: 1.6; text-align: justify; }
+    .teacher-desc { font-family: 'Inter', sans-serif; color: var(--text-main); font-size: 0.95rem; line-height: 1.6; text-align: justify; }
 
     /* ===== Reviews Slider ===== */
     .reviews-section { background: var(--black); position: relative; z-index: 2; overflow: hidden; }
@@ -192,9 +192,9 @@
     .review-slide.active { display: block; animation: fadeIn 0.5s; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     .review-img { width: 100px; height: 100px; border-radius: 50%; margin: 0 auto 20px; object-fit: cover; border: 2px solid var(--gold); }
-    .review-name { font-family: 'Cinzel', serif; font-size: 1.4rem; color: var(--gold); margin-bottom: 5px; }
-    .review-role { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px; }
-    .review-text { font-style: italic; color: var(--text-main); font-size: 1.1rem; line-height: 1.8; }
+    .review-name { font-family: 'Inter', sans-serif; font-size: 1.4rem; color: var(--gold); margin-bottom: 5px; font-weight: 600;}
+    .review-role { font-family: 'Inter', sans-serif; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px; }
+    .review-text { font-family: 'Inter', sans-serif; font-style: italic; color: var(--text-main); font-size: 1.1rem; line-height: 1.8; }
     
     .slider-nav { display: flex; justify-content: center; gap: 15px; margin-top: 30px; }
     .slider-btn {
@@ -213,6 +213,7 @@
       display: flex; align-items: center; gap: 10px; padding: 12px 24px;
       background: transparent; border: 1px solid var(--gold); border-radius: 8px;
       color: var(--gold); font-weight: 600; font-size: 0.95rem; transition: all 0.2s;
+      font-family: 'Inter', sans-serif;
     }
     .social-link:hover { background: var(--purple); color: #fff; border-color: var(--purple); }
     .social-link svg { width: 20px; height: 20px; fill: currentColor; }
@@ -223,13 +224,12 @@
       border-radius: var(--radius); text-align: center;
       background: var(--black); border: 1px solid rgba(74, 30, 92, 0.5);
     }
-    .action-card h4 { color: var(--gold); font-size: 1.2rem; margin-bottom: 12px; font-family: 'Playfair Display', serif; }
-    .action-card p { color: var(--text-main); font-size: 0.95rem; margin-bottom: 24px; }
+    .action-card h4 { font-family: 'Inter', sans-serif; color: var(--gold); font-size: 1.2rem; margin-bottom: 12px; }
+    .action-card p { font-family: 'Inter', sans-serif; color: var(--text-main); font-size: 0.95rem; margin-bottom: 24px; }
 
     footer { background: #050505; padding: 40px 24px; text-align: center; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid rgba(212, 175, 55, 0.2);}
-    footer .footer-logo { color: var(--gold); font-weight: 700; font-size: 1.4rem; margin-bottom: 12px; letter-spacing: 2px; font-family: 'Cinzel', serif;}
+    footer .footer-logo { color: var(--gold); font-weight: 700; font-size: 1.4rem; margin-bottom: 12px; letter-spacing: 2px; font-family: 'Playfair Display', serif;}
 
-    /* ===== Мобильная адаптация (Телефон) ===== */
     @media (max-width: 900px) {
       .about-grid { grid-template-columns: 1fr; }
       .about-image { order: -1; aspect-ratio: 16/10; }
@@ -239,27 +239,13 @@
       .clean-block { padding: 30px; }
       .slider-container { padding: 30px 20px; }
       
-      /* Главный экран на телефоне */
-      .hero { 
-        align-items: center; 
-        padding: 120px 20px 60px;
-        background-position: 65% center; /* Сдвиг фото левее, чтобы парень был в центре */
-      }
+      .hero { align-items: center; padding: 120px 20px 60px; background-position: 65% center; }
       .hero-content { text-align: center; }
-      
-      /* Уменьшаем KAVKAZ и сдвигаем левее */
-      .hero-title span { 
-        font-size: 4rem; 
-        margin-left: -15px; 
-        text-align: center;
-      }
-      
-      /* Уменьшаем кнопки */
+      .hero-title span { font-size: 4rem; margin-left: -15px; text-align: center; }
       .hero-buttons { justify-content: center; gap: 15px; }
       .btn { padding: 12px 24px; font-size: 0.9rem; width: 80%; max-width: 300px;}
       
-      /* Увеличиваем логотип для телефона */
-      .logo-img { height: 50px; }
+      .logo-img { height: 60px; } /* Логотип на телефоне тоже больше */
       .logo-title { font-size: 1.4rem; }
       .logo-subtitle { font-size: 0.65rem; }
     }
@@ -295,7 +281,7 @@
         <li><a href="history.html">История</a></li>
         <li><a href="reviews.html">Отзывы</a></li>
         <li><a href="gallery.html">Галерея</a></li>
-        <li><a href="contact.html">Связаться</a></li>
+        <li><a href="contact.html">Контакты</a></li> <!-- Изменено на Контакты -->
       </ul>
       <button class="burger" id="burger" aria-label="Меню">
         <span></span><span></span><span></span>
@@ -303,11 +289,9 @@
     </nav>
   </header>
 
-  <!-- Главный экран с фото на фоне -->
   <section class="hero">
     <div class="hero-content">
       <h1 class="hero-title">
-        <!-- Текст "Добро пожаловать" убран, осталось только слово -->
         <span>KAVKAZ</span>
       </h1>
       
@@ -403,7 +387,8 @@
           <div class="division-text">
             <h3>Ансамбль</h3>
             <p>Самые сильные танцоры нашей школы. Выступления на самых больших концертах Беларуси и фестивалях. Наши ребята готовы достойно доказать и рассказать всему миру про богатую культуру Кавказа и Азербайджана. Мы гордимся тем, что представляем Конгресс азербайджанской общины.</p>
-            <p style="margin-top: 15px; color: var(--gold); font-style: italic;">Отбор в ансамбль очень сложный: преподаватели обращают внимание на харизматичность, дисциплину, ответственность и мастерство в танце.</p>
+            <!-- Измененный текст про отбор, теперь белый и обычный -->
+            <p style="margin-top: 15px;">Танцоры проходят сложнейший отбор в ансамбль: преподаватели обращают внимание на харизматичность, дисциплину, ответственность и мастерство в танце.</p>
           </div>
         </div>
 
@@ -514,7 +499,7 @@
   <section class="contacts" id="contacts">
     <div class="container">
       <div class="clean-block">
-        <h2 class="section-title">Свяжитесь с нами</h2>
+        <h2 class="section-title">Контакты</h2> <!-- Изменено на Контакты -->
         <p class="section-sub">Мы всегда рады новым артистам, ученикам и заказчикам.</p>
         
         <div class="socials">
@@ -610,4 +595,3 @@
   </script>
 </body>
 </html>
-
