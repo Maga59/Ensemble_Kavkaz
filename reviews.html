@@ -118,7 +118,7 @@
     }
     .submit-btn:hover { background: var(--purple-light); transform: translateY(-2px); }
 
-    /* Слайдер отзывов (как на главной) */
+    /* Слайдер отзывов (с пустыми карточками) */
     .slider-container {
       max-width: 800px; margin: 0 auto; position: relative; text-align: center;
       background: var(--dark-surface); padding: 50px 40px; border-radius: var(--radius);
@@ -127,10 +127,12 @@
     .review-slide { display: none; }
     .review-slide.active { display: block; animation: fadeIn 0.5s; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-    .review-img { width: 100px; height: 100px; border-radius: 50%; margin: 0 auto 20px; object-fit: cover; border: 2px solid var(--gold); }
-    .review-name { font-family: 'Inter', sans-serif; font-size: 1.4rem; color: var(--gold); margin-bottom: 5px; font-weight: 600;}
-    .review-role { font-family: 'Inter', sans-serif; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px; }
-    .review-text { font-family: 'Inter', sans-serif; font-style: italic; color: var(--text-main); font-size: 1.1rem; line-height: 1.8; }
+    
+    .review-img { width: 100px; height: 100px; border-radius: 50%; margin: 0 auto 20px; object-fit: cover; border: 2px solid var(--gold); background: #333; }
+    /* Пустые места под имена и отзывы */
+    .review-name { font-family: 'Inter', sans-serif; font-size: 1.4rem; color: var(--gold); margin-bottom: 5px; font-weight: 600; min-height: 33px;}
+    .review-role { font-family: 'Inter', sans-serif; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px; min-height: 22px;}
+    .review-text { font-family: 'Inter', sans-serif; font-style: italic; color: var(--text-main); font-size: 1.1rem; line-height: 1.8; min-height: 80px;}
     
     .slider-nav { display: flex; justify-content: center; gap: 15px; margin-top: 30px; }
     .slider-btn {
@@ -182,27 +184,27 @@
       </form>
     </div>
 
-    <!-- Слайдер с готовыми отзывами -->
+    <!-- Слайдер (пустые карточки) -->
     <div class="slider-container">
       <div class="review-slide active">
-        <div class="review-img" style="background: #333; display: flex; align-items: center; justify-content: center; color: #888;">Фото</div>
-        <div class="review-name">Иван Иванов</div>
-        <div class="review-role">Организатор мероприятий</div>
-        <p class="review-text">Невероятная энергетика! Заказывали выступление на корпоратив — гости были в восторге. Такого драйва и красоты мы еще не видели. Спасибо огромное!</p>
+        <div class="review-img"></div>
+        <div class="review-name"></div>
+        <div class="review-role"></div>
+        <p class="review-text"></p>
       </div>
 
       <div class="review-slide">
-        <div class="review-img" style="background: #333; display: flex; align-items: center; justify-content: center; color: #888;">Фото</div>
-        <div class="review-name">Елена Смирнова</div>
-        <div class="review-role">Мама ученицы школы</div>
-        <p class="review-text">Отдала дочку в школу танцев "Кавказ" и не нарадуюсь. Дисциплина, красивая осанка и море позитива. Педагоги — настоящие профессионалы своего дела!</p>
+        <div class="review-img"></div>
+        <div class="review-name"></div>
+        <div class="review-role"></div>
+        <p class="review-text"></p>
       </div>
 
       <div class="review-slide">
-        <div class="review-img" style="background: #333; display: flex; align-items: center; justify-content: center; color: #888;">Фото</div>
-        <div class="review-name">Тенгиз Думбадзе</div>
-        <div class="review-role">Руководитель компании</div>
-        <p class="review-text">Испытываешь гордость, потому что наши юные танцоры продемонстрировали, насколько можно за такой короткий срок подготовить программу, с которой не стыдно ездить по стране. Талантливые ребята!</p>
+        <div class="review-img"></div>
+        <div class="review-name"></div>
+        <div class="review-role"></div>
+        <p class="review-text"></p>
       </div>
 
       <div class="slider-nav">
@@ -236,7 +238,7 @@
       return false;
     }
 
-    // Скрипт для слайдера отзывов
+    // Скрипт для слайдера
     let slideIndex = 1;
     showSlides(slideIndex);
 
