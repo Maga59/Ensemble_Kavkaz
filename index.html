@@ -57,7 +57,7 @@
     }
     
     .logo-container { display: flex; align-items: center; gap: 15px; }
-    .logo-img { height: 83px; width: auto; object-fit: contain; } /* Увеличен на 15% для ПК */
+    .logo-img { height: 83px; width: auto; object-fit: contain; } 
     .logo-text { display: flex; flex-direction: column; }
     .logo-title { font-weight: 700; font-size: 1.8rem; letter-spacing: 2px; color: var(--gold); font-family: 'Playfair Display', serif; line-height: 1.1;}
     .logo-subtitle { font-size: 0.75rem; color: #ccc; letter-spacing: 1px; text-transform: uppercase;}
@@ -79,7 +79,8 @@
       position: absolute;
       top: 0; left: 0; width: 100%; height: 100%;
       background-size: cover;
-      background-position: center 30%; /* Опустили фото вниз на ПК, чтобы шапка не закрывала лица */
+      /* НА КОМПЬЮТЕРЕ: Опускаем фото вниз (30%), чтобы шапка не закрывала лица */
+      background-position: center 30%; 
       background-repeat: no-repeat;
       opacity: 0;
       transition: opacity 1s ease-in-out;
@@ -201,7 +202,7 @@
     }
     .teacher-desc { font-family: 'Inter', sans-serif; color: var(--text-main); font-size: 0.95rem; line-height: 1.6; text-align: justify; }
 
-    /* ===== Reviews Slider (С фоном гранатов) ===== */
+    /* ===== Reviews Slider ===== */
     .reviews-section { 
       background: var(--black); 
       position: relative; 
@@ -209,7 +210,6 @@
       overflow: hidden; 
     }
     
-    /* Горизонтальный фон с гранатами для блока отзывов */
     .reviews-section::before {
       content: "";
       position: absolute;
@@ -235,7 +235,6 @@
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     
     .review-img { width: 100px; height: 100px; border-radius: 50%; margin: 0 auto 20px; object-fit: cover; border: 2px solid var(--gold); background: #333; }
-    /* Пустые места под имена и отзывы */
     .review-name { font-family: 'Inter', sans-serif; font-size: 1.4rem; color: var(--gold); margin-bottom: 5px; font-weight: 600; min-height: 33px;}
     .review-role { font-family: 'Inter', sans-serif; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px; min-height: 22px;}
     .review-text { font-family: 'Inter', sans-serif; font-style: italic; color: var(--text-main); font-size: 1.1rem; line-height: 1.8; min-height: 80px;}
@@ -277,7 +276,6 @@
       border-top: 1px solid rgba(212, 175, 55, 0.2); position: relative; overflow: hidden;
     }
     
-    /* Контейнер для бегущей строки */
     .marquee-container {
       width: 100%;
       overflow: hidden;
@@ -292,9 +290,9 @@
     }
     
     .marquee-track img {
-      width: 300px; /* Одинаковый размер карточек */
+      width: 300px;
       height: 200px;
-      object-fit: cover; /* Обрезает края, чтобы не искажать фото */
+      object-fit: cover;
       border-radius: 8px;
       margin-right: 20px;
       border: 1px solid rgba(212, 175, 55, 0.3);
@@ -302,7 +300,7 @@
 
     @keyframes scroll {
       0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); } /* Двигаем на половину, так как дублируем фото */
+      100% { transform: translateX(-50%); }
     }
 
     .footer-content {
@@ -314,6 +312,7 @@
     
     .footer-logo { color: var(--gold); font-weight: 700; font-size: 1.4rem; margin-bottom: 12px; letter-spacing: 2px; font-family: 'Playfair Display', serif;}
 
+    /* ===== МОБИЛЬНАЯ АДАПТАЦИЯ ===== */
     @media (max-width: 900px) {
       .about-grid { grid-template-columns: 1fr; }
       .about-image { order: -1; aspect-ratio: 16/10; }
@@ -323,7 +322,17 @@
       .clean-block { padding: 30px; }
       .slider-container { padding: 30px 20px; }
       
-      .hero { align-items: center; padding: 120px 20px 60px; }
+      /* НА ТЕЛЕФОНЕ: Центрируем контент, сдвигаем фото вправо и вниз */
+      .hero { 
+        align-items: center; 
+        padding: 120px 20px 60px; 
+      }
+      
+      .hero-slide {
+        /* Сдвиг вправо на 75% и вниз на 20%, чтобы показать парня с девушкой */
+        background-position: 75% 20% !important; 
+      }
+
       .hero-content { text-align: center; }
       .hero-title span { font-size: 4rem; margin-left: -15px; text-align: center; }
       .hero-buttons { justify-content: center; gap: 15px; }
@@ -337,7 +346,6 @@
       .arrow-left { left: 10px; }
       .arrow-right { right: 10px; }
 
-      /* Мобильная адаптация бегущей строки */
       .marquee-track img { width: 220px; height: 150px; }
       .marquee-track { animation: scroll 30s linear infinite; }
     }
