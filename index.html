@@ -29,6 +29,7 @@
       overflow-x: hidden;
     }
     
+    /* Узор на фоне остальных секций */
     body::before {
       content: "";
       position: fixed;
@@ -45,17 +46,31 @@
     a { color: inherit; text-decoration: none; }
     img { max-width: 100%; display: block; }
 
+    /* ===== Header (Шапка с логотипом слева) ===== */
     header {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(10, 10, 12, 0.95); backdrop-filter: blur(10px);
+      background: rgba(10, 10, 12, 0.85); backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(212, 175, 55, 0.2);
     }
     .nav {
-      max-width: 1200px; margin: 0 auto; padding: 16px 24px;
+      max-width: 1200px; margin: 0 auto; padding: 12px 24px; /* Уменьшил padding для логотипа */
       display: flex; align-items: center; justify-content: space-between;
     }
     
-    .logo { font-weight: 700; font-size: 1.5rem; letter-spacing: 2px; color: var(--gold); font-family: 'Playfair Display', serif; }
+    /* Стиль логотипа с картинкой */
+    .logo-container { 
+      display: flex; 
+      align-items: center; 
+      gap: 15px; /* Расстояние между картинкой и текстом */
+    }
+    .logo-img {
+      height: 50px; /* Высота логотипа */
+      width: auto;
+      object-fit: contain;
+    }
+    .logo-text { display: flex; flex-direction: column; }
+    .logo-title { font-weight: 700; font-size: 1.5rem; letter-spacing: 2px; color: var(--gold); font-family: 'Playfair Display', serif; line-height: 1.1;}
+    .logo-subtitle { font-size: 0.7rem; color: #ccc; letter-spacing: 1px; text-transform: uppercase;}
     
     .nav-links { display: flex; gap: 24px; list-style: none; }
     .nav-links a { font-size: 0.95rem; color: var(--gold); font-weight: 500; transition: color 0.2s; }
@@ -63,25 +78,48 @@
     .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
     .burger span { width: 26px; height: 2px; background: var(--gold); transition: 0.3s; }
 
+    /* ===== Hero (Главный экран с фото на фоне) ===== */
     .hero {
-      min-height: 100vh; display: flex; align-items: center; justify-content: center;
-      text-align: center; position: relative; padding: 120px 24px 80px;
+      min-height: 100vh; display: flex; align-items: flex-end; /* Прижимаем контент вниз */
+      position: relative; padding: 120px 24px 80px;
+      
+      /* ФОТО НА ФОНЕ */
+      background-image: linear-gradient(to right, rgba(10,10,12,0.9) 0%, rgba(10,10,12,0.4) 50%, rgba(10,10,12,0.1) 100%), url('gal6.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
     }
-    .hero-content { position: relative; z-index: 2; max-width: 900px; }
     
-    .hero h1 {
-      font-family: 'Playfair Display', serif; 
-      font-size: clamp(5rem, 18vw, 12rem);
-      font-weight: 700;
-      line-height: 0.9;
-      letter-spacing: 10px;
+    .hero-content { 
+      position: relative; z-index: 2; 
+      max-width: 1200px; /* Ограничиваем ширину как у контейнера */
+      margin: 0 auto; 
+      width: 100%;
+      text-align: left; 
+    }
+    
+    .hero-title {
+      font-family: 'Inter', sans-serif; 
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 600;
+      line-height: 1.1;
       text-transform: uppercase;
+      color: #fff; 
+      margin-bottom: 20px;
+    }
+    
+    /* Большое слово KAVKAZ внизу */
+    .hero-title span { 
       color: var(--gold); 
-      margin-bottom: 40px;
-      text-shadow: 4px 4px 25px rgba(74, 30, 92, 0.6); 
+      display: block; 
+      font-size: clamp(4rem, 12vw, 8rem); 
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      margin-top: 10px;
+      text-shadow: 0 4px 15px rgba(0,0,0,0.5);
     }
 
-    .hero-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+    .hero-buttons { display: flex; gap: 20px; justify-content: flex-start; flex-wrap: wrap; margin-top: 30px;}
     
     .btn {
       display: inline-block; padding: 16px 36px; border-radius: 8px;
@@ -225,6 +263,11 @@
       .teachers-grid { grid-template-columns: 1fr; }
       .clean-block { padding: 30px; }
       .slider-container { padding: 30px 20px; }
+      .hero-content { text-align: center; }
+      .hero { background-position: 70% center; align-items: center; /* На мобильных центрируем контент */ }
+      .hero-buttons { justify-content: center; }
+      .logo-title { font-size: 1.2rem; }
+      .logo-img { height: 40px; }
     }
     @media (max-width: 640px) {
       .nav-links {
@@ -239,14 +282,21 @@
       section { padding: 72px 20px; }
       .socials { flex-direction: column; align-items: center; }
       .action-buttons { flex-direction: column; align-items: center; }
-      .hero h1 { font-size: 5rem; }
     }
   </style>
 </head>
 <body>
 <header>
     <nav class="nav">
-      <div class="logo">КАВКАЗ</div>
+      <!-- Логотип с картинкой -->
+      <div class="logo-container">
+        <img src="logo.png" alt="Логотип Кавказ" class="logo-img">
+        <div class="logo-text">
+          <div class="logo-title">КАВКАЗ</div>
+          <div class="logo-subtitle">Ансамбль танца</div>
+        </div>
+      </div>
+      
       <ul class="nav-links" id="navLinks">
         <li><a href="history.html">История</a></li>
         <li><a href="reviews.html">Отзывы</a></li>
@@ -259,11 +309,17 @@
     </nav>
   </header>
 
+  <!-- Главный экран с фото на фоне -->
   <section class="hero">
     <div class="hero-content">
-      <h1>KAVKAZ</h1>
+      <h1 class="hero-title">
+        Добро пожаловать<br>
+        в мир танца
+        <span>KAVKAZ</span>
+      </h1>
+      
       <div class="hero-buttons">
-        <a href="contact.html" class="btn btn-primary">Связаться с нами</a>
+        <a href="contact.html" class="btn btn-primary">Записаться на пробное</a>
         <a href="gallery.html" class="btn btn-outline">Смотреть галерею</a>
       </div>
     </div>
