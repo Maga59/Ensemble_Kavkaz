@@ -57,7 +57,7 @@
     }
     
     .logo-container { display: flex; align-items: center; gap: 15px; }
-    .logo-img { height: 72px; width: auto; object-fit: contain; } 
+    .logo-img { height: 83px; width: auto; object-fit: contain; } /* Увеличен на 15% для ПК */
     .logo-text { display: flex; flex-direction: column; }
     .logo-title { font-weight: 700; font-size: 1.8rem; letter-spacing: 2px; color: var(--gold); font-family: 'Playfair Display', serif; line-height: 1.1;}
     .logo-subtitle { font-size: 0.75rem; color: #ccc; letter-spacing: 1px; text-transform: uppercase;}
@@ -68,30 +68,26 @@
     .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
     .burger span { width: 26px; height: 2px; background: var(--gold); transition: 0.3s; }
 
-    /* ===== Hero (Слайдер) ===== */
+    /* ===== Hero ===== */
     .hero {
       min-height: 100vh; display: flex; align-items: flex-end;
       position: relative; padding: 120px 24px 80px;
       overflow: hidden;
     }
     
-    /* Слайды с фотографиями на фоне */
     .hero-slide {
       position: absolute;
       top: 0; left: 0; width: 100%; height: 100%;
       background-size: cover;
-      background-position: center;
+      background-position: center 30%; /* Опустили фото вниз на ПК, чтобы шапка не закрывала лица */
       background-repeat: no-repeat;
       opacity: 0;
       transition: opacity 1s ease-in-out;
       z-index: 1;
     }
     
-    .hero-slide.active {
-      opacity: 1;
-    }
+    .hero-slide.active { opacity: 1; }
     
-    /* Затемнение поверх фотографий */
     .hero-overlay {
       position: absolute;
       top: 0; left: 0; width: 100%; height: 100%;
@@ -99,14 +95,7 @@
       z-index: 2;
     }
     
-    .hero-content { 
-      position: relative; 
-      z-index: 3; 
-      max-width: 1200px; 
-      margin: 0 auto; 
-      width: 100%; 
-      text-align: left; 
-    }
+    .hero-content { position: relative; z-index: 3; max-width: 1200px; margin: 0 auto; width: 100%; text-align: left; }
     
     .hero-title span { 
       color: var(--gold); 
@@ -121,30 +110,13 @@
 
     .hero-buttons { display: flex; gap: 20px; justify-content: flex-start; flex-wrap: wrap; margin-top: 30px;}
     
-    /* Стрелочки для слайдера */
     .slider-arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 4;
-      background: rgba(74, 30, 92, 0.6);
-      color: var(--gold);
-      border: 2px solid var(--gold);
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      font-size: 1.5rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s;
-      backdrop-filter: blur(5px);
+      position: absolute; top: 50%; transform: translateY(-50%); z-index: 4;
+      background: rgba(74, 30, 92, 0.6); color: var(--gold); border: 2px solid var(--gold);
+      width: 50px; height: 50px; border-radius: 50%; font-size: 1.5rem; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; transition: all 0.3s; backdrop-filter: blur(5px);
     }
-    .slider-arrow:hover {
-      background: var(--purple);
-      transform: translateY(-50%) scale(1.1);
-    }
+    .slider-arrow:hover { background: var(--purple); transform: translateY(-50%) scale(1.1); }
     .arrow-left { left: 20px; }
     .arrow-right { right: 20px; }
     
@@ -155,7 +127,6 @@
     }
     .btn-primary { background: var(--purple); color: var(--gold); border-color: var(--purple); }
     .btn-primary:hover { background: var(--purple-light); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(74,30,92,0.4); }
-    
     .btn-outline { background: transparent; color: var(--gold); border-color: var(--gold); }
     .btn-outline:hover { background: var(--gold); color: var(--black); transform: translateY(-3px); }
 
@@ -169,20 +140,17 @@
     .section-sub { text-align: center; color: var(--gold); max-width: 700px; margin: 0 auto 56px; font-size: 1.1rem; font-weight: 500; }
 
     .clean-block {
-      background: var(--dark-surface);
-      border-radius: var(--radius);
-      padding: 50px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-      border: 1px solid rgba(74, 30, 92, 0.3);
+      background: var(--dark-surface); border-radius: var(--radius); padding: 50px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5); border: 1px solid rgba(74, 30, 92, 0.3);
     }
 
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
     .about-text p { font-family: 'Inter', sans-serif; color: var(--text-main); margin-bottom: 20px; font-size: 1.05rem; text-align: justify; }
     .about-text .highlight { color: var(--gold); font-weight: 600; }
     .about-image {
-      aspect-ratio: 4/5; border-radius: var(--radius);
-      background: var(--black); display: flex; align-items: center; justify-content: center;
-      overflow: hidden; box-shadow: 0 15px 30px rgba(0,0,0,0.5); border: 2px solid var(--purple);
+      aspect-ratio: 4/5; border-radius: var(--radius); background: var(--black);
+      display: flex; align-items: center; justify-content: center; overflow: hidden;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.5); border: 2px solid var(--purple);
     }
     .about-image img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
 
@@ -202,8 +170,8 @@
     .divisions-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
     .division-card {
       background: var(--dark-surface); border-radius: var(--radius); padding: 0;
-      transition: transform 0.3s, box-shadow 0.3s;
-      overflow: hidden; box-shadow: 0 8px 30px rgba(0,0,0,0.4); border: 1px solid rgba(74, 30, 92, 0.3);
+      transition: transform 0.3s, box-shadow 0.3s; overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.4); border: 1px solid rgba(74, 30, 92, 0.3);
       display: flex; flex-direction: column;
     }
     .division-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(74,30,92,0.2); border-color: var(--purple); }
@@ -233,20 +201,44 @@
     }
     .teacher-desc { font-family: 'Inter', sans-serif; color: var(--text-main); font-size: 0.95rem; line-height: 1.6; text-align: justify; }
 
-    /* ===== Reviews Slider ===== */
-    .reviews-section { background: var(--black); position: relative; z-index: 2; overflow: hidden; }
+    /* ===== Reviews Slider (С фоном гранатов) ===== */
+    .reviews-section { 
+      background: var(--black); 
+      position: relative; 
+      z-index: 2; 
+      overflow: hidden; 
+    }
+    
+    /* Горизонтальный фон с гранатами для блока отзывов */
+    .reviews-section::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background-image: url('granat.png'); 
+      background-size: 100% auto;
+      background-position: center;
+      background-repeat: no-repeat;
+      transform: rotate(90deg) scale(1.5); 
+      opacity: 0.15;
+      z-index: -1;
+    }
+
     .slider-container {
       max-width: 800px; margin: 0 auto; position: relative; text-align: center;
-      background: var(--dark-surface); padding: 50px 40px; border-radius: var(--radius);
+      background: rgba(20, 18, 24, 0.8); padding: 50px 40px; border-radius: var(--radius);
       border: 1px solid rgba(212, 175, 55, 0.2); box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+      backdrop-filter: blur(5px);
     }
+    
     .review-slide { display: none; }
     .review-slide.active { display: block; animation: fadeIn 0.5s; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-    .review-img { width: 100px; height: 100px; border-radius: 50%; margin: 0 auto 20px; object-fit: cover; border: 2px solid var(--gold); }
-    .review-name { font-family: 'Inter', sans-serif; font-size: 1.4rem; color: var(--gold); margin-bottom: 5px; font-weight: 600;}
-    .review-role { font-family: 'Inter', sans-serif; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px; }
-    .review-text { font-family: 'Inter', sans-serif; font-style: italic; color: var(--text-main); font-size: 1.1rem; line-height: 1.8; }
+    
+    .review-img { width: 100px; height: 100px; border-radius: 50%; margin: 0 auto 20px; object-fit: cover; border: 2px solid var(--gold); background: #333; }
+    /* Пустые места под имена и отзывы */
+    .review-name { font-family: 'Inter', sans-serif; font-size: 1.4rem; color: var(--gold); margin-bottom: 5px; font-weight: 600; min-height: 33px;}
+    .review-role { font-family: 'Inter', sans-serif; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px; min-height: 22px;}
+    .review-text { font-family: 'Inter', sans-serif; font-style: italic; color: var(--text-main); font-size: 1.1rem; line-height: 1.8; min-height: 80px;}
     
     .slider-nav { display: flex; justify-content: center; gap: 15px; margin-top: 30px; }
     .slider-btn {
@@ -279,8 +271,48 @@
     .action-card h4 { font-family: 'Inter', sans-serif; color: var(--gold); font-size: 1.2rem; margin-bottom: 12px; }
     .action-card p { font-family: 'Inter', sans-serif; color: var(--text-main); font-size: 0.95rem; margin-bottom: 24px; }
 
-    footer { background: #050505; padding: 40px 24px; text-align: center; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid rgba(212, 175, 55, 0.2);}
-    footer .footer-logo { color: var(--gold); font-weight: 700; font-size: 1.4rem; margin-bottom: 12px; letter-spacing: 2px; font-family: 'Playfair Display', serif;}
+    /* ===== Footer (Бегущая строка) ===== */
+    footer { 
+      background: #050505; padding: 0; text-align: center; color: var(--text-muted); font-size: 0.9rem; 
+      border-top: 1px solid rgba(212, 175, 55, 0.2); position: relative; overflow: hidden;
+    }
+    
+    /* Контейнер для бегущей строки */
+    .marquee-container {
+      width: 100%;
+      overflow: hidden;
+      padding: 30px 0;
+      position: relative;
+    }
+    
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: scroll 40s linear infinite;
+    }
+    
+    .marquee-track img {
+      width: 300px; /* Одинаковый размер карточек */
+      height: 200px;
+      object-fit: cover; /* Обрезает края, чтобы не искажать фото */
+      border-radius: 8px;
+      margin-right: 20px;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+    }
+
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); } /* Двигаем на половину, так как дублируем фото */
+    }
+
+    .footer-content {
+      padding: 30px 24px;
+      background: rgba(10, 10, 12, 0.9);
+      position: relative;
+      z-index: 2;
+    }
+    
+    .footer-logo { color: var(--gold); font-weight: 700; font-size: 1.4rem; margin-bottom: 12px; letter-spacing: 2px; font-family: 'Playfair Display', serif;}
 
     @media (max-width: 900px) {
       .about-grid { grid-template-columns: 1fr; }
@@ -297,13 +329,17 @@
       .hero-buttons { justify-content: center; gap: 15px; }
       .btn { padding: 12px 24px; font-size: 0.9rem; width: 80%; max-width: 300px;}
       
-      .logo-img { height: 60px; } 
+      .logo-img { height: 65px; } 
       .logo-title { font-size: 1.4rem; }
       .logo-subtitle { font-size: 0.65rem; }
       
       .slider-arrow { width: 40px; height: 40px; font-size: 1.2rem; }
       .arrow-left { left: 10px; }
       .arrow-right { right: 10px; }
+
+      /* Мобильная адаптация бегущей строки */
+      .marquee-track img { width: 220px; height: 150px; }
+      .marquee-track { animation: scroll 30s linear infinite; }
     }
     @media (max-width: 640px) {
       .nav-links {
@@ -344,17 +380,14 @@
     </nav>
   </header>
 
-  <!-- Главный экран (Слайдер) -->
   <section class="hero">
     <!-- Слайды -->
     <div class="hero-slide active" style="background-image: url('gal6.jpg');"></div>
     <div class="hero-slide" style="background-image: url('gal5.jpg');"></div>
     <div class="hero-slide" style="background-image: url('photo4.jpg');"></div>
     
-    <!-- Затемнение -->
     <div class="hero-overlay"></div>
 
-    <!-- Стрелочки -->
     <button class="slider-arrow arrow-left" onclick="prevSlide()">❮</button>
     <button class="slider-arrow arrow-right" onclick="nextSlide()">❯</button>
 
@@ -525,25 +558,26 @@
       <p class="section-sub">Что говорят о нашем коллективе.</p>
 
       <div class="slider-container">
+        <!-- Пустые карточки отзывов (текст убран, рамки оставлены) -->
         <div class="review-slide active">
-          <div class="review-img" style="background: #333; display: flex; align-items: center; justify-content: center; color: #888;">Фото</div>
-          <div class="review-name">Иван Иванов</div>
-          <div class="review-role">Организатор мероприятий</div>
-          <p class="review-text">Невероятная энергетика! Заказывали выступление на корпоратив — гости были в восторге. Такого драйва и красоты мы еще не видели. Спасибо огромное!</p>
+          <div class="review-img"></div>
+          <div class="review-name"></div>
+          <div class="review-role"></div>
+          <p class="review-text"></p>
         </div>
 
         <div class="review-slide">
-          <div class="review-img" style="background: #333; display: flex; align-items: center; justify-content: center; color: #888;">Фото</div>
-          <div class="review-name">Елена Смирнова</div>
-          <div class="review-role">Мама ученицы школы</div>
-          <p class="review-text">Отдала дочку в школу танцев "Кавказ" и не нарадуюсь. Дисциплина, красивая осанка и море позитива. Педагоги — настоящие профессионалы своего дела!</p>
+          <div class="review-img"></div>
+          <div class="review-name"></div>
+          <div class="review-role"></div>
+          <p class="review-text"></p>
         </div>
 
         <div class="review-slide">
-          <div class="review-img" style="background: #333; display: flex; align-items: center; justify-content: center; color: #888;">Фото</div>
-          <div class="review-name">Тенгиз Думбадзе</div>
-          <div class="review-role">Руководитель компании</div>
-          <p class="review-text">Испытываешь гордость, потому что наши юные танцоры продемонстрировали, насколько можно за такой короткий срок подготовить программу, с которой не стыдно ездить по стране. Талантливые ребята!</p>
+          <div class="review-img"></div>
+          <div class="review-name"></div>
+          <div class="review-role"></div>
+          <p class="review-text"></p>
         </div>
 
         <div class="slider-nav">
@@ -601,16 +635,50 @@
     </div>
   </section>
 
+  <!-- ФУТЕР С БЕГУЩЕЙ СТРОКОЙ -->
   <footer>
-    <div class="footer-logo">KAVKAZ</div>
-    <p>© <span id="year"></span> Ансамбль Кавказ · Минск, Беларусь</p>
-    <p style="margin-top:6px; opacity:0.7;">Танец — это любовь. Движение — это жизнь.</p>
+    <div class="marquee-container">
+      <div class="marquee-track">
+        <!-- Первый набор из 12 фото (вперемешку) -->
+        <img src="baku3.jpg" alt="Баку">
+        <img src="baku12.jpg" alt="Баку">
+        <img src="baku8.jpg" alt="Баку">
+        <img src="baku10.jpg" alt="Баку">
+        <img src="baku6.jpg" alt="Баку">
+        <img src="baku9.jpg" alt="Баку">
+        <img src="baku7.jpg" alt="Баку">
+        <img src="baku1.jpg" alt="Баку">
+        <img src="baku4.jpg" alt="Баку">
+        <img src="baku2.jpg" alt="Баку">
+        <img src="baku11.jpg" alt="Баку">
+        <img src="baku5.jpg" alt="Баку">
+
+        <!-- Второй набор (дубликат для бесшовной прокрутки) -->
+        <img src="baku3.jpg" alt="Баку">
+        <img src="baku12.jpg" alt="Баку">
+        <img src="baku8.jpg" alt="Баку">
+        <img src="baku10.jpg" alt="Баку">
+        <img src="baku6.jpg" alt="Баку">
+        <img src="baku9.jpg" alt="Баку">
+        <img src="baku7.jpg" alt="Баку">
+        <img src="baku1.jpg" alt="Баку">
+        <img src="baku4.jpg" alt="Баку">
+        <img src="baku2.jpg" alt="Баку">
+        <img src="baku11.jpg" alt="Баку">
+        <img src="baku5.jpg" alt="Баку">
+      </div>
+    </div>
+
+    <div class="footer-content">
+      <div class="footer-logo">KAVKAZ</div>
+      <p>© <span id="year"></span> Ансамбль Кавказ · Минск, Беларусь</p>
+      <p style="margin-top:6px; opacity:0.7;">Танец — это любовь. Движение — это жизнь.</p>
+    </div>
   </footer>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Мобильное меню
     const burger = document.getElementById('burger');
     const navLinks = document.getElementById('navLinks');
     burger.addEventListener('click', () => { navLinks.classList.toggle('open'); });
@@ -618,7 +686,6 @@
       link.addEventListener('click', () => navLinks.classList.remove('open'));
     });
 
-    // Анимация секций
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -635,7 +702,7 @@
       observer.observe(sec);
     });
 
-    // Логика слайдера отзывов
+    // Слайдер отзывов (карусель)
     let slideIndex = 1;
     showSlides(slideIndex);
     function moveSlide(n) { showSlides(slideIndex += n); }
@@ -658,29 +725,17 @@
       dots[slideIndex-1].className += " active";
     }
 
-    // Логика слайдера на главном экране (фон)
+    // Главный слайдер на фоне
     let heroIndex = 0;
     const heroSlides = document.querySelectorAll('.hero-slide');
 
     function showHeroSlide(index) {
-      // Скрываем все
       heroSlides.forEach(slide => slide.classList.remove('active'));
-      // Показываем нужный
       heroSlides[index].classList.add('active');
     }
-
-    function nextSlide() {
-      heroIndex = (heroIndex + 1) % heroSlides.length;
-      showHeroSlide(heroIndex);
-    }
-
-    function prevSlide() {
-      heroIndex = (heroIndex - 1 + heroSlides.length) % heroSlides.length;
-      showHeroSlide(heroIndex);
-    }
-
-    // Автоматическое переключение (по желанию, можно убрать)
-    setInterval(nextSlide, 5000); // Меняется каждые 5 секунд
+    function nextSlide() { heroIndex = (heroIndex + 1) % heroSlides.length; showHeroSlide(heroIndex); }
+    function prevSlide() { heroIndex = (heroIndex - 1 + heroSlides.length) % heroSlides.length; showHeroSlide(heroIndex); }
+    setInterval(nextSlide, 5000);
   </script>
 </body>
 </html>
