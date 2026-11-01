@@ -108,16 +108,6 @@
 
     .hero-buttons { display: flex; gap: 20px; justify-content: flex-start; flex-wrap: wrap; margin-top: 30px;}
     
-    .slider-arrow {
-      position: absolute; top: 50%; transform: translateY(-50%); z-index: 4;
-      background: rgba(74, 30, 92, 0.6); color: var(--gold); border: 2px solid var(--gold);
-      width: 50px; height: 50px; border-radius: 50%; font-size: 1.5rem; cursor: pointer;
-      display: flex; align-items: center; justify-content: center; transition: all 0.3s; backdrop-filter: blur(5px);
-    }
-    .slider-arrow:hover { background: var(--purple); transform: translateY(-50%) scale(1.1); }
-    .arrow-left { left: 20px; }
-    .arrow-right { right: 20px; }
-    
     .btn {
       display: inline-block; padding: 16px 36px; border-radius: 8px;
       font-weight: 600; font-size: 1rem; font-family: 'Inter', sans-serif;
@@ -199,7 +189,6 @@
     }
     .teacher-desc { font-family: 'Inter', sans-serif; color: var(--text-main); font-size: 0.95rem; line-height: 1.6; text-align: justify; }
 
-    /* ===== Reviews Section (ИСПРАВЛЕННЫЙ ФОН) ===== */
     .reviews-section { 
       background: var(--black); 
       position: relative; 
@@ -207,22 +196,15 @@
       overflow: hidden; 
     }
     
-    /* Узор с гранатами, горизонтальный, растянут от края до края */
     .reviews-section::before {
       content: "";
       position: absolute;
       top: 0; left: 0; width: 100%; height: 100%;
-      
       background-image: url('granat.png'); 
-      
-      /* Заполняем весь блок, убираем полосы */
       background-size: cover; 
       background-position: center;
-      
-      /* Разворачиваем на 90 градусов */
       transform: rotate(90deg) scale(1.4); 
-      
-      opacity: 0.15; /* Делаем полупрозрачным */
+      opacity: 0.15;
       z-index: -1;
     }
 
@@ -277,13 +259,9 @@
       border-top: 1px solid rgba(212, 175, 55, 0.2); position: relative; overflow: hidden;
     }
     
-    .marquee-container {
-      width: 100%; overflow: hidden; padding: 30px 0; position: relative;
-    }
+    .marquee-container { width: 100%; overflow: hidden; padding: 30px 0; position: relative; }
     
-    .marquee-track {
-      display: flex; width: max-content; animation: scroll 40s linear infinite;
-    }
+    .marquee-track { display: flex; width: max-content; animation: scroll 40s linear infinite; }
     
     .marquee-track img {
       width: 300px; height: 200px; object-fit: cover;
@@ -326,10 +304,6 @@
       .logo-title { font-size: 1.4rem; }
       .logo-subtitle { font-size: 0.65rem; }
       
-      .slider-arrow { width: 40px; height: 40px; font-size: 1.2rem; }
-      .arrow-left { left: 10px; }
-      .arrow-right { right: 10px; }
-
       .marquee-track img { width: 220px; height: 150px; }
       .marquee-track { animation: scroll 30s linear infinite; }
     }
@@ -374,14 +348,11 @@
 
   <section class="hero">
     <div class="hero-slide active" style="background-image: url('gal6.jpg');"></div>
-    <!-- ТУТ ДОБАВЛЕН КЛАСС gal5-slide -->
     <div class="hero-slide gal5-slide" style="background-image: url('gal5.jpg');"></div>
     <div class="hero-slide" style="background-image: url('photo4.jpg');"></div>
     
     <div class="hero-overlay"></div>
-
-    <button class="slider-arrow arrow-left" onclick="prevSlide()">❮</button>
-    <button class="slider-arrow arrow-right" onclick="nextSlide()">❯</button>
+    <!-- СТРЕЛОЧКИ УБРАНЫ -->
 
     <div class="hero-content">
       <h1 class="hero-title">
@@ -550,13 +521,15 @@
       <p class="section-sub">Что говорят о нашем коллективе.</p>
 
       <div class="slider-container">
+        <!-- ПЕРВЫЙ ОТЗЫВ (ЗАПОЛНЕННЫЙ) -->
         <div class="review-slide active">
-          <div class="review-img"></div>
-          <div class="review-name"></div>
-          <div class="review-role"></div>
-          <p class="review-text"></p>
+          <img src="gal3.jpg" alt="Отзыв" class="review-img">
+          <div class="review-name">Гаджиев Мухаммед</div>
+          <div class="review-role">Глава международного сектора, учреждения образования Федерации профсоюзов Беларуси «Международный университет «МИТСО»</div>
+          <p class="review-text">«Ансамбль «Кавказ» часто выступает в нашем Международном университете «МИТСО», после их выступления все руководство университета восхищены их мастерством и харизмой. И мы хотим отблагодарить руководителя и педагогов, большое вам спасибо!»</p>
         </div>
 
+        <!-- ВТОРОЙ ОТЗЫВ (ПУСТОЙ) -->
         <div class="review-slide">
           <div class="review-img"></div>
           <div class="review-name"></div>
@@ -564,6 +537,7 @@
           <p class="review-text"></p>
         </div>
 
+        <!-- ТРЕТИЙ ОТЗЫВ (ПУСТОЙ) -->
         <div class="review-slide">
           <div class="review-img"></div>
           <div class="review-name"></div>
@@ -669,6 +643,7 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
+    // Мобильное меню
     const burger = document.getElementById('burger');
     const navLinks = document.getElementById('navLinks');
     burger.addEventListener('click', () => { navLinks.classList.toggle('open'); });
@@ -676,6 +651,7 @@
       link.addEventListener('click', () => navLinks.classList.remove('open'));
     });
 
+    // Анимация появления секций
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -715,7 +691,7 @@
       dots[slideIndex-1].className += " active";
     }
 
-    // Главный слайдер на фоне
+    // Главный слайдер на фоне (БЕЗ СТРЕЛОЧЕК, ТОЛЬКО АВТО)
     let heroIndex = 0;
     const heroSlides = document.querySelectorAll('.hero-slide');
 
@@ -723,8 +699,13 @@
       heroSlides.forEach(slide => slide.classList.remove('active'));
       heroSlides[index].classList.add('active');
     }
-    function nextSlide() { heroIndex = (heroIndex + 1) % heroSlides.length; showHeroSlide(heroIndex); }
-    function prevSlide() { heroIndex = (heroIndex - 1 + heroSlides.length) % heroSlides.length; showHeroSlide(heroIndex); }
+
+    function nextSlide() { 
+      heroIndex = (heroIndex + 1) % heroSlides.length; 
+      showHeroSlide(heroIndex); 
+    }
+
+    // Автоматическая смена каждые 5 секунд
     setInterval(nextSlide, 5000);
   </script>
 </body>
