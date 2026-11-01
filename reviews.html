@@ -118,7 +118,7 @@
     }
     .submit-btn:hover { background: var(--purple-light); transform: translateY(-2px); }
 
-    /* Слайдер отзывов (с пустыми карточками) */
+    /* Слайдер отзывов */
     .slider-container {
       max-width: 800px; margin: 0 auto; position: relative; text-align: center;
       background: var(--dark-surface); padding: 50px 40px; border-radius: var(--radius);
@@ -129,7 +129,6 @@
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     
     .review-img { width: 100px; height: 100px; border-radius: 50%; margin: 0 auto 20px; object-fit: cover; border: 2px solid var(--gold); background: #333; }
-    /* Пустые места под имена и отзывы */
     .review-name { font-family: 'Inter', sans-serif; font-size: 1.4rem; color: var(--gold); margin-bottom: 5px; font-weight: 600; min-height: 33px;}
     .review-role { font-family: 'Inter', sans-serif; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px; min-height: 22px;}
     .review-text { font-family: 'Inter', sans-serif; font-style: italic; color: var(--text-main); font-size: 1.1rem; line-height: 1.8; min-height: 80px;}
@@ -184,15 +183,18 @@
       </form>
     </div>
 
-    <!-- Слайдер (пустые карточки) -->
+    <!-- Слайдер с готовыми отзывами -->
     <div class="slider-container">
+      
+      <!-- ПЕРВЫЙ ОТЗЫВ (ЗАПОЛНЕННЫЙ) -->
       <div class="review-slide active">
-        <div class="review-img"></div>
-        <div class="review-name"></div>
-        <div class="review-role"></div>
-        <p class="review-text"></p>
+        <img src="gal3.jpg" alt="Отзыв" class="review-img">
+        <div class="review-name">Гаджиев Мухаммед</div>
+        <div class="review-role">Глава международного сектора, учреждения образования Федерации профсоюзов Беларуси «Международный университет «МИТСО»</div>
+        <p class="review-text">«Ансамбль «Кавказ» часто выступает в нашем Международном университете «МИТСО», после их выступления все руководство университета восхищены их мастерством и харизмой. И мы хотим отблагодарить руководителя и педагогов, большое вам спасибо!»</p>
       </div>
 
+      <!-- ВТОРОЙ ОТЗЫВ (ПУСТОЙ) -->
       <div class="review-slide">
         <div class="review-img"></div>
         <div class="review-name"></div>
@@ -200,6 +202,7 @@
         <p class="review-text"></p>
       </div>
 
+      <!-- ТРЕТИЙ ОТЗЫВ (ПУСТОЙ) -->
       <div class="review-slide">
         <div class="review-img"></div>
         <div class="review-name"></div>
@@ -238,7 +241,7 @@
       return false;
     }
 
-    // Скрипт для слайдера
+    // Скрипт для слайдера отзывов
     let slideIndex = 1;
     showSlides(slideIndex);
 
